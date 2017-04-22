@@ -1,5 +1,5 @@
 Flow report for mini_project_isuk218
-Fri Apr 21 18:05:12 2017
+Sat Apr 22 18:21:19 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Fri Apr 21 18:05:12 2017       ;
+; Flow Status                        ; Successful - Sat Apr 22 18:21:19 2017       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; mini_project_isuk218                        ;
-; Top-level Entity Name              ; lfsr                                        ;
+; Top-level Entity Name              ; mini_project_isuk218                        ;
 ; Family                             ; Cyclone III                                 ;
 ; Device                             ; EP3C16F484C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 8 / 15,408 ( < 1 % )                        ;
-;     Total combinational functions  ; 1 / 15,408 ( < 1 % )                        ;
-;     Dedicated logic registers      ; 8 / 15,408 ( < 1 % )                        ;
-; Total registers                    ; 8                                           ;
-; Total pins                         ; 10 / 347 ( 3 % )                            ;
+; Total logic elements               ; 92 / 15,408 ( < 1 % )                       ;
+;     Total combinational functions  ; 77 / 15,408 ( < 1 % )                       ;
+;     Dedicated logic registers      ; 74 / 15,408 ( < 1 % )                       ;
+; Total registers                    ; 74                                          ;
+; Total pins                         ; 8 / 347 ( 2 % )                             ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 516,096 ( 0 % )                         ;
 ; Embedded Multiplier 9-bit elements ; 0 / 112 ( 0 % )                             ;
@@ -64,31 +64,30 @@ applicable agreement for further details.
 +-------------------+----------------------+
 ; Option            ; Setting              ;
 +-------------------+----------------------+
-; Start date & time ; 04/21/2017 18:04:26  ;
+; Start date & time ; 04/22/2017 18:21:04  ;
 ; Main task         ; Compilation          ;
 ; Revision Name     ; mini_project_isuk218 ;
 +-------------------+----------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                  ;
-+-------------------------------------+---------------------------------------+----------------------+-------------+----------------+
-; Assignment Name                     ; Value                                 ; Default Value        ; Entity Name ; Section Id     ;
-+-------------------------------------+---------------------------------------+----------------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 109952947368620.149275466608752       ; --                   ; --          ; --             ;
-; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --                   ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>               ; --          ; --             ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --                   ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                     ; --                   ; --          ; --             ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                  ; --                   ; --          ; --             ;
-; PARTITION_COLOR                     ; 16764057                              ; --                   ; lfsr        ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --                   ; lfsr        ; Top            ;
-; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --                   ; lfsr        ; Top            ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                   ; --                   ; --          ; --             ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --                   ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                          ; --                   ; --          ; --             ;
-; TOP_LEVEL_ENTITY                    ; lfsr                                  ; mini_project_isuk218 ; --          ; --             ;
-+-------------------------------------+---------------------------------------+----------------------+-------------+----------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                           ;
++-------------------------------------+---------------------------------------+---------------+-------------+----------------+
+; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
++-------------------------------------+---------------------------------------+---------------+-------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 109952947362482.149284206401676       ; --            ; --          ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --            ; --          ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                     ; --            ; --          ; --             ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                  ; --            ; --          ; --             ;
+; PARTITION_COLOR                     ; 16764057                              ; --            ; --          ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top            ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; --          ; Top            ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                   ; --            ; --          ; --             ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --             ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                          ; --            ; --          ; --             ;
++-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -96,12 +95,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:06     ; 1.0                     ; 490 MB              ; 00:00:02                           ;
-; Fitter                    ; 00:00:19     ; 1.0                     ; 1093 MB             ; 00:00:07                           ;
-; Assembler                 ; 00:00:03     ; 1.0                     ; 413 MB              ; 00:00:01                           ;
-; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 473 MB              ; 00:00:02                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 385 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:34     ; --                      ; --                  ; 00:00:13                           ;
+; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 509 MB              ; 00:00:02                           ;
+; Fitter                    ; 00:00:06     ; 1.0                     ; 1095 MB             ; 00:00:06                           ;
+; Assembler                 ; 00:00:01     ; 1.0                     ; 421 MB              ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 485 MB              ; 00:00:02                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 374 MB              ; 00:00:01                           ;
+; Total                     ; 00:00:12     ; --                      ; --                  ; 00:00:12                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -110,11 +109,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; EN-352794        ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; EN-352794        ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; EN-352794        ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; EN-352794        ; Windows 7 ; 6.1        ; x86_64         ;
-; EDA Netlist Writer        ; EN-352794        ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; EN-337546        ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; EN-337546        ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; EN-337546        ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; EN-337546        ; Windows 7 ; 6.1        ; x86_64         ;
+; EDA Netlist Writer        ; EN-337546        ; Windows 7 ; 6.1        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

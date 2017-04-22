@@ -4,7 +4,7 @@ use  IEEE.STD_LOGIC_ARITH.all;
 use  IEEE.STD_LOGIC_UNSIGNED.all;
 
 entity tank is
-	port (signal pixel_row, pixel_column  : in std_logic_vector(10 downto 0);
+	port (signal pixel_row, pixel_column  : in std_logic_vector(9 downto 0);
 			signal game_mode				: in std_logic_vector(2 downto 0);
 			signal horiz_sync, vert_sync	: in std_logic;
 			signal left_button			: in std_logic;
@@ -31,10 +31,10 @@ architecture bhv of tank is
 	signal bullet_on: std_logic;
 begin
 
-tank_size <= CONV_STD_LOGIC_VECTOR(5,11);
-bullet_size <= CONV_STD_LOGIC_VECTOR(4,11);
-tank1_Y_pos <= CONV_STD_LOGIC_VECTOR(100,11);
-tank2_Y_pos <= CONV_STD_LOGIC_VECTOR(380, 11);
+tank_size <= CONV_STD_LOGIC_VECTOR(5,10);
+bullet_size <= CONV_STD_LOGIC_VECTOR(4,10);
+tank1_Y_pos <= CONV_STD_LOGIC_VECTOR(100,10);
+tank2_Y_pos <= CONV_STD_LOGIC_VECTOR(380, 10);
 
 RGB(0) <=  '1' AND NOT tank2_on AND NOT bullet_on;
 RGB(1) <=  '1' AND NOT tank1_on AND NOT bullet_on;
@@ -91,16 +91,16 @@ RGB(2) <=  '1' AND NOT tank1_on AND NOT tank2_on;
 			end if;
 			
 			--implement tank2 movement based on mouse input
-			if (mouse_col < ("1010000000" - tank_size)) then --640
-				tank2_X_pos <= tank2_X_pos + tank2_speed;
-			elsif (mouse_col > ("0000000000" + tank_size)) then
-				tank2_X_pos <= tank2_X_pos - tank2_speed;
-			else 
-				tank2_X_pos <= tank2_X_pos; --stationery
-			end if;
+--			if (mouse_col < ("1010000000" - tank_size)) then --640
+--				tank2_X_pos <= tank2_X_pos + tank2_speed;
+--			elsif (mouse_col > ("0000000000" + tank_size)) then
+--				tank2_X_pos <= tank2_X_pos - tank2_speed;
+--			else 
+--				tank2_X_pos <= tank2_X_pos; --stationery
+--			end if;
 			
 			--implement bullet movement and add variable to activate bullet (not bullet_on)
-			if (bullet_fired = '1') then
+			if (left_button = '1') then
 				bullet_Y_pos <= bullet_Y_pos + tank2_speed;
 			end if;
 						

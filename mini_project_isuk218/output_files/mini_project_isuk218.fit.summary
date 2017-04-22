@@ -1,15 +1,15 @@
-Fitter Status : Successful - Fri Apr 21 18:04:54 2017
+Fitter Status : Successful - Sat Apr 22 18:21:12 2017
 Quartus II 64-Bit Version : 13.0.0 Build 156 04/24/2013 SJ Full Version
 Revision Name : mini_project_isuk218
-Top-level Entity Name : lfsr
+Top-level Entity Name : mini_project_isuk218
 Family : Cyclone III
 Device : EP3C16F484C6
 Timing Models : Final
-Total logic elements : 8 / 15,408 ( < 1 % )
-    Total combinational functions : 1 / 15,408 ( < 1 % )
-    Dedicated logic registers : 8 / 15,408 ( < 1 % )
-Total registers : 8
-Total pins : 10 / 347 ( 3 % )
+Total logic elements : 92 / 15,408 ( < 1 % )
+    Total combinational functions : 77 / 15,408 ( < 1 % )
+    Dedicated logic registers : 74 / 15,408 ( < 1 % )
+Total registers : 74
+Total pins : 8 / 347 ( 2 % )
 Total virtual pins : 0
 Total memory bits : 0 / 516,096 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 112 ( 0 % )
