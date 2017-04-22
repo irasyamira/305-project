@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for mini_project_isuk218
-Sat Apr 22 18:21:17 2017
+Sat Apr 22 19:52:24 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -3696,7 +3696,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Sat Apr 22 18:21:15 2017
+    Info: Processing started: Sat Apr 22 19:52:22 2017
 Info: Command: quartus_sta mini_project_isuk218 -c mini_project_isuk218
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -3806,8 +3806,8 @@ Info (332146): Worst-case minimum pulse width slack is -3.000
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 485 megabytes
-    Info: Processing ended: Sat Apr 22 18:21:17 2017
+    Info: Peak virtual memory: 497 megabytes
+    Info: Processing ended: Sat Apr 22 19:52:24 2017
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for mini_project_isuk218
-Sat Apr 22 18:21:05 2017
+Sat Apr 22 19:52:12 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -18,9 +18,8 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
  10. Removed Registers Triggering Further Register Optimizations
  11. General Register Statistics
  12. Inverted Register Statistics
- 13. Port Connectivity Checks: "tank_test:inst1|VGA_SYNC:sync"
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -46,7 +45,7 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Apr 22 18:21:05 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sat Apr 22 19:52:12 2017       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; mini_project_isuk218                        ;
 ; Top-level Entity Name              ; mini_project_isuk218                        ;
@@ -159,12 +158,11 @@ applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 2           ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ; < 0.1%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -298,19 +296,6 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "tank_test:inst1|VGA_SYNC:sync"                                                              ;
-+--------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port         ; Type   ; Severity ; Details                                                                             ;
-+--------------+--------+----------+-------------------------------------------------------------------------------------+
-; red          ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; green        ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; blue         ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; pixel_row    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; pixel_column ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +-------------------------------+
 ; Elapsed Time Per Partition    ;
 +----------------+--------------+
@@ -326,7 +311,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Sat Apr 22 18:21:03 2017
+    Info: Processing started: Sat Apr 22 19:52:10 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mini_project_isuk218 -c mini_project_isuk218
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file lfsr.vhd
@@ -356,6 +341,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file tank_te
 Info (12021): Found 2 design units, including 1 entities, in source file clk_divider.vhd
     Info (12022): Found design unit 1: clk_divider-bhv
     Info (12023): Found entity 1: clk_divider
+Info (12021): Found 2 design units, including 1 entities, in source file game_control.vhd
+    Info (12022): Found design unit 1: game_control-bhv
+    Info (12023): Found entity 1: game_control
 Info (12127): Elaborating entity "mini_project_isuk218" for the top level hierarchy
 Warning (275011): Block or symbol "tank_test" of instance "inst1" overlaps another block or symbol
 Warning (275043): Pin "red" is missing source
@@ -371,10 +359,6 @@ Warning (10492): VHDL Process Statement warning at mouse.vhd(153): signal "CHARO
 Warning (10492): VHDL Process Statement warning at mouse.vhd(154): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "clk_divider" for hierarchy "clk_divider:inst7"
 Info (12128): Elaborating entity "tank_test" for hierarchy "tank_test:inst1"
-Warning (10541): VHDL Signal Declaration warning at tank_test.vhd(18): used implicit default value for signal "tank_X_pos" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at tank_test.vhd(21): used implicit default value for signal "target_X_pos" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at tank_test.vhd(23): used implicit default value for signal "bullet_Y_pos" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at tank_test.vhd(24): used implicit default value for signal "bullet_X_pos" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "tank_test:inst1|VGA_SYNC:sync"
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13047): Converted the fan-out from the tri-state buffer "MOUSE:inst|mouse_data" to the node "MOUSE:inst|READ_CHAR" into an OR gate
@@ -395,9 +379,9 @@ Info (21057): Implemented 101 device resources after synthesis - the final resou
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 7 output pins
     Info (21061): Implemented 93 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 24 warnings
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 20 warnings
     Info: Peak virtual memory: 509 megabytes
-    Info: Processing ended: Sat Apr 22 18:21:05 2017
+    Info: Processing ended: Sat Apr 22 19:52:12 2017
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

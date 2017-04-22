@@ -8,6 +8,7 @@ source_file = 1, D:/305-project/mini_project_isuk218/ball.vhd
 source_file = 1, D:/305-project/mini_project_isuk218/mini_project_isuk218.bdf
 source_file = 1, D:/305-project/mini_project_isuk218/tank_test.vhd
 source_file = 1, D:/305-project/mini_project_isuk218/clk_divider.vhd
+source_file = 1, D:/305-project/mini_project_isuk218/game_control.vhd
 source_file = 1, D:/305-project/mini_project_isuk218/db/mini_project_isuk218.cbx.xml
 source_file = 1, c:/altera/13.0/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, c:/altera/13.0/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
