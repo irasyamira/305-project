@@ -1,4 +1,3 @@
-			-- Bouncing tank Video 
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.all;
 USE IEEE.STD_LOGIC_ARITH.all;
@@ -9,18 +8,17 @@ LIBRARY work;
 ENTITY tank IS
 Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 
-   PORT(SIGNAL PB1, PB2, Clock 			: IN std_logic;
+   PORT(SIGNAL left_click, right_click, Clock 			: IN std_logic;
         SIGNAL Red,Green,Blue 			: OUT std_logic;
         SIGNAL Horiz_sync,Vert_sync		: OUT std_logic);		
 END tank;
 
 architecture behavior of tank is
-
-			-- Video Display Signals   
+  
 SIGNAL Red_Data, Green_Data, Blue_Data, vert_sync_int,
 		reset, tank_on, Direction			: std_logic;
 SIGNAL Size 								: std_logic_vector(9 DOWNTO 0);  
-SIGNAL tank_Y_motion 						: std_logic_vector(9 DOWNTO 0);
+SIGNAL tank_X_motion 						: std_logic_vector(9 DOWNTO 0);
 SIGNAL tank_Y_pos, tank_X_pos				: std_logic_vector(9 DOWNTO 0);
 SIGNAL pixel_row, pixel_column				: std_logic_vector(9 DOWNTO 0); 
 
@@ -40,7 +38,7 @@ BEGIN
 			 	pixel_row => pixel_row, pixel_column => pixel_column);
 
 Size <= CONV_STD_LOGIC_VECTOR(8,10);
-tank_X_pos <= CONV_STD_LOGIC_VECTOR(320,10);
+tank_Y_pos <= CONV_STD_LOGIC_VECTOR(430,10);
 
 		-- need internal copy of vert_sync to read
 vert_sync <= vert_sync_int;
@@ -69,18 +67,20 @@ Move_tank: process
 BEGIN
 			-- Move tank once every vertical sync
 	WAIT UNTIL vert_sync_int'event and vert_sync_int = '1';
-	--if mouse is left clicked
-		if (pb1 = '1') then 
-			-- Bounce off top or bottom of screen
-			IF ('0' & tank_Y_pos) >= CONV_STD_LOGIC_VECTOR(480,10) - Size THEN
-				tank_Y_motion <= - CONV_STD_LOGIC_VECTOR(2,10);
-			ELSIF tank_Y_pos <= Size THEN
-				tank_Y_motion <= CONV_STD_LOGIC_VECTOR(2,10);
+		--if (right_click = '1') then
+			IF ('0' & tank_X_pos) <= CONV_STD_LOGIC_VECTOR(640,10) - Size THEN
+				tank_X_motion <= - CONV_STD_LOGIC_VECTOR(2,10);
+			ELSIF tank_X_pos >= Size THEN
+				tank_X_motion <= CONV_STD_LOGIC_VECTOR(2,10);
 			END IF;
-			-- Compute next tank Y position
-				tank_Y_pos <= tank_Y_pos + tank_Y_motion;
-		end if;
+			-- Compute next ball X position
+				tank_X_pos <= tank_X_pos + tank_X_motion;
+		--end if;
 END process Move_tank;
 
 END behavior;
+
+
+
+
 

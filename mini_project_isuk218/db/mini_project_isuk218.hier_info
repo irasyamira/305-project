@@ -8,31 +8,12 @@ blue_out <= tank:inst.Blue
 horiz_sync_out <= tank:inst.Horiz_sync
 vert_sync_out <= tank:inst.Vert_sync
 seg0_dec <= pb1.DB_MAX_OUTPUT_PORT_TYPE
-seg1_dec <= MOUSE:inst1.right_button
+seg1_dec <= pb2.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |mini_project_isuk218|tank:inst
-PB1 => tank_Y_pos[2].ENA
-PB1 => tank_Y_pos[1].ENA
-PB1 => tank_Y_pos[0].ENA
-PB1 => tank_Y_pos[3].ENA
-PB1 => tank_Y_pos[4].ENA
-PB1 => tank_Y_pos[5].ENA
-PB1 => tank_Y_pos[6].ENA
-PB1 => tank_Y_pos[7].ENA
-PB1 => tank_Y_pos[8].ENA
-PB1 => tank_Y_pos[9].ENA
-PB1 => tank_Y_motion[0].ENA
-PB1 => tank_Y_motion[1].ENA
-PB1 => tank_Y_motion[2].ENA
-PB1 => tank_Y_motion[3].ENA
-PB1 => tank_Y_motion[4].ENA
-PB1 => tank_Y_motion[5].ENA
-PB1 => tank_Y_motion[6].ENA
-PB1 => tank_Y_motion[7].ENA
-PB1 => tank_Y_motion[8].ENA
-PB1 => tank_Y_motion[9].ENA
-PB2 => ~NO_FANOUT~
+left_click => ~NO_FANOUT~
+right_click => ~NO_FANOUT~
 Clock => vga_sync:SYNC.clock_25Mhz
 Red <= vga_sync:SYNC.red_out
 Green <= vga_sync:SYNC.green_out
