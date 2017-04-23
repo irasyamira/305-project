@@ -1,5 +1,5 @@
 Analysis & Synthesis report for mini_project_isuk218
-Sat Apr 22 19:52:12 2017
+Sun Apr 23 18:37:54 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -13,13 +13,15 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |mini_project_isuk218|MOUSE:inst|mouse_state
+  8. State Machine - |mini_project_isuk218|MOUSE:inst1|mouse_state
   9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Elapsed Time Per Partition
- 14. Analysis & Synthesis Messages
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: tank:inst
+ 14. Port Connectivity Checks: "tank:inst|VGA_SYNC:SYNC"
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -45,16 +47,16 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Apr 22 19:52:12 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sun Apr 23 18:37:54 2017       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; mini_project_isuk218                        ;
 ; Top-level Entity Name              ; mini_project_isuk218                        ;
 ; Family                             ; Cyclone III                                 ;
-; Total logic elements               ; 91                                          ;
-;     Total combinational functions  ; 76                                          ;
-;     Dedicated logic registers      ; 74                                          ;
-; Total registers                    ; 74                                          ;
-; Total pins                         ; 8                                           ;
+; Total logic elements               ; 256                                         ;
+;     Total combinational functions  ; 206                                         ;
+;     Dedicated logic registers      ; 155                                         ;
+; Total registers                    ; 155                                         ;
+; Total pins                         ; 10                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -171,59 +173,61 @@ applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                 ; Library ;
 +----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------+---------+
+; tank.vhd                         ; yes             ; User VHDL File                     ; D:/305-project/mini_project_isuk218/tank.vhd                 ;         ;
 ; vga_sync.vhd                     ; yes             ; User VHDL File                     ; D:/305-project/mini_project_isuk218/vga_sync.vhd             ;         ;
 ; mouse.vhd                        ; yes             ; User VHDL File                     ; D:/305-project/mini_project_isuk218/mouse.vhd                ;         ;
 ; mini_project_isuk218.bdf         ; yes             ; User Block Diagram/Schematic File  ; D:/305-project/mini_project_isuk218/mini_project_isuk218.bdf ;         ;
-; tank_test.vhd                    ; yes             ; User VHDL File                     ; D:/305-project/mini_project_isuk218/tank_test.vhd            ;         ;
 ; clk_divider.vhd                  ; yes             ; User VHDL File                     ; D:/305-project/mini_project_isuk218/clk_divider.vhd          ;         ;
 +----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 91        ;
-;                                             ;           ;
-; Total combinational functions               ; 76        ;
-; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 18        ;
-;     -- 3 input functions                    ; 9         ;
-;     -- <=2 input functions                  ; 49        ;
-;                                             ;           ;
-; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 36        ;
-;     -- arithmetic mode                      ; 40        ;
-;                                             ;           ;
-; Total registers                             ; 74        ;
-;     -- Dedicated logic registers            ; 74        ;
-;     -- I/O registers                        ; 0         ;
-;                                             ;           ;
-; I/O pins                                    ; 8         ;
-; Embedded Multiplier 9-bit elements          ; 0         ;
-; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 33        ;
-; Total fan-out                               ; 391       ;
-; Average fan-out                             ; 2.36      ;
-+---------------------------------------------+-----------+
++-----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                 ;
++---------------------------------------------+-------------------------------+
+; Resource                                    ; Usage                         ;
++---------------------------------------------+-------------------------------+
+; Estimated Total logic elements              ; 256                           ;
+;                                             ;                               ;
+; Total combinational functions               ; 206                           ;
+; Logic element usage by number of LUT inputs ;                               ;
+;     -- 4 input functions                    ; 62                            ;
+;     -- 3 input functions                    ; 47                            ;
+;     -- <=2 input functions                  ; 97                            ;
+;                                             ;                               ;
+; Logic elements by mode                      ;                               ;
+;     -- normal mode                          ; 109                           ;
+;     -- arithmetic mode                      ; 97                            ;
+;                                             ;                               ;
+; Total registers                             ; 155                           ;
+;     -- Dedicated logic registers            ; 155                           ;
+;     -- I/O registers                        ; 0                             ;
+;                                             ;                               ;
+; I/O pins                                    ; 10                            ;
+; Embedded Multiplier 9-bit elements          ; 0                             ;
+; Maximum fan-out node                        ; clk_divider:inst7|clock_25Mhz ;
+; Maximum fan-out                             ; 75                            ;
+; Total fan-out                               ; 993                           ;
+; Average fan-out                             ; 2.59                          ;
++---------------------------------------------+-------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                             ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                     ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
-; |mini_project_isuk218      ; 76 (0)            ; 74 (0)       ; 0           ; 0            ; 0       ; 0         ; 8    ; 0            ; |mini_project_isuk218                   ;              ;
-;    |MOUSE:inst|            ; 32 (32)           ; 41 (41)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_isuk218|MOUSE:inst        ;              ;
-;    |clk_divider:inst7|     ; 44 (44)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_isuk218|clk_divider:inst7 ;              ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                   ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                           ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------+--------------+
+; |mini_project_isuk218      ; 206 (0)           ; 155 (0)      ; 0           ; 0            ; 0       ; 0         ; 10   ; 0            ; |mini_project_isuk218                         ;              ;
+;    |MOUSE:inst1|           ; 50 (50)           ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_isuk218|MOUSE:inst1             ;              ;
+;    |clk_divider:inst7|     ; 44 (44)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_isuk218|clk_divider:inst7       ;              ;
+;    |tank:inst|             ; 112 (50)          ; 58 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_isuk218|tank:inst               ;              ;
+;       |VGA_SYNC:SYNC|      ; 62 (62)           ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_isuk218|tank:inst|VGA_SYNC:SYNC ;              ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |mini_project_isuk218|MOUSE:inst|mouse_state                                                                                                                                            ;
+; State Machine - |mini_project_isuk218|MOUSE:inst1|mouse_state                                                                                                                                           ;
 +-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
 ; Name                          ; mouse_state.INPUT_PACKETS ; mouse_state.WAIT_CMD_ACK ; mouse_state.WAIT_OUTPUT_READY ; mouse_state.LOAD_COMMAND2 ; mouse_state.LOAD_COMMAND ; mouse_state.INHIBIT_TRANS ;
 +-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
@@ -236,34 +240,23 @@ Encoding Type:  One-Hot
 +-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
 
 
-+--------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                   ;
-+----------------------------------------+---------------------------------------------+
-; Register name                          ; Reason for Removal                          ;
-+----------------------------------------+---------------------------------------------+
-; MOUSE:inst|CHAROUT[4..7]               ; Stuck at VCC due to stuck port data_in      ;
-; MOUSE:inst|CHAROUT[3]                  ; Stuck at GND due to stuck port data_in      ;
-; MOUSE:inst|CHAROUT[2]                  ; Stuck at VCC due to stuck port data_in      ;
-; MOUSE:inst|CHAROUT[0,1]                ; Stuck at GND due to stuck port data_in      ;
-; MOUSE:inst|SHIFTOUT[10]                ; Stuck at VCC due to stuck port data_in      ;
-; MOUSE:inst|READ_CHAR                   ; Stuck at GND due to stuck port data_in      ;
-; MOUSE:inst|INCNT[0..3]                 ; Stuck at GND due to stuck port clock_enable ;
-; MOUSE:inst|iready_set                  ; Stuck at GND due to stuck port data_in      ;
-; MOUSE:inst|mouse_state.WAIT_CMD_ACK    ; Lost fanout                                 ;
-; MOUSE:inst|mouse_state.INPUT_PACKETS   ; Stuck at GND due to stuck port data_in      ;
-; Total Number of Removed Registers = 17 ;                                             ;
-+----------------------------------------+---------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                            ;
-+----------------------+---------------------------+-------------------------------------------------------------------------------------+
-; Register name        ; Reason for Removal        ; Registers Removed due to This Register                                              ;
-+----------------------+---------------------------+-------------------------------------------------------------------------------------+
-; MOUSE:inst|READ_CHAR ; Stuck at GND              ; MOUSE:inst|INCNT[3], MOUSE:inst|INCNT[2], MOUSE:inst|INCNT[1], MOUSE:inst|INCNT[0], ;
-;                      ; due to stuck port data_in ; MOUSE:inst|iready_set, MOUSE:inst|mouse_state.WAIT_CMD_ACK,                         ;
-;                      ;                           ; MOUSE:inst|mouse_state.INPUT_PACKETS                                                ;
-+----------------------+---------------------------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; MOUSE:inst1|CHAROUT[4..7]              ; Stuck at VCC due to stuck port data_in ;
+; MOUSE:inst1|CHAROUT[3]                 ; Stuck at GND due to stuck port data_in ;
+; MOUSE:inst1|CHAROUT[2]                 ; Stuck at VCC due to stuck port data_in ;
+; MOUSE:inst1|CHAROUT[0,1]               ; Stuck at GND due to stuck port data_in ;
+; MOUSE:inst1|SHIFTOUT[10]               ; Stuck at VCC due to stuck port data_in ;
+; tank:inst|tank_Y_motion[3..9]          ; Merged with tank:inst|tank_Y_motion[2] ;
+; tank:inst|tank_Y_motion[0]             ; Stuck at GND due to stuck port data_in ;
+; tank:inst|tank_Y_pos[0]                ; Stuck at GND due to stuck port data_in ;
+; tank:inst|tank_Y_motion[1]             ; Stuck at VCC due to stuck port data_in ;
+; tank:inst|VGA_SYNC:SYNC|pixel_row[9]   ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 20 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -271,12 +264,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 74    ;
+; Total registers                              ; 155   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 16    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 25    ;
+; Number of registers using Clock Enable       ; 74    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -286,14 +279,44 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; MOUSE:inst|send_char                   ; 3       ;
-; MOUSE:inst|SHIFTOUT[3]                 ; 1       ;
-; MOUSE:inst|SHIFTOUT[5]                 ; 1       ;
-; MOUSE:inst|SHIFTOUT[6]                 ; 1       ;
-; MOUSE:inst|SHIFTOUT[7]                 ; 1       ;
-; MOUSE:inst|SHIFTOUT[8]                 ; 1       ;
+; MOUSE:inst1|send_char                  ; 3       ;
+; MOUSE:inst1|SHIFTOUT[3]                ; 1       ;
+; MOUSE:inst1|SHIFTOUT[5]                ; 1       ;
+; MOUSE:inst1|SHIFTOUT[6]                ; 1       ;
+; MOUSE:inst1|SHIFTOUT[7]                ; 1       ;
+; MOUSE:inst1|SHIFTOUT[8]                ; 1       ;
 ; Total number of inverted registers = 6 ;         ;
 +----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mini_project_isuk218|tank:inst|VGA_SYNC:SYNC|v_count[9] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |mini_project_isuk218|tank:inst|tank_Y_motion[1]         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: tank:inst ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; addr_width     ; 12    ; Signed Integer                ;
+; data_width     ; 1     ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "tank:inst|VGA_SYNC:SYNC" ;
++------+-------+----------+---------------------------+
+; Port ; Type  ; Severity ; Details                   ;
++------+-------+----------+---------------------------+
+; red  ; Input ; Info     ; Stuck at VCC              ;
++------+-------+----------+---------------------------+
 
 
 +-------------------------------+
@@ -311,9 +334,12 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Sat Apr 22 19:52:10 2017
+    Info: Processing started: Sun Apr 23 18:37:52 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mini_project_isuk218 -c mini_project_isuk218
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file tank.vhd
+    Info (12022): Found design unit 1: tank-behavior
+    Info (12023): Found entity 1: tank
 Info (12021): Found 2 design units, including 1 entities, in source file lfsr.vhd
     Info (12022): Found design unit 1: lfsr-bhv
     Info (12023): Found entity 1: lfsr
@@ -329,15 +355,8 @@ Info (12021): Found 2 design units, including 1 entities, in source file mouse.v
 Info (12021): Found 2 design units, including 1 entities, in source file char_rom.vhd
     Info (12022): Found design unit 1: char_rom-SYN
     Info (12023): Found entity 1: char_rom
-Info (12021): Found 3 design units, including 1 entities, in source file ball.vhd
-    Info (12022): Found design unit 1: de0core
-    Info (12022): Found design unit 2: ball-behavior
-    Info (12023): Found entity 1: ball
 Info (12021): Found 1 design units, including 1 entities, in source file mini_project_isuk218.bdf
     Info (12023): Found entity 1: mini_project_isuk218
-Info (12021): Found 2 design units, including 1 entities, in source file tank_test.vhd
-    Info (12022): Found design unit 1: tank_test-bhv
-    Info (12023): Found entity 1: tank_test
 Info (12021): Found 2 design units, including 1 entities, in source file clk_divider.vhd
     Info (12022): Found design unit 1: clk_divider-bhv
     Info (12023): Found entity 1: clk_divider
@@ -345,43 +364,28 @@ Info (12021): Found 2 design units, including 1 entities, in source file game_co
     Info (12022): Found design unit 1: game_control-bhv
     Info (12023): Found entity 1: game_control
 Info (12127): Elaborating entity "mini_project_isuk218" for the top level hierarchy
-Warning (275011): Block or symbol "tank_test" of instance "inst1" overlaps another block or symbol
-Warning (275043): Pin "red" is missing source
-Warning (275043): Pin "green" is missing source
-Warning (275043): Pin "blue" is missing source
-Warning (275043): Pin "hsync" is missing source
-Warning (275043): Pin "vsync" is missing source
-Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:inst"
+Info (12128): Elaborating entity "tank" for hierarchy "tank:inst"
+Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "tank:inst|VGA_SYNC:SYNC"
+Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:inst1"
 Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(22): object "CHARIN" assigned a value but never read
 Warning (10492): VHDL Process Statement warning at mouse.vhd(148): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at mouse.vhd(152): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at mouse.vhd(153): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at mouse.vhd(154): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "clk_divider" for hierarchy "clk_divider:inst7"
-Info (12128): Elaborating entity "tank_test" for hierarchy "tank_test:inst1"
-Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "tank_test:inst1|VGA_SYNC:sync"
-Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13047): Converted the fan-out from the tri-state buffer "MOUSE:inst|mouse_data" to the node "MOUSE:inst|READ_CHAR" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "MOUSE:inst|mouse_clk" to the node "MOUSE:inst|filter[0]" into an OR gate
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "red" is stuck at GND
-    Warning (13410): Pin "green" is stuck at GND
-    Warning (13410): Pin "blue" is stuck at GND
-    Warning (13410): Pin "hsync" is stuck at GND
-    Warning (13410): Pin "vsync" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 101 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 272 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 7 output pins
-    Info (21061): Implemented 93 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 20 warnings
-    Info: Peak virtual memory: 509 megabytes
-    Info: Processing ended: Sat Apr 22 19:52:12 2017
+    Info (21060): Implemented 2 bidirectional pins
+    Info (21061): Implemented 262 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 517 megabytes
+    Info: Processing ended: Sun Apr 23 18:37:54 2017
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
