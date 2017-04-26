@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Wed Apr 26 18:03:56 2017
+Analysis & Synthesis Status : Failed - Wed Apr 26 20:12:02 2017
 Quartus II 64-Bit Version : 13.0.0 Build 156 04/24/2013 SJ Full Version
 Revision Name : mini_project_isuk218
-Top-level Entity Name : mini_project_isuk218
+Top-level Entity Name : tank
 Family : Cyclone III
-Total logic elements : 254
-    Total combinational functions : 204
-    Dedicated logic registers : 154
-Total registers : 154
-Total pins : 10
-Total virtual pins : 0
-Total memory bits : 0
-Embedded Multiplier 9-bit elements : 0
-Total PLLs : 0
+Total logic elements : N/A until Partition Merge
+    Total combinational functions : N/A until Partition Merge
+    Dedicated logic registers : N/A until Partition Merge
+Total registers : N/A until Partition Merge
+Total pins : N/A until Partition Merge
+Total virtual pins : N/A until Partition Merge
+Total memory bits : N/A until Partition Merge
+Embedded Multiplier 9-bit elements : N/A until Partition Merge
+Total PLLs : N/A until Partition Merge

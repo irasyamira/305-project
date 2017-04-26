@@ -67,15 +67,35 @@ Move_tank: process
 BEGIN
 			-- Move tank once every vertical sync
 	WAIT UNTIL vert_sync_int'event and vert_sync_int = '1';
-		--if (right_click = '1') then
-			IF ('0' & tank_X_pos) <= CONV_STD_LOGIC_VECTOR(640,10) - Size THEN
-				tank_X_motion <= - CONV_STD_LOGIC_VECTOR(2,10);
-			ELSIF tank_X_pos >= Size THEN
-				tank_X_motion <= CONV_STD_LOGIC_VECTOR(2,10);
-			END IF;
-			-- Compute next ball X position
-				tank_X_pos <= tank_X_pos + tank_X_motion;
-		--end if;
+--		if (right_click = '1') then
+--			IF ('0' & tank_X_pos) >= CONV_STD_LOGIC_VECTOR(640,10) - Size THEN
+--				tank_X_motion <= - CONV_STD_LOGIC_VECTOR(2,10);
+--			ELSIF tank_X_pos <= Size THEN
+--				tank_X_motion <= CONV_STD_LOGIC_VECTOR(2,10);
+--				--tank_X_pos <= tank_X_pos;
+--			END IF;
+--			-- Compute next ball X position
+--				tank_X_pos <= tank_X_pos + tank_X_motion;
+--		end if;
+--		if (right_click = '1' and tank_X_pos <= CONV_STD_LOGIC_VECTOR(640,10) - 4) then
+--			tank_X_motion <= CONV_STD_LOGIC_VECTOR(2,10);
+--		
+--		elsif (left_click = '1' and tank_X_pos >= CONV_STD_LOGIC_VECTOR(4,10)) then
+--			tank_X_motion <= - CONV_STD_LOGIC_VECTOR(2,10);
+--		else
+--			tank_X_motion <= CONV_STD_LOGIC_VECTOR(0,10);
+--		end if;
+--			tank_X_pos <= tank_X_pos + tank_X_motion;
+
+
+--		if (right_click = '1') then
+--			tank_X_motion <= CONV_STD_LOGIC_VECTOR(2,10);
+--		elsif (left_click = '1') then
+--			tank_X_motion <= - CONV_STD_LOGIC_VECTOR(2,10);
+--		end if
+--		--Compute next ball X position
+--		tank_X_pos <= tank_X_pos + tank_X_motion;
+		
 END process Move_tank;
 
 END behavior;
