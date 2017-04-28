@@ -1,18 +1,18 @@
-|ball_example
-red_out <= ball:inst1.Red
-bt1 => ball:inst1.PB1
-bt2 => ball:inst1.PB2
-pin_name1 => clk_divider:inst.clock
-green_out <= ball:inst1.Green
-blue_out <= ball:inst1.Blue
-horiz_sync_out <= ball:inst1.Horiz_sync
-vert_sync_out <= ball:inst1.Vert_sync
+|mini_project_isuk218
+red_out <= tank:inst.Red
+bt1 => tank:inst.left_click
+bt2 => tank:inst.right_click
+clk => clk_divider:inst7.clock
+green_out <= tank:inst.Green
+blue_out <= tank:inst.Blue
+horiz_sync_out <= tank:inst.Horiz_sync
+vert_sync_out <= tank:inst.Vert_sync
 
 
-|ball_example|ball:inst1
-PB1 => ~NO_FANOUT~
-PB2 => ~NO_FANOUT~
-Clock => vga_sync:SYNC.clock_25Mhz
+|mini_project_isuk218|tank:inst
+left_click => ~NO_FANOUT~
+right_click => ~NO_FANOUT~
+clk => vga_sync:SYNC.clock_25Mhz
 Red <= vga_sync:SYNC.red_out
 Green <= vga_sync:SYNC.green_out
 Blue <= vga_sync:SYNC.blue_out
@@ -20,7 +20,7 @@ Horiz_sync <= vga_sync:SYNC.horiz_sync_out
 Vert_sync <= vga_sync:SYNC.vert_sync_out
 
 
-|ball_example|ball:inst1|VGA_SYNC:SYNC
+|mini_project_isuk218|tank:inst|VGA_SYNC:SYNC
 clock_25Mhz => vert_sync_out~reg0.CLK
 clock_25Mhz => horiz_sync_out~reg0.CLK
 clock_25Mhz => blue_out~reg0.CLK
@@ -100,7 +100,7 @@ pixel_column[8] <= pixel_column[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 pixel_column[9] <= pixel_column[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|ball_example|clk_divider:inst
+|mini_project_isuk218|clk_divider:inst7
 clock => clock_25Mhz~reg0.CLK
 clock => i[0].CLK
 clock => i[1].CLK

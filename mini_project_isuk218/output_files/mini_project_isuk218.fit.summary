@@ -1,12 +1,12 @@
-Fitter Status : Successful - Wed Apr 26 19:30:11 2017
+Fitter Status : Successful - Fri Apr 28 15:11:05 2017
 Quartus II 64-Bit Version : 13.0.0 Build 156 04/24/2013 SJ Full Version
 Revision Name : mini_project_isuk218
-Top-level Entity Name : ball_example
+Top-level Entity Name : mini_project_isuk218
 Family : Cyclone III
 Device : EP3C16F484C6
 Timing Models : Final
-Total logic elements : 158 / 15,408 ( 1 % )
-    Total combinational functions : 155 / 15,408 ( 1 % )
+Total logic elements : 164 / 15,408 ( 1 % )
+    Total combinational functions : 157 / 15,408 ( 1 % )
     Dedicated logic registers : 91 / 15,408 ( < 1 % )
 Total registers : 91
 Total pins : 8 / 347 ( 2 % )
