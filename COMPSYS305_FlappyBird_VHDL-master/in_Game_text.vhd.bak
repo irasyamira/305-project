@@ -1,0 +1,239 @@
+			-- Bouncing Ball Video 
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.all;
+USE  IEEE.STD_LOGIC_ARITH.all;
+USE  IEEE.STD_LOGIC_UNSIGNED.all;
+LIBRARY lpm;
+USE lpm.lpm_components.ALL;
+
+PACKAGE de0core IS
+	COMPONENT vga_sync
+ 		PORT(clock_25Mhz, red, green, blue	: IN	STD_LOGIC;
+			red_out, green_out, blue_out	: OUT STD_LOGIC;
+			horiz_sync_out, vert_sync_out	: OUT STD_LOGIC;
+			pixel_row, pixel_column			: OUT STD_LOGIC_VECTOR(10 DOWNTO 0));
+	END COMPONENT;
+END de0core;
+
+			-- Bouncing Ball Video 
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.all;
+USE IEEE.STD_LOGIC_ARITH.all;
+USE IEEE.STD_LOGIC_SIGNED.all;
+LIBRARY work; 
+USE work.de0core.all;
+
+ENTITY ball IS
+Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
+	-- signal PB0, PB1, PB2 are button 0, 1, 2 respectively
+   PORT(SIGNAL PB0, PB1, PB2, Clock 	: IN std_logic;
+		  SIGNAL SW0, SW1, SW2				: IN std_logic;
+		  SIGNAL left_click					: IN std_logic;
+        SIGNAL Red,Green,Blue 			: OUT std_logic;
+        SIGNAL Horiz_sync,Vert_sync		: OUT std_logic;
+		  SIGNAL rom_mux						: IN std_logic;
+		  SIGNAL char_add						: OUT std_logic_vector(5 DOWNTO 0);
+		  SIGNAL char_row, char_col		: OUT std_logic_vector(2 DOWNTO 0);
+		  SIGNAL cross							: OUT std_logic_vector (7 downto 0));
+END ball;
+
+architecture behavior of ball is
+
+			-- Video Display Signals   
+SIGNAL Red_Data, Green_Data, Blue_Data, vert_sync_int,
+		reset, Direction: std_logic;
+SIGNAL Ball_on: std_logic := '0';
+SIGNAL red_data_t : std_logic := '1';
+SIGNAL green_data_t : std_logic := '1';
+SIGNAL blue_data_t : std_logic := '1';
+SIGNAL prev_left_click					: std_logic;
+SIGNAL Ball_size 								: std_logic_vector(10 DOWNTO 0);  
+SIGNAL Ball_Y_motion 						: std_logic_vector(10 DOWNTO 0);
+SIGNAL Ball_Y_motion_t 						: std_logic_vector(10 DOWNTO 0);
+SIGNAL Ball_Y_pos : std_logic_vector (10 DOWNTO 0);
+SIGNAL Ball_Y_pos_t : std_logic_vector (10 DOWNTO 0);
+SIGNAL Ball_X_pos				: std_logic_vector(10 DOWNTO 0);
+SIGNAL Ball_X_pos_t	: std_logic_vector(10 DOWNTO 0);
+SIGNAL pixel_row, pixel_column				: std_logic_vector(10 DOWNTO 0);
+
+SIGNAL Pipe_on 							: std_logic := '0';
+SIGNAL Pipe_X_pos							: std_logic_vector (10 DOWNTO 0);
+SIGNAL Pipe_Y_pos 						: std_logic_vector (10 DOWNTO 0);
+SIGNAL Pipe_width, Pipe_gap_height	: std_logic_vector (10 DOWNTO 0);
+SIGNAL Pipe_X_pos_t 						: std_logic_vector (10 DOWNTO 0);
+
+BEGIN           
+	SYNC: vga_sync
+ 		PORT MAP(clock_25Mhz => clock, 
+				red => red_data, green => green_data, blue => blue_data,	
+    	     	red_out => red, green_out => green, blue_out => blue,
+			 	horiz_sync_out => horiz_sync, vert_sync_out => vert_sync_int,
+			 	pixel_row => pixel_row, pixel_column => pixel_column);
+
+Ball_size <= CONV_STD_LOGIC_VECTOR(8,11);
+		-- need internal copy of vert_sync to read
+vert_sync <= vert_sync_int;
+
+Horiz_Move: process (PB0, PB1, PB2)
+BEGIN
+	IF PB1 = '0' THEN	
+		Ball_X_pos_t <= CONV_STD_LOGIC_VECTOR(320,11);
+	ELSIF PB2 = '0' THEN
+		Ball_X_pos_t <= CONV_STD_LOGIC_VECTOR(160,11);
+	ELSIF PB0 = '0' THEN
+		Ball_X_pos_t <= CONV_STD_LOGIC_VECTOR(480,11);
+	ELSE
+		Ball_X_pos_t <= Ball_X_pos;
+	END IF;
+END process Horiz_Move;
+
+Ball_X_pos <= Ball_X_pos_t;
+Pipe_width <= CONV_STD_LOGIC_VECTOR(20,11);
+Pipe_gap_height <= CONV_STD_LOGIC_VECTOR(70,11);
+Pipe_Y_pos <= CONV_STD_LOGIC_VECTOR(240,11);
+
+TEXT_Display: Process (pixel_column, pixel_row)
+BEGIN
+	--Display FLAPPY BIRD
+	--F
+	IF (pixel_column >= CONV_STD_LOGIC_VECTOR(0, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(16, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(6, 6);
+	--L
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(16, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(12, 6);
+	--A
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(48, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(1, 6);
+	--P
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(48, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(64, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(16, 6);
+	--P
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(64, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(80, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(16, 6);
+	--Y
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(80, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(96, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(25, 6);
+	--B
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(112, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(128, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(2, 6);
+	--I
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(128, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(144, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(9, 6);
+	--R
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(144, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(160, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(18, 6);
+	--D
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(160, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(176, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(14, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(31, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(4, 6);
+	--Display SCORE
+	--S
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(0, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(16, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(47, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(19, 6);
+	--C
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(16, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(47, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(3, 6);
+	--O
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(48, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(47, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(15, 6);
+	--R
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(48, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(64, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(47, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(18, 6);
+	--E
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(64, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(80, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(47, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(5, 6);
+	--DIGIT 1
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(96, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(112, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(47, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(0, 6);
+	--DIGIT 2
+	ELSIF (pixel_column >= CONV_STD_LOGIC_VECTOR(112, 10)) AND
+		(pixel_column <= CONV_STD_LOGIC_VECTOR(128, 10)) AND
+		(pixel_row >= CONV_STD_LOGIC_VECTOR(32, 10)) AND
+		(pixel_row <= CONV_STD_LOGIC_VECTOR(47, 10)) THEN
+		char_row <= pixel_row(3 DOWNTO 1);
+		char_col <= pixel_column(3 DOWNTO 1);
+		char_add <= CONV_STD_LOGIC_VECTOR(0, 6);
+	END IF;
+	
+END process TEXT_Display;
+
+END behavior;
