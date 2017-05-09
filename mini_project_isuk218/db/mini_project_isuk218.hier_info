@@ -1,4 +1,4 @@
-|mini_project_isuk218
+|mini_project_group09
 red_out <= tank:inst.Red
 bt1 => tank:inst.left_click
 bt2 => tank:inst.right_click
@@ -13,30 +13,20 @@ seg0_dec <= MOUSE:inst1.left_button
 seg1_dec <= MOUSE:inst1.right_button
 
 
-|mini_project_isuk218|tank:inst
+|mini_project_group09|tank:inst
 left_click => ~NO_FANOUT~
 right_click => ~NO_FANOUT~
 clk => vga_sync:SYNC.clock_25Mhz
 mouse_col[0] => LessThan14.IN20
-mouse_col[0] => LessThan15.IN20
 mouse_col[1] => LessThan14.IN19
-mouse_col[1] => LessThan15.IN19
 mouse_col[2] => LessThan14.IN18
-mouse_col[2] => LessThan15.IN18
 mouse_col[3] => LessThan14.IN17
-mouse_col[3] => LessThan15.IN17
 mouse_col[4] => LessThan14.IN16
-mouse_col[4] => LessThan15.IN16
 mouse_col[5] => LessThan14.IN15
-mouse_col[5] => LessThan15.IN15
 mouse_col[6] => LessThan14.IN14
-mouse_col[6] => LessThan15.IN14
 mouse_col[7] => LessThan14.IN13
-mouse_col[7] => LessThan15.IN13
 mouse_col[8] => LessThan14.IN12
-mouse_col[8] => LessThan15.IN12
 mouse_col[9] => LessThan14.IN11
-mouse_col[9] => LessThan15.IN11
 Red <= vga_sync:SYNC.red_out
 Green <= vga_sync:SYNC.green_out
 Blue <= vga_sync:SYNC.blue_out
@@ -44,7 +34,7 @@ Horiz_sync <= vga_sync:SYNC.horiz_sync_out
 Vert_sync <= vga_sync:SYNC.vert_sync_out
 
 
-|mini_project_isuk218|tank:inst|VGA_SYNC:SYNC
+|mini_project_group09|tank:inst|VGA_SYNC:SYNC
 clock_25Mhz => vert_sync_out~reg0.CLK
 clock_25Mhz => horiz_sync_out~reg0.CLK
 clock_25Mhz => blue_out~reg0.CLK
@@ -130,7 +120,7 @@ pixel_column[9] <= pixel_column[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 pixel_column[10] <= pixel_column[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mini_project_isuk218|clk_divider:inst7
+|mini_project_group09|clk_divider:inst7
 clock => clock_25Mhz~reg0.CLK
 clock => i[0].CLK
 clock => i[1].CLK
@@ -167,7 +157,7 @@ clock => i[31].CLK
 clock_25Mhz <= clock_25Mhz~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mini_project_isuk218|MOUSE:inst1
+|mini_project_group09|MOUSE:inst1
 clock_25Mhz => MOUSE_CLK_FILTER.CLK
 clock_25Mhz => filter[0].CLK
 clock_25Mhz => filter[1].CLK

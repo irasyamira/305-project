@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone III"
 set_global_assignment -name DEVICE EP3C16F484C6
-set_global_assignment -name TOP_LEVEL_ENTITY mini_project_isuk218
+set_global_assignment -name TOP_LEVEL_ENTITY mini_project_group09
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:56:57  APRIL 18, 2017"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.0
@@ -78,7 +78,6 @@ set_location_assignment PIN_H13 -to seg0[3]
 set_location_assignment PIN_G12 -to seg0[4]
 set_location_assignment PIN_F12 -to seg0[5]
 set_location_assignment PIN_F13 -to seg0[6]
-set_global_assignment -name BDF_FILE mini_project_isuk218.bdf
 set_global_assignment -name VHDL_FILE tank.vhd
 set_global_assignment -name VHDL_FILE lfsr.vhd
 set_global_assignment -name VHDL_FILE seven_seg.vhd
@@ -86,6 +85,7 @@ set_global_assignment -name VHDL_FILE vga_sync.vhd
 set_global_assignment -name VHDL_FILE mouse.vhd
 set_global_assignment -name VHDL_FILE char_rom.vhd
 set_global_assignment -name VHDL_FILE clk_divider.vhd
+set_global_assignment -name BDF_FILE mini_project_group09.bdf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

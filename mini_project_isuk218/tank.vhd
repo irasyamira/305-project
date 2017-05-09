@@ -95,6 +95,7 @@ Move_tank: process
 BEGIN
 	-- Move tank once every vertical sync
 	WAIT UNTIL vert_sync_int'event and vert_sync_int = '1';
+	
 			IF ('0' & tank_X_pos) >= CONV_STD_LOGIC_VECTOR(640,11) - Size THEN
 				tank_X_motion <= - CONV_STD_LOGIC_VECTOR(2,11);
 			ELSIF tank_X_pos <= Size THEN
@@ -103,12 +104,15 @@ BEGIN
 			-- Compute next tank X position
 				tank_X_pos <= tank_X_pos + tank_X_motion;
 
+			-- add boundary for the player 
 			IF ('0' & mouse_col) >= CONV_STD_LOGIC_VECTOR(448,10) THEN
-				player_X_motion <= CONV_STD_LOGIC_VECTOR(4,11);
-			ELSIF (mouse_col <= CONV_STD_LOGIC_VECTOR(256,10)) THEN
-				player_X_motion <= - CONV_STD_LOGIC_VECTOR(4,11);
-			ELSE 
-				player_X_motion <= CONV_STD_LOGIC_VECTOR(0,11);
+				IF ('0' & player_X_pos) >= CONV_STD_LOGIC_VECTOR(640,11) - Size THEN
+					player_X_motion <= CONV_STD_LOGIC_VECTOR(2,11);
+				ELSIF player_X_pos <= Size THEN
+					player_X_motion <= - CONV_STD_LOGIC_VECTOR(2,11);
+				ELSE
+					player_X_motion <= CONV_STD_LOGIC_VECTOR(0,11);
+				END IF;
 			END IF;
 			-- Compute next player X position
 				player_X_pos <= player_X_pos + player_X_motion;
