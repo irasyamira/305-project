@@ -1,20 +1,51 @@
 |mini_project_group09
 red_out <= tank:inst.Red
-bt1 => tank:inst.left_click
-bt2 => tank:inst.right_click
 clk => clk_divider:inst7.clock
 mouse_data <> MOUSE:inst1.mouse_data
 mouse_clk <> MOUSE:inst1.mouse_clk
+bt2 => tank:inst.right_click
 green_out <= tank:inst.Green
 blue_out <= tank:inst.Blue
 horiz_sync_out <= tank:inst.Horiz_sync
 vert_sync_out <= tank:inst.Vert_sync
-seg0_dec <= MOUSE:inst1.left_button
+seg0_dec <= left_button.DB_MAX_OUTPUT_PORT_TYPE
 seg1_dec <= MOUSE:inst1.right_button
 
 
 |mini_project_group09|tank:inst
-left_click => ~NO_FANOUT~
+left_click => bullet_Y_pos[0].ENA
+left_click => bullet_X_pos[10].ENA
+left_click => bullet_X_pos[9].ENA
+left_click => bullet_X_pos[8].ENA
+left_click => bullet_X_pos[7].ENA
+left_click => bullet_X_pos[6].ENA
+left_click => bullet_X_pos[5].ENA
+left_click => bullet_X_pos[4].ENA
+left_click => bullet_X_pos[3].ENA
+left_click => bullet_X_pos[2].ENA
+left_click => bullet_X_pos[1].ENA
+left_click => bullet_X_pos[0].ENA
+left_click => bullet_Y_pos[1].ENA
+left_click => bullet_Y_pos[2].ENA
+left_click => bullet_Y_pos[3].ENA
+left_click => bullet_Y_pos[4].ENA
+left_click => bullet_Y_pos[5].ENA
+left_click => bullet_Y_pos[6].ENA
+left_click => bullet_Y_pos[7].ENA
+left_click => bullet_Y_pos[8].ENA
+left_click => bullet_Y_pos[9].ENA
+left_click => bullet_Y_pos[10].ENA
+left_click => bullet_Y_motion[0].ENA
+left_click => bullet_Y_motion[1].ENA
+left_click => bullet_Y_motion[2].ENA
+left_click => bullet_Y_motion[3].ENA
+left_click => bullet_Y_motion[4].ENA
+left_click => bullet_Y_motion[5].ENA
+left_click => bullet_Y_motion[6].ENA
+left_click => bullet_Y_motion[7].ENA
+left_click => bullet_Y_motion[8].ENA
+left_click => bullet_Y_motion[9].ENA
+left_click => bullet_Y_motion[10].ENA
 right_click => ~NO_FANOUT~
 clk => vga_sync:SYNC.clock_25Mhz
 rand[0] => ~NO_FANOUT~
@@ -139,43 +170,6 @@ pixel_column[7] <= pixel_column[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 pixel_column[8] <= pixel_column[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 pixel_column[9] <= pixel_column[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 pixel_column[10] <= pixel_column[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|mini_project_group09|clk_divider:inst7
-clock => clock_25Mhz~reg0.CLK
-clock => i[0].CLK
-clock => i[1].CLK
-clock => i[2].CLK
-clock => i[3].CLK
-clock => i[4].CLK
-clock => i[5].CLK
-clock => i[6].CLK
-clock => i[7].CLK
-clock => i[8].CLK
-clock => i[9].CLK
-clock => i[10].CLK
-clock => i[11].CLK
-clock => i[12].CLK
-clock => i[13].CLK
-clock => i[14].CLK
-clock => i[15].CLK
-clock => i[16].CLK
-clock => i[17].CLK
-clock => i[18].CLK
-clock => i[19].CLK
-clock => i[20].CLK
-clock => i[21].CLK
-clock => i[22].CLK
-clock => i[23].CLK
-clock => i[24].CLK
-clock => i[25].CLK
-clock => i[26].CLK
-clock => i[27].CLK
-clock => i[28].CLK
-clock => i[29].CLK
-clock => i[30].CLK
-clock => i[31].CLK
-clock_25Mhz <= clock_25Mhz~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |mini_project_group09|MOUSE:inst1
@@ -331,6 +325,43 @@ mouse_cursor_column[6] <= cursor_column[6].DB_MAX_OUTPUT_PORT_TYPE
 mouse_cursor_column[7] <= cursor_column[7].DB_MAX_OUTPUT_PORT_TYPE
 mouse_cursor_column[8] <= cursor_column[8].DB_MAX_OUTPUT_PORT_TYPE
 mouse_cursor_column[9] <= cursor_column[9].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mini_project_group09|clk_divider:inst7
+clock => clock_25Mhz~reg0.CLK
+clock => i[0].CLK
+clock => i[1].CLK
+clock => i[2].CLK
+clock => i[3].CLK
+clock => i[4].CLK
+clock => i[5].CLK
+clock => i[6].CLK
+clock => i[7].CLK
+clock => i[8].CLK
+clock => i[9].CLK
+clock => i[10].CLK
+clock => i[11].CLK
+clock => i[12].CLK
+clock => i[13].CLK
+clock => i[14].CLK
+clock => i[15].CLK
+clock => i[16].CLK
+clock => i[17].CLK
+clock => i[18].CLK
+clock => i[19].CLK
+clock => i[20].CLK
+clock => i[21].CLK
+clock => i[22].CLK
+clock => i[23].CLK
+clock => i[24].CLK
+clock => i[25].CLK
+clock => i[26].CLK
+clock => i[27].CLK
+clock => i[28].CLK
+clock => i[29].CLK
+clock => i[30].CLK
+clock => i[31].CLK
+clock_25Mhz <= clock_25Mhz~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |mini_project_group09|lfsr:inst3

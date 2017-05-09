@@ -120,8 +120,7 @@ BEGIN
 			ELSE
 				Player_X_pos <= Player_X_pos;
 			END IF;
-			
-		if (left_click = '1') then	
+				
 			IF ('0' & bullet_Y_pos) >= CONV_STD_LOGIC_VECTOR(380,11) - bullet_size THEN
 				bullet_Y_motion <= - CONV_STD_LOGIC_VECTOR(2,11);
 			ELSIF bullet_Y_pos <= CONV_STD_LOGIC_VECTOR(100,11) + bullet_size THEN
@@ -130,7 +129,7 @@ BEGIN
 			-- Compute next bullet Y position
 				bullet_Y_pos <= bullet_Y_pos + bullet_Y_motion;
 				bullet_X_pos <= CONV_STD_LOGIC_VECTOR(320,11);
-			end if;
+			
 			-- check for collision
 		
 			

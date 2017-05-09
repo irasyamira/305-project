@@ -1,5 +1,5 @@
 Analysis & Synthesis report for mini_project_group09
-Tue May 09 21:48:10 2017
+Tue May 09 22:06:17 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -46,16 +46,16 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue May 09 21:48:10 2017       ;
+; Analysis & Synthesis Status        ; Successful - Tue May 09 22:06:17 2017       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; mini_project_group09                        ;
 ; Top-level Entity Name              ; mini_project_group09                        ;
 ; Family                             ; Cyclone III                                 ;
-; Total logic elements               ; 422                                         ;
-;     Total combinational functions  ; 365                                         ;
-;     Dedicated logic registers      ; 207                                         ;
-; Total registers                    ; 207                                         ;
-; Total pins                         ; 12                                          ;
+; Total logic elements               ; 421                                         ;
+;     Total combinational functions  ; 364                                         ;
+;     Dedicated logic registers      ; 208                                         ;
+; Total registers                    ; 208                                         ;
+; Total pins                         ; 11                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -159,11 +159,12 @@ applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ; < 0.1%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -186,28 +187,28 @@ applicable agreement for further details.
 +---------------------------------------------+-------------------------------+
 ; Resource                                    ; Usage                         ;
 +---------------------------------------------+-------------------------------+
-; Estimated Total logic elements              ; 422                           ;
+; Estimated Total logic elements              ; 421                           ;
 ;                                             ;                               ;
-; Total combinational functions               ; 365                           ;
+; Total combinational functions               ; 364                           ;
 ; Logic element usage by number of LUT inputs ;                               ;
-;     -- 4 input functions                    ; 90                            ;
-;     -- 3 input functions                    ; 130                           ;
-;     -- <=2 input functions                  ; 145                           ;
+;     -- 4 input functions                    ; 91                            ;
+;     -- 3 input functions                    ; 129                           ;
+;     -- <=2 input functions                  ; 144                           ;
 ;                                             ;                               ;
 ; Logic elements by mode                      ;                               ;
-;     -- normal mode                          ; 177                           ;
+;     -- normal mode                          ; 176                           ;
 ;     -- arithmetic mode                      ; 188                           ;
 ;                                             ;                               ;
-; Total registers                             ; 207                           ;
-;     -- Dedicated logic registers            ; 207                           ;
+; Total registers                             ; 208                           ;
+;     -- Dedicated logic registers            ; 208                           ;
 ;     -- I/O registers                        ; 0                             ;
 ;                                             ;                               ;
-; I/O pins                                    ; 12                            ;
+; I/O pins                                    ; 11                            ;
 ; Embedded Multiplier 9-bit elements          ; 0                             ;
 ; Maximum fan-out node                        ; clk_divider:inst7|clock_25Mhz ;
 ; Maximum fan-out                             ; 77                            ;
-; Total fan-out                               ; 1606                          ;
-; Average fan-out                             ; 2.69                          ;
+; Total fan-out                               ; 1616                          ;
+; Average fan-out                             ; 2.71                          ;
 +---------------------------------------------+-------------------------------+
 
 
@@ -216,10 +217,10 @@ applicable agreement for further details.
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                           ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------+--------------+
-; |mini_project_group09      ; 365 (1)           ; 207 (0)      ; 0           ; 0            ; 0       ; 0         ; 12   ; 0            ; |mini_project_group09                         ;              ;
-;    |MOUSE:inst1|           ; 86 (86)           ; 92 (92)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|MOUSE:inst1             ;              ;
+; |mini_project_group09      ; 364 (1)           ; 208 (0)      ; 0           ; 0            ; 0       ; 0         ; 11   ; 0            ; |mini_project_group09                         ;              ;
+;    |MOUSE:inst1|           ; 84 (84)           ; 92 (92)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|MOUSE:inst1             ;              ;
 ;    |clk_divider:inst7|     ; 44 (44)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|clk_divider:inst7       ;              ;
-;    |tank:inst|             ; 234 (168)         ; 82 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|tank:inst               ;              ;
+;    |tank:inst|             ; 235 (169)         ; 83 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|tank:inst               ;              ;
 ;       |VGA_SYNC:SYNC|      ; 66 (66)           ; 50 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|tank:inst|VGA_SYNC:SYNC ;              ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -240,34 +241,33 @@ Encoding Type:  One-Hot
 +-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
 
 
-+-------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                  ;
-+------------------------------------------+------------------------------------------+
-; Register name                            ; Reason for Removal                       ;
-+------------------------------------------+------------------------------------------+
-; tank:inst|bullet_X_pos[9,10]             ; Stuck at GND due to stuck port data_in   ;
-; tank:inst|bullet_X_pos[8]                ; Stuck at VCC due to stuck port data_in   ;
-; tank:inst|bullet_X_pos[7]                ; Stuck at GND due to stuck port data_in   ;
-; tank:inst|bullet_X_pos[6]                ; Stuck at VCC due to stuck port data_in   ;
-; tank:inst|bullet_X_pos[0..5]             ; Stuck at GND due to stuck port data_in   ;
-; MOUSE:inst1|CHAROUT[4..7]                ; Stuck at VCC due to stuck port data_in   ;
-; MOUSE:inst1|CHAROUT[3]                   ; Stuck at GND due to stuck port data_in   ;
-; MOUSE:inst1|CHAROUT[2]                   ; Stuck at VCC due to stuck port data_in   ;
-; MOUSE:inst1|CHAROUT[0,1]                 ; Stuck at GND due to stuck port data_in   ;
-; MOUSE:inst1|SHIFTOUT[10]                 ; Stuck at VCC due to stuck port data_in   ;
-; tank:inst|bullet_Y_motion[2,3,5..10]     ; Merged with tank:inst|bullet_Y_motion[4] ;
-; tank:inst|tank_X_motion[3..10]           ; Merged with tank:inst|tank_X_motion[2]   ;
-; tank:inst|bullet_Y_motion[0]             ; Stuck at GND due to stuck port data_in   ;
-; tank:inst|tank_X_motion[0]               ; Stuck at GND due to stuck port data_in   ;
-; tank:inst|bullet_Y_pos[0]                ; Stuck at GND due to stuck port data_in   ;
-; tank:inst|tank_X_pos[0]                  ; Stuck at GND due to stuck port data_in   ;
-; tank:inst|bullet_Y_motion[1]             ; Stuck at VCC due to stuck port data_in   ;
-; tank:inst|tank_X_motion[1]               ; Stuck at VCC due to stuck port data_in   ;
-; tank:inst|VGA_SYNC:SYNC|pixel_column[10] ; Stuck at GND due to stuck port data_in   ;
-; tank:inst|VGA_SYNC:SYNC|pixel_row[9,10]  ; Stuck at GND due to stuck port data_in   ;
-; tank:inst|tank_X_pos[1]                  ; Merged with tank:inst|bullet_Y_pos[1]    ;
-; Total Number of Removed Registers = 46   ;                                          ;
-+------------------------------------------+------------------------------------------+
++--------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                   ;
++------------------------------------------+-------------------------------------------+
+; Register name                            ; Reason for Removal                        ;
++------------------------------------------+-------------------------------------------+
+; tank:inst|bullet_X_pos[9,10]             ; Stuck at GND due to stuck port data_in    ;
+; tank:inst|bullet_X_pos[8]                ; Stuck at VCC due to stuck port data_in    ;
+; tank:inst|bullet_X_pos[7]                ; Stuck at GND due to stuck port data_in    ;
+; tank:inst|bullet_X_pos[6]                ; Stuck at VCC due to stuck port data_in    ;
+; tank:inst|bullet_X_pos[0..5]             ; Stuck at GND due to stuck port data_in    ;
+; MOUSE:inst1|CHAROUT[4..7]                ; Stuck at VCC due to stuck port data_in    ;
+; MOUSE:inst1|CHAROUT[3]                   ; Stuck at GND due to stuck port data_in    ;
+; MOUSE:inst1|CHAROUT[2]                   ; Stuck at VCC due to stuck port data_in    ;
+; MOUSE:inst1|CHAROUT[0,1]                 ; Stuck at GND due to stuck port data_in    ;
+; MOUSE:inst1|SHIFTOUT[10]                 ; Stuck at VCC due to stuck port data_in    ;
+; tank:inst|tank_X_motion[3..10]           ; Merged with tank:inst|tank_X_motion[2]    ;
+; tank:inst|bullet_Y_motion[2..9]          ; Merged with tank:inst|bullet_Y_motion[10] ;
+; tank:inst|bullet_Y_motion[0]             ; Stuck at GND due to stuck port data_in    ;
+; tank:inst|tank_X_motion[0]               ; Stuck at GND due to stuck port data_in    ;
+; tank:inst|bullet_Y_pos[0]                ; Stuck at GND due to stuck port data_in    ;
+; tank:inst|tank_X_pos[0]                  ; Stuck at GND due to stuck port data_in    ;
+; tank:inst|bullet_Y_motion[1]             ; Stuck at VCC due to stuck port data_in    ;
+; tank:inst|tank_X_motion[1]               ; Stuck at VCC due to stuck port data_in    ;
+; tank:inst|VGA_SYNC:SYNC|pixel_column[10] ; Stuck at GND due to stuck port data_in    ;
+; tank:inst|VGA_SYNC:SYNC|pixel_row[9,10]  ; Stuck at GND due to stuck port data_in    ;
+; Total Number of Removed Registers = 45   ;                                           ;
++------------------------------------------+-------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -275,12 +275,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 207   ;
+; Total registers                              ; 208   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 10    ;
 ; Number of registers using Asynchronous Clear ; 16    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 113   ;
+; Number of registers using Clock Enable       ; 123   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -307,7 +307,7 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 ; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|new_cursor_column[0]   ;
 ; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|tank:inst|VGA_SYNC:SYNC|v_count[4] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |mini_project_group09|tank:inst|bullet_Y_motion[4]       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |mini_project_group09|tank:inst|bullet_Y_motion[10]      ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |mini_project_group09|tank:inst|tank_X_motion[2]         ;
 ; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|cursor_column[8]       ;
 ; 5:1                ; 11 bits   ; 33 LEs        ; 11 LEs               ; 22 LEs                 ; Yes        ; |mini_project_group09|tank:inst|player_X_pos[0]          ;
@@ -340,7 +340,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Tue May 09 21:48:08 2017
+    Info: Processing started: Tue May 09 22:06:14 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mini_project_group09 -c mini_project_group09
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file mini_project_group09.bdf
@@ -369,31 +369,30 @@ Info (12021): Found 2 design units, including 1 entities, in source file clk_div
 Info (12127): Elaborating entity "mini_project_group09" for the top level hierarchy
 Info (12128): Elaborating entity "tank" for hierarchy "tank:inst"
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "tank:inst|VGA_SYNC:SYNC"
-Info (12128): Elaborating entity "clk_divider" for hierarchy "clk_divider:inst7"
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:inst1"
 Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(22): object "CHARIN" assigned a value but never read
 Warning (10492): VHDL Process Statement warning at mouse.vhd(148): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at mouse.vhd(152): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at mouse.vhd(153): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at mouse.vhd(154): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "clk_divider" for hierarchy "clk_divider:inst7"
 Info (12128): Elaborating entity "lfsr" for hierarchy "lfsr:inst3"
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "bt1"
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "bt2"
-Info (21057): Implemented 439 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 3 input pins
+Info (21057): Implemented 438 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
     Info (21059): Implemented 7 output pins
     Info (21060): Implemented 2 bidirectional pins
     Info (21061): Implemented 427 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 496 megabytes
-    Info: Processing ended: Tue May 09 21:48:10 2017
-    Info: Elapsed time: 00:00:02
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 508 megabytes
+    Info: Processing ended: Tue May 09 22:06:17 2017
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 
 
