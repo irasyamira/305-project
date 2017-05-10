@@ -19,7 +19,7 @@ END tank;
 architecture behavior of tank is
   
 SIGNAL Red_Data, Green_Data, Blue_Data, vert_sync_int,
-		reset, tank_on, player_on, bullet_on, Direction			: std_logic;
+		reset, tank_on, player_on, bullet_on, bullet_fired, Direction			: std_logic;
 SIGNAL Size 								: std_logic_vector(10 DOWNTO 0);  
 SIGNAL bullet_size 								: std_logic_vector(10 DOWNTO 0); 
 SIGNAL tank_X_motion 						: std_logic_vector(10 DOWNTO 0);
@@ -121,17 +121,26 @@ BEGIN
 				Player_X_pos <= Player_X_pos;
 			END IF;
 			
-		if (left_click = '1') then	
-			IF ('0' & bullet_Y_pos) >= CONV_STD_LOGIC_VECTOR(380,11) - bullet_size THEN
-				bullet_Y_motion <= - CONV_STD_LOGIC_VECTOR(2,11);
-			ELSIF bullet_Y_pos <= CONV_STD_LOGIC_VECTOR(100,11) + bullet_size THEN
-				bullet_Y_motion <= CONV_STD_LOGIC_VECTOR(2,11);
-			END IF;
-			-- Compute next bullet Y position
-				bullet_Y_pos <= bullet_Y_pos + bullet_Y_motion;
-				bullet_X_pos <= CONV_STD_LOGIC_VECTOR(320,11);
-			end if;
-			-- check for collision
+		if (left_click = '1') and (bullet_fired = '0') then
+			bullet_fired <= '1';
+			bullet_X_pos <= CONV_STD_LOGIC_VECTOR(320,11);
+			bullet_Y_pos <= player_Y_pos;
+			bullet_Y_motion <= - CONV_STD_LOGIC_VECTOR(4,11);
+		end if;
+		
+		if bullet_fired = '1' then
+			bullet_Y_pos <= bullet_Y_pos + bullet_Y_motion;
+		end if;
+		
+		-- if exceeds boundary or hits the upper tank then bullet disappears
+		if bullet_Y_pos >= CONV_STD_LOGIC_VECTOR(640,11) - bullet_size and
+			'0' + bullet_X_pos <= tank_X_pos + size and
+			'0' + bullet_X_pos >= tank_X_pos - size and
+			'0' + bullet_Y_pos <= tank_Y_pos + size and
+			'0' + bullet_Y_pos >= tank_Y_pos - size then 
+			
+			bullet_fired <= '0';
+		end if;
 		
 			
 END process Move_tank;
