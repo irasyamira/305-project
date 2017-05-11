@@ -1,26 +1,25 @@
 library ieee;
-    use ieee.std_logic_1164.all;
+use ieee.std_logic_1164.all;
 
 entity lfsr is
-  port (cout   :out std_logic_vector (10 downto 0);
-		enable :in  std_logic;
-		clk    :in  std_logic);
+  port (enable, clk : in std_logic;
+			    cout   : out std_logic_vector (10 downto 0));
 end entity;
 
-architecture rtl of lfsr is
-    signal count : std_logic_vector (10 downto 0) := "01100101010";
+architecture behaviour of lfsr is
+	signal count : std_logic_vector (10 downto 0) := "10100101110";--"01100101010";
 
 begin
-    process (clk) 
+	process (clk) 
 	begin
-        if rising_edge(clk) then
-            if enable = '1' then
+	if rising_edge(clk) then
+		if enable = '1' then
                 count <= '0' & count(8) & (not(count(7) xor count(3)) & not(count(5) xor count(1)) & count(5)
 						  & not(count(3) xor count(8)) & count(3) & count(2) & (count(4) xor count(6))
 						  & count(0) & count(9));
-            end if;
-        end if;
+		end if;
+    end if;
     end process;
 	
     cout <= count;
-end architecture;
+end behaviour;
