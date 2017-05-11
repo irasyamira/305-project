@@ -7,19 +7,18 @@ entity lfsr is
 end entity;
 
 architecture behaviour of lfsr is
-	signal count : std_logic_vector (10 downto 0) := "10100101110";--"01100101010";
-
+	signal ran_num : std_logic_vector (10 downto 0) := "10100101110";--"01100101010";
 begin
 	process (clk) 
 	begin
 	if rising_edge(clk) then
 		if enable = '1' then
-                count <= '0' & count(8) & (not(count(7) xor count(3)) & not(count(5) xor count(1)) & count(5)
-						  & not(count(3) xor count(8)) & count(3) & count(2) & (count(4) xor count(6))
-						  & count(0) & count(9));
+                ran_num <= '0' & ran_num(8) & (not(ran_num(7) xor ran_num(3)) & not(ran_num(5) xor ran_num(1)) & ran_num(5)
+						  & not(ran_num(3) xor ran_num(8)) & ran_num(3) & ran_num(2) & (ran_num(4) xor ran_num(6))
+						  & ran_num(0) & ran_num(9));
 		end if;
     end if;
     end process;
 	
-    cout <= count;
+    cout <= ran_num;
 end behaviour;
