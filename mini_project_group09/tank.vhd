@@ -6,7 +6,6 @@ LIBRARY work;
 
 
 ENTITY tank IS
-Generic(ADDR_WIDTH: integer := 12; DATA_WIDTH: integer := 1);
 
    PORT	(SIGNAL left_click, right_click, clk 			: IN std_logic;
 			signal rand: in std_logic_vector(10 downto 0);
@@ -18,16 +17,17 @@ END tank;
 
 architecture behavior of tank is
   
-SIGNAL Red_Data, Green_Data, Blue_Data, vert_sync_int,
-		reset, tank_on, player_on, bullet_on, bullet_fired, Direction			: std_logic;
+SIGNAL Red_Data, Green_Data, Blue_Data, vert_sync_int, reset	: std_logic;
+SIGNAL tank_on, player_on, bullet_on, bullet_fired: std_logic;
 SIGNAL Size 								: std_logic_vector(10 DOWNTO 0);  
 SIGNAL bullet_size 								: std_logic_vector(10 DOWNTO 0); 
-SIGNAL tank_X_motion 						: std_logic_vector(10 DOWNTO 0);
-SIGNAL player_X_motion 						: std_logic_vector(10 DOWNTO 0);
+SIGNAL tank_X_motion, player_X_motion 	 : std_logic_vector(10 DOWNTO 0);
 SIGNAL bullet_Y_motion						: std_LOGIC_VECTOR(10 DOWNTO 0);
-SIGNAL tank_Y_pos, tank_X_pos				: std_logic_vector(10 DOWNTO 0);
-SIGNAL player_Y_pos, player_X_pos	: std_LOGIC_VECTOR(10 DOWNTO 0);
-SIGNAL bullet_Y_pos, bullet_X_pos	: std_LOGIC_VECTOR(10 DOWNTO 0);
+SIGNAL tank_X_pos							: std_logic_vector(10 DOWNTO 0); 
+SIGNAL tank_Y_pos				: std_logic_vector(10 DOWNTO 0);
+SIGNAL bullet_X_pos : std_LOGIC_VECTOR(10 DOWNTO 0);
+SIGNAL bullet_Y_pos	: std_LOGIC_VECTOR(10 DOWNTO 0);
+SIGNAL player_Y_pos,player_X_pos 	: std_LOGIC_VECTOR(10 DOWNTO 0);
 SIGNAL pixel_row, pixel_column				: std_logic_vector(10 DOWNTO 0); 
 
 	COMPONENT vga_sync
@@ -45,7 +45,7 @@ BEGIN
 			 	horiz_sync_out => horiz_sync, vert_sync_out => vert_sync_int,
 			 	pixel_row => pixel_row, pixel_column => pixel_column);
 
-Size <= CONV_STD_LOGIC_VECTOR(8,11);
+Size <= CONV_STD_LOGIC_VECTOR(10,11);
 bullet_size <= CONV_STD_LOGIC_VECTOR(4,11);
 tank_Y_pos <= CONV_STD_LOGIC_VECTOR(100,11);
 player_Y_pos <= CONV_STD_LOGIC_VECTOR(380,11);
@@ -62,7 +62,6 @@ RGB_Display: Process (tank_X_pos, tank_Y_pos, player_X_pos, player_Y_pos,bullet_
 BEGIN
 			-- Set tank_on ='1' to display tank
  IF ('0' & tank_X_pos <= pixel_column + Size) AND
- 			-- compare positive numbers only
  	(tank_X_pos + Size >= '0' & pixel_column) AND
  	('0' & tank_Y_pos <= pixel_row + Size) AND
  	(tank_Y_pos + Size >= '0' & pixel_row ) THEN
@@ -123,7 +122,7 @@ BEGIN
 			
 		if (left_click = '1') and (bullet_fired = '0') then
 			bullet_fired <= '1';
-			bullet_X_pos <= CONV_STD_LOGIC_VECTOR(320,11);
+			bullet_X_pos <= player_X_pos;
 			bullet_Y_pos <= player_Y_pos;
 			bullet_Y_motion <= - CONV_STD_LOGIC_VECTOR(4,11);
 		end if;
@@ -133,21 +132,19 @@ BEGIN
 		end if;
 		
 		-- if exceeds boundary or hits the upper tank then bullet disappears
-		if bullet_Y_pos >= CONV_STD_LOGIC_VECTOR(640,11) - bullet_size and
-			'0' + bullet_X_pos <= tank_X_pos + size and
-			'0' + bullet_X_pos >= tank_X_pos - size and
-			'0' + bullet_Y_pos <= tank_Y_pos + size and
-			'0' + bullet_Y_pos >= tank_Y_pos - size then 
-			
+		if bullet_Y_pos >= CONV_STD_LOGIC_VECTOR(640,11) - bullet_size then
 			bullet_fired <= '0';
 		end if;
 		
+		-- collision with the tank
+		if bullet_Y_pos <= tank_Y_pos + size and 
+			bullet_X_pos + bullet_size <= tank_X_pos + size and
+			bullet_X_pos + bullet_size <= tank_X_pos + size then
+			bullet_fired <= '0';
+			bullet_X_pos <= CONV_STD_LOGIC_VECTOR(500,11);
+			bullet_Y_pos <= CONV_STD_LOGIC_VECTOR(700,11);
+		end if;
 			
 END process Move_tank;
 
 END behavior;
-
-
-
-
-

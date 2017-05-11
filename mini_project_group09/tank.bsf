@@ -93,18 +93,7 @@ applicable agreement for further details.
 		(text "Vert_sync" (rect 143 91 187 103)(font "Arial" ))
 		(line (pt 208 96)(pt 192 96)(line_width 1))
 	)
-	(parameter
-		"ADDR_WIDTH"
-		"12"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"DATA_WIDTH"
-		"1"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
 		(rectangle (rect 16 16 192 128)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 224 -64 324 16))
 )
