@@ -5,16 +5,16 @@ USE IEEE.STD_LOGIC_SIGNED.all;
 
 entity game_control is
    port	(clk, rom_mux, bt0, bt1, sw0	: IN STD_LOGIC;
-			RGB									: IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+			r,g,b									: IN STD_LOGIC;
 			game_mode							: OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-			red_data, green_data, blue_data		: OUT STD_LOGIC_VECTOR(3 DOWNTO 0));
+			red_data, green_data, blue_data		: OUT STD_LOGIC);
 end game_control;
 
 architecture bhv of game_control is
 
-signal Red_Data_t  		 : std_logic_vector(3 downto 0) := "0000";
-signal Green_Data_t		 : std_logic_vector(3 downto 0) := "0000";
-signal Blue_Data_t 		 : std_logic_vector(3 downto 0) := "0000";
+signal Red_Data_t  		 : std_logic := '0';
+signal Green_Data_t		 : std_logic := '0';
+signal Blue_Data_t 		 : std_logic := '0';
 signal s_game_mode		 : std_logic_vector(2 downto 0) := "001";
 
 begin
@@ -35,24 +35,24 @@ begin
 	END IF;
 	
 	IF rom_mux = '1' THEN -- rendering text
-		Red_Data_t <= "1111";
-		Green_Data_t <= "1111";
-		Blue_Data_t <= "1111";
+		Red_Data_t <= '1';
+		Green_Data_t <= '1';
+		Blue_Data_t <= '1';
 	ELSE
-		Red_Data_t <= "0000";
-		Green_Data_t <= "0000";
-		Blue_Data_t <= "0000";
+		Red_Data_t <= '1';
+		Green_Data_t <= '1';
+		Blue_Data_t <= '1';
 	END IF;
 	
 	IF s_game_mode /= "001" THEN
-		IF RGB(0) = '1' THEN
-			Red_Data_t <= "1111";
+		IF r = '1' THEN
+			Red_Data_t <= '1';
 		END IF;
-		IF RGB(1) = '1' THEN
-			Green_Data_t <= "1111";
+		IF g = '1' THEN
+			Green_Data_t <= '1';
 		END IF;
-		IF RGB(2) = '1' THEN
-			Blue_Data_t <= "1111";
+		IF b = '1' THEN
+			Blue_Data_t <= '1';
 		END IF;
 	END IF;
 END PROCESS;

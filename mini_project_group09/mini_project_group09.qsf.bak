@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone III"
 set_global_assignment -name DEVICE EP3C16F484C6
-set_global_assignment -name TOP_LEVEL_ENTITY mini_project_group09
+set_global_assignment -name TOP_LEVEL_ENTITY tank
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:32:39  MAY 09, 2017"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.0
@@ -77,6 +77,7 @@ set_location_assignment PIN_H13 -to seg0[3]
 set_location_assignment PIN_G12 -to seg0[4]
 set_location_assignment PIN_F12 -to seg0[5]
 set_location_assignment PIN_F13 -to seg0[6]
+set_global_assignment -name VHDL_FILE screen_text.vhd
 set_global_assignment -name VHDL_FILE char_rom.vhd
 set_global_assignment -name BDF_FILE mini_project_group09.bdf
 set_global_assignment -name VHDL_FILE vga_sync.vhd
