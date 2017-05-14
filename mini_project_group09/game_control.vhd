@@ -1,65 +1,64 @@
-LIBRARY IEEE;
-USE IEEE.STD_LOGIC_1164.all;
-USE IEEE.STD_LOGIC_ARITH.all;
-USE IEEE.STD_LOGIC_SIGNED.all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_signed.all;
 
 entity game_control is
-   port	(clk, rom_mux, bt0, bt1, sw0	: IN STD_LOGIC;
-			r,g,b									: IN STD_LOGIC;
-			game_mode							: OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-			red_data, green_data, blue_data		: OUT STD_LOGIC);
+   port	(clk, rom_mux, bt2, bt1, sw0	: in std_logic;
+			rgb								: in std_logic_vector (2 downto 0);
+			tank_on, player_on, bullet_on: in std_logic;
+			pixel_row: in std_logic_vector (10 downto 0);
+			game_mode							: out std_logic_vector(2 downto 0);
+			red_data, green_data, blue_data		: out std_logic_vector(3 downto 0));
 end game_control;
 
 architecture bhv of game_control is
 
-signal Red_Data_t  		 : std_logic := '0';
-signal Green_Data_t		 : std_logic := '0';
-signal Blue_Data_t 		 : std_logic := '0';
-signal s_game_mode		 : std_logic_vector(2 downto 0) := "001";
+signal s_red  		 : std_logic_vector(3 downto 0) := "0000";
+signal s_green		 : std_logic_vector(3 downto 0) := "0000";
+signal s_blue 		 : std_logic_vector(3 downto 0) := "0000";
+signal s_game_mode		 : std_logic_vector(2 downto 0) := "000";
 
 begin
 process(rom_mux, clk)
 begin
-	IF rising_edge(clk) THEN
-		IF bt1 = '0' THEN
-			s_game_mode <= "001";
-		END IF;
+if rising_edge(clk) then
+		if bt1 = '0' then
+			s_game_mode <= "000"; -- back to menu screen
+		end if;
 
-		IF bt0 = '0' THEN
-			IF sw0 = '0' THEN
-				s_game_mode <= "010";
-			ELSE
-				s_game_mode <= "101";
-			END IF;
-		END IF;
-	END IF;
+		if bt2 = '0' then
+			if sw0 = '0' then
+				s_game_mode <= "001"; -- game screen
+			else
+				s_game_mode <= "010"; -- practise screen
+			end if;
+		end if;
+	end if;
 	
 	IF rom_mux = '1' THEN -- rendering text
-		Red_Data_t <= '1';
-		Green_Data_t <= '1';
-		Blue_Data_t <= '1';
-	ELSE
-		Red_Data_t <= '1';
-		Green_Data_t <= '1';
-		Blue_Data_t <= '1';
-	END IF;
+			s_red <= "1111";
+			s_green <= "1111";
+			s_blue <= "1111";
+	elsif (bullet_on = '1') and s_game_mode /= "000" THEN -- rendering bullet
+			s_red <= "0111";
+			s_green <= "1000";
+			s_blue <= "0000";
+	ELSIF (player_on = '1' OR tank_on= '1') and (s_game_mode /= "000") THEN -- rendering player and tank
+			s_red <= "0000";
+			s_green <= "1100";
+			s_blue <= "0000";
+	ELSE -- when rendering back ground
+			s_red <= "0000";
+			s_green <= "0000";
+			s_blue <= "1100";
+	end if;
 	
-	IF s_game_mode /= "001" THEN
-		IF r = '1' THEN
-			Red_Data_t <= '1';
-		END IF;
-		IF g = '1' THEN
-			Green_Data_t <= '1';
-		END IF;
-		IF b = '1' THEN
-			Blue_Data_t <= '1';
-		END IF;
-	END IF;
-END PROCESS;
+end process;
 
-Red_Data <= Red_Data_t;
-Green_Data <= Green_Data_t;
-Blue_Data <= Blue_Data_t;
+red_data <= s_red;
+green_data <= s_green;
+blue_data <= s_blue;
 game_mode <= s_game_mode;
 
-END bhv;
+end bhv;

@@ -12,7 +12,8 @@ entity tank is
 			signal mouse_col : in std_logic_vector (9 downto 0);
 			signal pixel_row, pixel_column				: in std_logic_vector(10 downto 0); 
 			signal horiz_sync_out,vert_sync_out		: in std_logic;
-			signal red,green,blue 			: out std_logic);		
+			signal RGB 			: out std_logic_vector(2 downto 0);	
+			signal tank_on, player_on, bullet_on: out std_logic); 
 			
 end tank;
 
@@ -20,7 +21,7 @@ architecture behavior of tank is
   
 signal red_data, green_data, blue_data	: std_logic;
 signal vert_sync_int, reset	: std_logic;
-signal tank_on, player_on, bullet_on, bullet_fired: std_logic;
+signal  bullet_fired: std_logic; --tank_on, player_on, bullet_on,
 signal size 								: std_logic_vector(10 downto 0);  
 signal bullet_size 								: std_logic_vector(10 downto 0); 
 signal tank_x_motion, player_x_motion 	 : std_logic_vector(10 downto 0);
@@ -42,9 +43,9 @@ player_y_pos <= conv_std_logic_vector(380,11);
 		-- need internal copy of vert_sync to read
 vert_sync_int <= vert_sync_out;
 
-red_data <=  '1' and not player_on and not bullet_on;
-green_data <= '1' and not tank_on and not bullet_on;
-blue_data <=  '1' and not player_on and not tank_on;
+--red_data <=  '1' and not player_on and not bullet_on;
+--green_data <= '1' and not tank_on and not bullet_on;
+--blue_data <=  '1' and not player_on and not tank_on;
 
 
 
@@ -136,7 +137,7 @@ begin
 		end if;
 			
 end process move_tank;
-	red <= red_data;
-	green <= green_data;
-	blue <= blue_data;
+	RGB(0) <= red_data;
+	RGB(1) <= green_data;
+	RGB(2) <= blue_data;
 end behavior;

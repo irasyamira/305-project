@@ -1,5 +1,5 @@
 Analysis & Synthesis report for mini_project_group09
-Sat May 13 16:13:49 2017
+Sun May 14 19:34:49 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -13,16 +13,19 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |mini_project_group09|MOUSE:inst1|mouse_state
-  9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Inverted Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Source assignments for char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated
- 14. Parameter Settings for User Entity Instance: char_rom:inst5|altsyncram:altsyncram_component
- 15. altsyncram Parameter Settings by Entity Instance
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |mini_project_group09|MOUSE:inst1|mouse_state
+ 10. User-Specified and Inferred Latches
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated
+ 17. Parameter Settings for User Entity Instance: char_rom:inst12|altsyncram:altsyncram_component
+ 18. altsyncram Parameter Settings by Entity Instance
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
 
 
 
@@ -48,18 +51,18 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat May 13 16:13:49 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sun May 14 19:34:49 2017       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; mini_project_group09                        ;
 ; Top-level Entity Name              ; mini_project_group09                        ;
 ; Family                             ; Cyclone III                                 ;
-; Total logic elements               ; 187                                         ;
-;     Total combinational functions  ; 155                                         ;
-;     Dedicated logic registers      ; 128                                         ;
-; Total registers                    ; 128                                         ;
-; Total pins                         ; 13                                          ;
+; Total logic elements               ; 740                                         ;
+;     Total combinational functions  ; 674                                         ;
+;     Dedicated logic registers      ; 235                                         ;
+; Total registers                    ; 235                                         ;
+; Total pins                         ; 29                                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
+; Total memory bits                  ; 4,096                                       ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
 ; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
@@ -179,6 +182,7 @@ applicable agreement for further details.
 ; char_rom.vhd                     ; yes             ; User VHDL File                         ; D:/305-project/mini_project_group09/char_rom.vhd                     ;         ;
 ; vga_sync.vhd                     ; yes             ; User VHDL File                         ; D:/305-project/mini_project_group09/vga_sync.vhd                     ;         ;
 ; tank.vhd                         ; yes             ; User VHDL File                         ; D:/305-project/mini_project_group09/tank.vhd                         ;         ;
+; seven_seg.vhd                    ; yes             ; User VHDL File                         ; D:/305-project/mini_project_group09/seven_seg.vhd                    ;         ;
 ; mouse.vhd                        ; yes             ; User VHDL File                         ; D:/305-project/mini_project_group09/mouse.vhd                        ;         ;
 ; lfsr.vhd                         ; yes             ; User VHDL File                         ; D:/305-project/mini_project_group09/lfsr.vhd                         ;         ;
 ; game_control.vhd                 ; yes             ; User VHDL File                         ; D:/305-project/mini_project_group09/game_control.vhd                 ;         ;
@@ -202,42 +206,59 @@ applicable agreement for further details.
 +---------------------------------------------+-------------------------------+
 ; Resource                                    ; Usage                         ;
 +---------------------------------------------+-------------------------------+
-; Estimated Total logic elements              ; 187                           ;
+; Estimated Total logic elements              ; 740                           ;
 ;                                             ;                               ;
-; Total combinational functions               ; 155                           ;
+; Total combinational functions               ; 674                           ;
 ; Logic element usage by number of LUT inputs ;                               ;
-;     -- 4 input functions                    ; 52                            ;
-;     -- 3 input functions                    ; 28                            ;
-;     -- <=2 input functions                  ; 75                            ;
+;     -- 4 input functions                    ; 266                           ;
+;     -- 3 input functions                    ; 207                           ;
+;     -- <=2 input functions                  ; 201                           ;
 ;                                             ;                               ;
 ; Logic elements by mode                      ;                               ;
-;     -- normal mode                          ; 95                            ;
-;     -- arithmetic mode                      ; 60                            ;
+;     -- normal mode                          ; 436                           ;
+;     -- arithmetic mode                      ; 238                           ;
 ;                                             ;                               ;
-; Total registers                             ; 128                           ;
-;     -- Dedicated logic registers            ; 128                           ;
+; Total registers                             ; 235                           ;
+;     -- Dedicated logic registers            ; 235                           ;
 ;     -- I/O registers                        ; 0                             ;
 ;                                             ;                               ;
-; I/O pins                                    ; 13                            ;
+; I/O pins                                    ; 29                            ;
+; Total memory bits                           ; 4096                          ;
 ; Embedded Multiplier 9-bit elements          ; 0                             ;
 ; Maximum fan-out node                        ; clk_divider:inst7|clock_25Mhz ;
-; Maximum fan-out                             ; 58                            ;
-; Total fan-out                               ; 784                           ;
-; Average fan-out                             ; 2.52                          ;
+; Maximum fan-out                             ; 102                           ;
+; Total fan-out                               ; 2836                          ;
+; Average fan-out                             ; 2.90                          ;
 +---------------------------------------------+-------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                             ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                     ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
-; |mini_project_group09      ; 155 (0)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 13   ; 0            ; |mini_project_group09                   ;              ;
-;    |MOUSE:inst1|           ; 50 (50)           ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|MOUSE:inst1       ;              ;
-;    |VGA_SYNC:inst|         ; 61 (61)           ; 31 (31)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|VGA_SYNC:inst     ;              ;
-;    |clk_divider:inst7|     ; 44 (44)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|clk_divider:inst7 ;              ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                  ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
+; |mini_project_group09                     ; 674 (1)           ; 235 (0)      ; 4096        ; 0            ; 0       ; 0         ; 29   ; 0            ; |mini_project_group09                                                                                ;              ;
+;    |MOUSE:inst1|                          ; 84 (84)           ; 92 (92)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|MOUSE:inst1                                                                    ;              ;
+;    |VGA_SYNC:inst|                        ; 64 (64)           ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|VGA_SYNC:inst                                                                  ;              ;
+;    |char_rom:inst12|                      ; 5 (5)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|char_rom:inst12                                                                ;              ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|char_rom:inst12|altsyncram:altsyncram_component                                ;              ;
+;          |altsyncram_kt91:auto_generated| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated ;              ;
+;    |clk_divider:inst7|                    ; 44 (44)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|clk_divider:inst7                                                              ;              ;
+;    |game_control:inst15|                  ; 17 (17)           ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|game_control:inst15                                                            ;              ;
+;    |screen_text:inst14|                   ; 212 (212)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|screen_text:inst14                                                             ;              ;
+;    |seven_seg:inst99|                     ; 1 (1)             ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|seven_seg:inst99                                                               ;              ;
+;    |tank:inst11|                          ; 246 (246)         ; 43 (43)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|tank:inst11                                                                    ;              ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                        ;
++-------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
+; Name                                                                                      ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF        ;
++-------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
+; char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 512          ; 8            ; --           ; --           ; 4096 ; tcgrom.mif ;
++-------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+------+------------+
 
 
 Encoding Type:  One-Hot
@@ -255,21 +276,63 @@ Encoding Type:  One-Hot
 +-------------------------------+---------------------------+--------------------------+-------------------------------+---------------------------+--------------------------+---------------------------+
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; VGA_SYNC:inst|pixel_row[0..10]         ; Lost fanout                            ;
-; VGA_SYNC:inst|pixel_column[0..10]      ; Lost fanout                            ;
-; game_control:inst13|s_game_mode[0..2]  ; Lost fanout                            ;
-; MOUSE:inst1|CHAROUT[4..7]              ; Stuck at VCC due to stuck port data_in ;
-; MOUSE:inst1|CHAROUT[3]                 ; Stuck at GND due to stuck port data_in ;
-; MOUSE:inst1|CHAROUT[2]                 ; Stuck at VCC due to stuck port data_in ;
-; MOUSE:inst1|CHAROUT[0,1]               ; Stuck at GND due to stuck port data_in ;
-; MOUSE:inst1|SHIFTOUT[10]               ; Stuck at VCC due to stuck port data_in ;
-; Total Number of Removed Registers = 34 ;                                        ;
-+----------------------------------------+----------------------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                    ;
++-----------------------------------------------------+-----------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                     ; Free of Timing Hazards ;
++-----------------------------------------------------+-----------------------------------------+------------------------+
+; screen_text:inst14|font_col[1]                      ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|font_col[0]                      ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|font_col[2]                      ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|font_row[0]                      ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|font_row[1]                      ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|font_row[2]                      ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|character_address[0]             ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|character_address[1]             ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|character_address[2]             ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|character_address[3]             ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|character_address[4]             ; screen_text:inst14|character_address[4] ; yes                    ;
+; screen_text:inst14|character_address[5]             ; screen_text:inst14|character_address[4] ; yes                    ;
+; Number of user-specified and inferred latches = 12  ;                                         ;                        ;
++-----------------------------------------------------+-----------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                ;
++----------------------------------------+------------------------------------------+
+; Register name                          ; Reason for Removal                       ;
++----------------------------------------+------------------------------------------+
+; tank:inst11|bullet_y_motion[2..10]     ; Stuck at VCC due to stuck port data_in   ;
+; tank:inst11|bullet_y_motion[0,1]       ; Stuck at GND due to stuck port data_in   ;
+; MOUSE:inst1|CHAROUT[4..7]              ; Stuck at VCC due to stuck port data_in   ;
+; MOUSE:inst1|CHAROUT[3]                 ; Stuck at GND due to stuck port data_in   ;
+; MOUSE:inst1|CHAROUT[2]                 ; Stuck at VCC due to stuck port data_in   ;
+; MOUSE:inst1|CHAROUT[0,1]               ; Stuck at GND due to stuck port data_in   ;
+; MOUSE:inst1|SHIFTOUT[10]               ; Stuck at VCC due to stuck port data_in   ;
+; tank:inst11|tank_x_motion[3..10]       ; Merged with tank:inst11|tank_x_motion[2] ;
+; tank:inst11|bullet_y_pos[1]            ; Merged with tank:inst11|bullet_y_pos[0]  ;
+; tank:inst11|bullet_y_pos[0]            ; Stuck at GND due to stuck port data_in   ;
+; tank:inst11|tank_x_motion[0]           ; Stuck at GND due to stuck port data_in   ;
+; game_control:inst15|s_game_mode[2]     ; Stuck at GND due to stuck port data_in   ;
+; seven_seg:inst99|segment7[1]           ; Stuck at GND due to stuck port data_in   ;
+; tank:inst11|tank_x_pos[0]              ; Stuck at GND due to stuck port data_in   ;
+; tank:inst11|tank_x_motion[1]           ; Stuck at VCC due to stuck port data_in   ;
+; VGA_SYNC:inst|pixel_row[10]            ; Stuck at GND due to stuck port data_in   ;
+; VGA_SYNC:inst|pixel_column[10]         ; Stuck at GND due to stuck port data_in   ;
+; VGA_SYNC:inst|pixel_row[9]             ; Stuck at GND due to stuck port data_in   ;
+; Total Number of Removed Registers = 38 ;                                          ;
++----------------------------------------+------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                             ;
++------------------------------------+---------------------------+----------------------------------------+
+; Register name                      ; Reason for Removal        ; Registers Removed due to This Register ;
++------------------------------------+---------------------------+----------------------------------------+
+; game_control:inst15|s_game_mode[2] ; Stuck at GND              ; seven_seg:inst99|segment7[1]           ;
+;                                    ; due to stuck port data_in ;                                        ;
++------------------------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -277,12 +340,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 128   ;
+; Total registers                              ; 235   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Synchronous Load   ; 10    ;
 ; Number of registers using Asynchronous Clear ; 16    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 53    ;
+; Number of registers using Clock Enable       ; 133   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -302,103 +365,112 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|VGA_SYNC:inst|v_count[10] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|new_cursor_column[0]   ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|bullet_x_pos[0]        ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|VGA_SYNC:inst|v_count[1]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |mini_project_group09|game_control:inst15|s_game_mode[1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |mini_project_group09|tank:inst11|tank_x_motion[2]       ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |mini_project_group09|tank:inst11|bullet_y_pos[10]       ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|cursor_column[7]       ;
+; 5:1                ; 11 bits   ; 33 LEs        ; 11 LEs               ; 22 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|player_x_pos[9]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |mini_project_group09|game_control:inst15|green_data[3]  ;
+; 10:1               ; 6 bits    ; 36 LEs        ; 6 LEs                ; 30 LEs                 ; No         ; |mini_project_group09|screen_text:inst14|font_col[2]     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------+
-; Source assignments for char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated ;
-+---------------------------------+--------------------+------+----------------------------------------+
-; Assignment                      ; Value              ; From ; To                                     ;
-+---------------------------------+--------------------+------+----------------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                      ;
-+---------------------------------+--------------------+------+----------------------------------------+
++-------------------------------------------------------------------------------------------------------+
+; Source assignments for char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------+
+; Assignment                      ; Value              ; From ; To                                      ;
++---------------------------------+--------------------+------+-----------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                       ;
++---------------------------------+--------------------+------+-----------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: char_rom:inst5|altsyncram:altsyncram_component ;
-+------------------------------------+----------------------+---------------------------------+
-; Parameter Name                     ; Value                ; Type                            ;
-+------------------------------------+----------------------+---------------------------------+
-; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                         ;
-; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                      ;
-; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                    ;
-; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                    ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                  ;
-; WIDTH_BYTEENA                      ; 1                    ; Untyped                         ;
-; OPERATION_MODE                     ; ROM                  ; Untyped                         ;
-; WIDTH_A                            ; 8                    ; Signed Integer                  ;
-; WIDTHAD_A                          ; 9                    ; Signed Integer                  ;
-; NUMWORDS_A                         ; 512                  ; Signed Integer                  ;
-; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                         ;
-; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                         ;
-; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                         ;
-; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                         ;
-; INDATA_ACLR_A                      ; NONE                 ; Untyped                         ;
-; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                         ;
-; WIDTH_B                            ; 1                    ; Untyped                         ;
-; WIDTHAD_B                          ; 1                    ; Untyped                         ;
-; NUMWORDS_B                         ; 1                    ; Untyped                         ;
-; INDATA_REG_B                       ; CLOCK1               ; Untyped                         ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                         ;
-; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                         ;
-; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                         ;
-; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                         ;
-; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                         ;
-; INDATA_ACLR_B                      ; NONE                 ; Untyped                         ;
-; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                         ;
-; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                         ;
-; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                         ;
-; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                         ;
-; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                         ;
-; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                  ;
-; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                         ;
-; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                         ;
-; BYTE_SIZE                          ; 8                    ; Untyped                         ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                         ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                         ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                         ;
-; INIT_FILE                          ; tcgrom.mif           ; Untyped                         ;
-; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                         ;
-; MAXIMUM_DEPTH                      ; 0                    ; Untyped                         ;
-; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                         ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                         ;
-; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                         ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                         ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                         ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                         ;
-; ENABLE_ECC                         ; FALSE                ; Untyped                         ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                         ;
-; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                         ;
-; DEVICE_FAMILY                      ; Cyclone III          ; Untyped                         ;
-; CBXI_PARAMETER                     ; altsyncram_kt91      ; Untyped                         ;
-+------------------------------------+----------------------+---------------------------------+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: char_rom:inst12|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+----------------------------------+
+; Parameter Name                     ; Value                ; Type                             ;
++------------------------------------+----------------------+----------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                          ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                       ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                     ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                     ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                   ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                          ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                          ;
+; WIDTH_A                            ; 8                    ; Signed Integer                   ;
+; WIDTHAD_A                          ; 9                    ; Signed Integer                   ;
+; NUMWORDS_A                         ; 512                  ; Signed Integer                   ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                          ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                          ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                          ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                          ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                          ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                          ;
+; WIDTH_B                            ; 1                    ; Untyped                          ;
+; WIDTHAD_B                          ; 1                    ; Untyped                          ;
+; NUMWORDS_B                         ; 1                    ; Untyped                          ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                          ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                          ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                          ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                          ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                          ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                          ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                          ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                          ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                          ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                          ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                          ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                          ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                   ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                          ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                          ;
+; BYTE_SIZE                          ; 8                    ; Untyped                          ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                          ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                          ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                          ;
+; INIT_FILE                          ; tcgrom.mif           ; Untyped                          ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                          ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                          ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                          ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                          ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                          ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                          ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                          ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                          ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                          ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                          ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                          ;
+; DEVICE_FAMILY                      ; Cyclone III          ; Untyped                          ;
+; CBXI_PARAMETER                     ; altsyncram_kt91      ; Untyped                          ;
++------------------------------------+----------------------+----------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------------------------+
-; altsyncram Parameter Settings by Entity Instance                                           ;
-+-------------------------------------------+------------------------------------------------+
-; Name                                      ; Value                                          ;
-+-------------------------------------------+------------------------------------------------+
-; Number of entity instances                ; 1                                              ;
-; Entity Instance                           ; char_rom:inst5|altsyncram:altsyncram_component ;
-;     -- OPERATION_MODE                     ; ROM                                            ;
-;     -- WIDTH_A                            ; 8                                              ;
-;     -- NUMWORDS_A                         ; 512                                            ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED                                   ;
-;     -- WIDTH_B                            ; 1                                              ;
-;     -- NUMWORDS_B                         ; 1                                              ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                         ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                                   ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                           ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                      ;
-+-------------------------------------------+------------------------------------------------+
++---------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                            ;
++-------------------------------------------+-------------------------------------------------+
+; Name                                      ; Value                                           ;
++-------------------------------------------+-------------------------------------------------+
+; Number of entity instances                ; 1                                               ;
+; Entity Instance                           ; char_rom:inst12|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                             ;
+;     -- WIDTH_A                            ; 8                                               ;
+;     -- NUMWORDS_A                         ; 512                                             ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                    ;
+;     -- WIDTH_B                            ; 1                                               ;
+;     -- NUMWORDS_B                         ; 1                                               ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                          ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                    ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                            ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                       ;
++-------------------------------------------+-------------------------------------------------+
 
 
 +-------------------------------+
@@ -406,7 +478,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -416,7 +488,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Sat May 13 16:13:47 2017
+    Info: Processing started: Sun May 14 19:34:46 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mini_project_group09 -c mini_project_group09
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file mini_project_group09.bdf
@@ -448,9 +520,6 @@ Info (12021): Found 2 design units, including 1 entities, in source file game_co
 Info (12021): Found 2 design units, including 1 entities, in source file clk_divider.vhd
     Info (12022): Found design unit 1: clk_divider-bhv
     Info (12023): Found entity 1: clk_divider
-Info (12021): Found 2 design units, including 1 entities, in source file display_contrast.vhd
-    Info (12022): Found design unit 1: display_contrast-BHV
-    Info (12023): Found entity 1: display_contrast
 Info (12127): Elaborating entity "mini_project_group09" for the top level hierarchy
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:inst1"
 Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(22): object "CHARIN" assigned a value but never read
@@ -460,15 +529,16 @@ Warning (10492): VHDL Process Statement warning at mouse.vhd(153): signal "CHARO
 Warning (10492): VHDL Process Statement warning at mouse.vhd(154): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "clk_divider" for hierarchy "clk_divider:inst7"
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst"
-Info (12128): Elaborating entity "game_control" for hierarchy "game_control:inst13"
+Info (12128): Elaborating entity "game_control" for hierarchy "game_control:inst15"
+Warning (10492): VHDL Process Statement warning at game_control.vhd(43): signal "bullet_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at game_control.vhd(43): signal "s_game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at game_control.vhd(47): signal "player_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at game_control.vhd(47): signal "tank_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at game_control.vhd(47): signal "s_game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at game_control.vhd(48): signal "r" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at game_control.vhd(51): signal "g" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at game_control.vhd(54): signal "b" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Info (12128): Elaborating entity "char_rom" for hierarchy "char_rom:inst5"
-Info (12128): Elaborating entity "altsyncram" for hierarchy "char_rom:inst5|altsyncram:altsyncram_component"
-Info (12130): Elaborated megafunction instantiation "char_rom:inst5|altsyncram:altsyncram_component"
-Info (12133): Instantiated megafunction "char_rom:inst5|altsyncram:altsyncram_component" with the following parameter:
+Info (12128): Elaborating entity "char_rom" for hierarchy "char_rom:inst12"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "char_rom:inst12|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "char_rom:inst12|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "char_rom:inst12|altsyncram:altsyncram_component" with the following parameter:
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
@@ -485,8 +555,8 @@ Info (12133): Instantiated megafunction "char_rom:inst5|altsyncram:altsyncram_co
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kt91.tdf
     Info (12023): Found entity 1: altsyncram_kt91
-Info (12128): Elaborating entity "altsyncram_kt91" for hierarchy "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated"
-Info (12128): Elaborating entity "screen_text" for hierarchy "screen_text:inst8"
+Info (12128): Elaborating entity "altsyncram_kt91" for hierarchy "char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated"
+Info (12128): Elaborating entity "screen_text" for hierarchy "screen_text:inst14"
 Warning (10631): VHDL Process Statement warning at screen_text.vhd(18): inferring latch(es) for signal or variable "font_row", which holds its previous value in one or more paths through the process
 Warning (10631): VHDL Process Statement warning at screen_text.vhd(18): inferring latch(es) for signal or variable "font_col", which holds its previous value in one or more paths through the process
 Warning (10631): VHDL Process Statement warning at screen_text.vhd(18): inferring latch(es) for signal or variable "character_address", which holds its previous value in one or more paths through the process
@@ -503,46 +573,52 @@ Info (10041): Inferred latch for "font_row[0]" at screen_text.vhd(18)
 Info (10041): Inferred latch for "font_row[1]" at screen_text.vhd(18)
 Info (10041): Inferred latch for "font_row[2]" at screen_text.vhd(18)
 Info (12128): Elaborating entity "tank" for hierarchy "tank:inst11"
+Warning (10541): VHDL Signal Declaration warning at tank.vhd(22): used implicit default value for signal "red_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at tank.vhd(22): used implicit default value for signal "green_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at tank.vhd(22): used implicit default value for signal "blue_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "lfsr" for hierarchy "lfsr:inst3"
-Warning (14284): Synthesized away the following node(s):
-    Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|q_a[0]"
-        Warning (14320): Synthesized away node "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|q_a[1]"
-        Warning (14320): Synthesized away node "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|q_a[2]"
-        Warning (14320): Synthesized away node "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|q_a[3]"
-        Warning (14320): Synthesized away node "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|q_a[4]"
-        Warning (14320): Synthesized away node "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|q_a[5]"
-        Warning (14320): Synthesized away node "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|q_a[6]"
-        Warning (14320): Synthesized away node "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated|q_a[7]"
-Warning (12069): Ignored assignment(s) for "blue_out[0]" because "blue_out" is not a bus or array
-Warning (12069): Ignored assignment(s) for "blue_out[2]" because "blue_out" is not a bus or array
-Warning (12069): Ignored assignment(s) for "blue_out[3]" because "blue_out" is not a bus or array
-Warning (12069): Ignored assignment(s) for "green_out[0]" because "green_out" is not a bus or array
-Warning (12069): Ignored assignment(s) for "green_out[2]" because "green_out" is not a bus or array
-Warning (12069): Ignored assignment(s) for "green_out[3]" because "green_out" is not a bus or array
-Warning (12069): Ignored assignment(s) for "red_out[0]" because "red_out" is not a bus or array
-Warning (12069): Ignored assignment(s) for "red_out[1]" because "red_out" is not a bus or array
-Warning (12069): Ignored assignment(s) for "red_out[2]" because "red_out" is not a bus or array
-Warning (12069): Ignored assignment(s) for "red_out[3]" because "red_out" is not a bus or array
+Info (12128): Elaborating entity "seven_seg" for hierarchy "seven_seg:inst99"
+Warning (13012): Latch screen_text:inst14|font_col[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|s_game_mode[1]
+Warning (13012): Latch screen_text:inst14|font_col[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|s_game_mode[1]
+Warning (13012): Latch screen_text:inst14|font_col[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_column[4]
+Warning (13012): Latch screen_text:inst14|font_row[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_row[2]
+Warning (13012): Latch screen_text:inst14|font_row[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_row[3]
+Warning (13012): Latch screen_text:inst14|font_row[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_row[4]
+Warning (13012): Latch screen_text:inst14|character_address[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|s_game_mode[1]
+Warning (13012): Latch screen_text:inst14|character_address[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|s_game_mode[1]
+Warning (13012): Latch screen_text:inst14|character_address[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|s_game_mode[1]
+Warning (13012): Latch screen_text:inst14|character_address[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|s_game_mode[1]
+Warning (13012): Latch screen_text:inst14|character_address[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|s_game_mode[1]
+Warning (13012): Latch screen_text:inst14|character_address[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_column[9]
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "seg0[1]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 25 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 3 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "sw0"
-    Warning (15610): No output dependent on input pin "bt0"
-    Warning (15610): No output dependent on input pin "bt1"
-Info (21057): Implemented 203 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 788 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 7 output pins
+    Info (21059): Implemented 23 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 190 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 36 warnings
-    Info: Peak virtual memory: 504 megabytes
-    Info: Processing ended: Sat May 13 16:13:49 2017
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info (21061): Implemented 751 logic cells
+    Info (21064): Implemented 8 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 42 warnings
+    Info: Peak virtual memory: 495 megabytes
+    Info: Processing ended: Sun May 14 19:34:49 2017
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 
