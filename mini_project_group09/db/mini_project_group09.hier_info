@@ -360,9 +360,6 @@ bt1 => s_game_mode.OUTPUTSELECT
 bt1 => s_game_mode.OUTPUTSELECT
 sw0 => s_game_mode.DATAB
 sw0 => s_game_mode.DATAB
-rgb[0] => ~NO_FANOUT~
-rgb[1] => ~NO_FANOUT~
-rgb[2] => ~NO_FANOUT~
 tank_on => process_0.IN0
 player_on => process_0.IN1
 bullet_on => process_0.IN1
@@ -1347,12 +1344,15 @@ vert_sync_out => tank_x_motion[7].CLK
 vert_sync_out => tank_x_motion[8].CLK
 vert_sync_out => tank_x_motion[9].CLK
 vert_sync_out => tank_x_motion[10].CLK
-RGB[0] <= RGB[0].DB_MAX_OUTPUT_PORT_TYPE
-RGB[1] <= RGB[1].DB_MAX_OUTPUT_PORT_TYPE
-RGB[2] <= comb.DB_MAX_OUTPUT_PORT_TYPE
 tank_on <= rgb_display.DB_MAX_OUTPUT_PORT_TYPE
 player_on <= rgb_display.DB_MAX_OUTPUT_PORT_TYPE
 bullet_on <= rgb_display.DB_MAX_OUTPUT_PORT_TYPE
+game_mode[0] => Equal0.IN5
+game_mode[0] => Equal1.IN5
+game_mode[1] => Equal0.IN4
+game_mode[1] => Equal1.IN4
+game_mode[2] => Equal0.IN3
+game_mode[2] => Equal1.IN3
 
 
 |mini_project_group09|lfsr:inst3

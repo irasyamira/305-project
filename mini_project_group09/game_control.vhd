@@ -5,7 +5,6 @@ use ieee.std_logic_signed.all;
 
 entity game_control is
    port	(clk, rom_mux, bt2, bt1, sw0	: in std_logic;
-			rgb								: in std_logic_vector (2 downto 0);
 			tank_on, player_on, bullet_on: in std_logic;
 			pixel_row: in std_logic_vector (10 downto 0);
 			game_mode							: out std_logic_vector(2 downto 0);
