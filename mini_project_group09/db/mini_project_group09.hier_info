@@ -1333,6 +1333,17 @@ vert_sync_out => tank_x_pos[7].CLK
 vert_sync_out => tank_x_pos[8].CLK
 vert_sync_out => tank_x_pos[9].CLK
 vert_sync_out => tank_x_pos[10].CLK
+vert_sync_out => tank_y_pos[0].CLK
+vert_sync_out => tank_y_pos[1].CLK
+vert_sync_out => tank_y_pos[2].CLK
+vert_sync_out => tank_y_pos[3].CLK
+vert_sync_out => tank_y_pos[4].CLK
+vert_sync_out => tank_y_pos[5].CLK
+vert_sync_out => tank_y_pos[6].CLK
+vert_sync_out => tank_y_pos[7].CLK
+vert_sync_out => tank_y_pos[8].CLK
+vert_sync_out => tank_y_pos[9].CLK
+vert_sync_out => tank_y_pos[10].CLK
 vert_sync_out => tank_x_motion[0].CLK
 vert_sync_out => tank_x_motion[1].CLK
 vert_sync_out => tank_x_motion[2].CLK
@@ -1348,11 +1359,11 @@ tank_on <= rgb_display.DB_MAX_OUTPUT_PORT_TYPE
 player_on <= rgb_display.DB_MAX_OUTPUT_PORT_TYPE
 bullet_on <= rgb_display.DB_MAX_OUTPUT_PORT_TYPE
 game_mode[0] => Equal0.IN5
-game_mode[0] => Equal1.IN5
+game_mode[0] => Equal7.IN5
 game_mode[1] => Equal0.IN4
-game_mode[1] => Equal1.IN4
+game_mode[1] => Equal7.IN4
 game_mode[2] => Equal0.IN3
-game_mode[2] => Equal1.IN3
+game_mode[2] => Equal7.IN3
 
 
 |mini_project_group09|lfsr:inst3
