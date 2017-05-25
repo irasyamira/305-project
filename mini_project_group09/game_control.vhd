@@ -28,9 +28,9 @@ if rising_edge(clk) then
 
 		if bt2 = '0' then
 			if sw0 = '0' then
-				s_game_mode <= "001"; -- game screen
+				s_game_mode <= "001"; -- practice screen
 			else
-				s_game_mode <= "010"; -- practise screen
+				s_game_mode <= "010"; -- game screen
 			end if;
 		end if;
 	end if;

@@ -363,52 +363,6 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 96 304 264 384)
-	(text "lfsr" (rect 5 0 21 12)(font "Arial" ))
-	(text "inst3" (rect 8 64 31 76)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "enable" (rect 0 0 31 12)(font "Arial" ))
-		(text "enable" (rect 21 27 52 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "clk" (rect 0 0 14 12)(font "Arial" ))
-		(text "clk" (rect 21 43 35 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 168 32)
-		(output)
-		(text "cout[10..0]" (rect 0 0 53 12)(font "Arial" ))
-		(text "cout[10..0]" (rect 103 27 156 39)(font "Arial" ))
-		(line (pt 168 32)(pt 152 32)(line_width 3))
-	)
-	(drawing
-		(rectangle (rect 16 16 152 64))
-	)
-)
-(symbol
-	(rect 8 368 40 400)
-	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
-	(text "inst4" (rect 3 21 26 33)(font "Arial" )(invisible))
-	(port
-		(pt 16 0)
-		(output)
-		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
-		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
-		(line (pt 16 8)(pt 16 0))
-	)
-	(drawing
-		(line (pt 8 8)(pt 16 16))
-		(line (pt 16 16)(pt 24 8))
-		(line (pt 8 8)(pt 24 8))
-	)
-)
-(symbol
 	(rect 976 144 1200 320)
 	(text "VGA_SYNC" (rect 5 0 65 12)(font "Arial" ))
 	(text "inst" (rect 8 160 25 172)(font "Arial" ))
@@ -594,35 +548,6 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 1040 768 1232 848)
-	(text "seven_seg" (rect 5 0 59 12)(font "Arial" ))
-	(text "inst99" (rect 8 64 37 76)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "clk" (rect 0 0 14 12)(font "Arial" ))
-		(text "clk" (rect 21 27 35 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "bcd[0..2]" (rect 0 0 43 12)(font "Arial" ))
-		(text "bcd[0..2]" (rect 21 43 64 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48)(line_width 3))
-	)
-	(port
-		(pt 192 32)
-		(output)
-		(text "segment7[0..6]" (rect 0 0 74 12)(font "Arial" ))
-		(text "segment7[0..6]" (rect 109 27 183 39)(font "Arial" ))
-		(line (pt 192 32)(pt 176 32)(line_width 3))
-	)
-	(drawing
-		(rectangle (rect 16 16 176 64))
-	)
-)
-(symbol
 	(rect 536 632 768 840)
 	(text "game_control" (rect 5 0 71 12)(font "Arial" ))
 	(text "inst15" (rect 8 192 37 204)(font "Arial" ))
@@ -693,32 +618,83 @@ applicable agreement for further details.
 		(pt 232 32)
 		(output)
 		(text "game_mode[2..0]" (rect 0 0 86 12)(font "Arial" ))
-		(text "game_mode[2..0]" (rect 139 27 211 39)(font "Arial" ))
+		(text "game_mode[2..0]" (rect 139 27 225 39)(font "Arial" ))
 		(line (pt 232 32)(pt 216 32)(line_width 3))
 	)
 	(port
 		(pt 232 48)
 		(output)
 		(text "red_data[3..0]" (rect 0 0 68 12)(font "Arial" ))
-		(text "red_data[3..0]" (rect 154 43 211 55)(font "Arial" ))
+		(text "red_data[3..0]" (rect 154 43 222 55)(font "Arial" ))
 		(line (pt 232 48)(pt 216 48)(line_width 3))
 	)
 	(port
 		(pt 232 64)
 		(output)
 		(text "green_data[3..0]" (rect 0 0 80 12)(font "Arial" ))
-		(text "green_data[3..0]" (rect 144 59 211 71)(font "Arial" ))
+		(text "green_data[3..0]" (rect 144 59 224 71)(font "Arial" ))
 		(line (pt 232 64)(pt 216 64)(line_width 3))
 	)
 	(port
 		(pt 232 80)
 		(output)
 		(text "blue_data[3..0]" (rect 0 0 73 12)(font "Arial" ))
-		(text "blue_data[3..0]" (rect 150 75 211 87)(font "Arial" ))
+		(text "blue_data[3..0]" (rect 150 75 223 87)(font "Arial" ))
 		(line (pt 232 80)(pt 216 80)(line_width 3))
 	)
 	(drawing
 		(rectangle (rect 16 16 216 192))
+	)
+)
+(symbol
+	(rect 1040 768 1232 848)
+	(text "seven_seg" (rect 5 0 59 12)(font "Arial" ))
+	(text "inst99" (rect 8 64 37 76)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "bcd[0..2]" (rect 0 0 43 12)(font "Arial" ))
+		(text "bcd[0..2]" (rect 21 43 64 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 192 32)
+		(output)
+		(text "segment7[0..6]" (rect 0 0 74 12)(font "Arial" ))
+		(text "segment7[0..6]" (rect 109 27 171 39)(font "Arial" ))
+		(line (pt 192 32)(pt 176 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 176 64))
+	)
+)
+(symbol
+	(rect 96 304 248 384)
+	(text "lfsr" (rect 5 0 21 12)(font "Arial" ))
+	(text "inst3" (rect 8 64 31 76)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 152 32)
+		(output)
+		(text "cout[10..0]" (rect 0 0 53 12)(font "Arial" ))
+		(text "cout[10..0]" (rect 87 27 131 39)(font "Arial" ))
+		(line (pt 152 32)(pt 136 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 136 64))
 	)
 )
 (symbol
@@ -812,25 +788,6 @@ applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 200 192))
 	)
-)
-(connector
-	(text "clk25" (rect 58 336 83 348)(font "Arial" ))
-	(pt 96 352)
-	(pt 48 352)
-)
-(connector
-	(text "rand[10..0]" (rect 288 320 341 332)(font "Arial" ))
-	(pt 264 336)
-	(pt 320 336)
-	(bus)
-)
-(connector
-	(pt 96 336)
-	(pt 24 336)
-)
-(connector
-	(pt 24 336)
-	(pt 24 368)
 )
 (connector
 	(text "clk25" (rect 474 216 499 228)(font "Arial" ))
@@ -1000,12 +957,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "game_mode[2..0]" (rect 858 800 944 812)(font "Arial" ))
-	(pt 848 816)
-	(pt 1040 816)
-	(bus)
-)
-(connector
 	(pt 1200 176)
 	(pt 1288 176)
 	(bus)
@@ -1013,12 +964,6 @@ applicable agreement for further details.
 (connector
 	(pt 1200 192)
 	(pt 1288 192)
-	(bus)
-)
-(connector
-	(text "seg0[0..6]" (rect 1242 784 1291 796)(font "Arial" ))
-	(pt 1232 800)
-	(pt 1424 800)
 	(bus)
 )
 (connector
@@ -1141,5 +1086,28 @@ applicable agreement for further details.
 	(text "game_mode[2..0]" (rect 450 368 536 380)(font "Arial" ))
 	(pt 440 384)
 	(pt 632 384)
+	(bus)
+)
+(connector
+	(text "game_mode[2..0]" (rect 858 800 944 812)(font "Arial" ))
+	(pt 848 816)
+	(pt 1040 816)
+	(bus)
+)
+(connector
+	(text "clk25" (rect 58 320 83 332)(font "Arial" ))
+	(pt 96 336)
+	(pt 48 336)
+)
+(connector
+	(text "rand[10..0]" (rect 272 320 325 332)(font "Arial" ))
+	(pt 248 336)
+	(pt 304 336)
+	(bus)
+)
+(connector
+	(text "seg0[0..6]" (rect 1234 784 1283 796)(font "Arial" ))
+	(pt 1424 800)
+	(pt 1232 800)
 	(bus)
 )
