@@ -438,6 +438,51 @@ begin
 					character_address <= CONV_STD_LOGIC_VECTOR(5, 6);		
 				end if;
 			end if;
+			
+			if((game_view = "010")or(game_view = "011")or(game_view = "100")or(game_view = "101") then -- if any game level
+				--LEVEL
+				--L
+				if (pixel_col >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(16, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= CONV_STD_LOGIC_VECTOR(12, 6);
+				--E
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(16, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(32, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= CONV_STD_LOGIC_VECTOR(5, 6);
+				--V
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(32, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(48, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= CONV_STD_LOGIC_VECTOR(22, 6);
+				--E
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(48, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(64, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= CONV_STD_LOGIC_VECTOR(5, 6);
+				--L
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(64, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(80, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= CONV_STD_LOGIC_VECTOR(12, 6);
+				end if;	
+			end if;
 	end process;
 
 end behaviour;	
