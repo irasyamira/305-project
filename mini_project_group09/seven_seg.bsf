@@ -33,15 +33,15 @@ applicable agreement for further details.
 	(port
 		(pt 0 48)
 		(input)
-		(text "bcd[0..2]" (rect 0 0 34 12)(font "Arial" ))
-		(text "bcd[0..2]" (rect 21 43 55 55)(font "Arial" ))
+		(text "bcd[3..0]" (rect 0 0 34 12)(font "Arial" ))
+		(text "bcd[3..0]" (rect 21 43 55 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 3))
 	)
 	(port
 		(pt 192 32)
 		(output)
-		(text "segment7[0..6]" (rect 0 0 59 12)(font "Arial" ))
-		(text "segment7[0..6]" (rect 112 27 171 39)(font "Arial" ))
+		(text "segment7[6..0]" (rect 0 0 59 12)(font "Arial" ))
+		(text "segment7[6..0]" (rect 112 27 171 39)(font "Arial" ))
 		(line (pt 192 32)(pt 176 32)(line_width 3))
 	)
 	(drawing

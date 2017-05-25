@@ -439,7 +439,7 @@ begin
 				end if;
 			end if;
 			
-			if((game_view = "010")or(game_view = "011")or(game_view = "100")or(game_view = "101") then -- if any game level
+			if((game_view = "010")or(game_view = "011")or(game_view = "100")or(game_view = "101")) then -- if any game level
 				--LEVEL
 				--L
 				if (pixel_col >= CONV_STD_LOGIC_VECTOR(0, 10)) and

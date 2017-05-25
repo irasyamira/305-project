@@ -13,7 +13,8 @@ entity tank is
 			signal pixel_row, pixel_column				: in std_logic_vector(10 downto 0); 
 			signal horiz_sync_out,vert_sync_out		: in std_logic;
 			signal tank_on, player_on, bullet_on: out std_logic;
-			signal game_mode: in std_logic_vector(2 downto 0)); 
+			signal game_mode: in std_logic_vector(2 downto 0);
+			signal score: out std_logic_vector(3 downto 0)); 
 			
 end tank;
 
@@ -35,6 +36,8 @@ signal bullet_y_pos	: std_logic_vector(10 downto 0);
 signal player_y_pos,player_x_pos 	: std_logic_vector(10 downto 0);
 signal collision: std_logic;
 signal s_rand: std_logic_vector(10 downto 0);
+signal score_ones: std_logic_vector(3 downto 0) := "0000";
+signal score_tens: std_logic_vector(3 downto 0) := "0000";
 
 begin           
 
@@ -45,6 +48,7 @@ player_y_pos <= conv_std_logic_vector(380,11);
 		-- need internal copy of vert_sync to read
 vert_sync_int <= vert_sync_out;
 s_rand <= rand;
+
 
 
 rgb_display: process (tank_x_pos, tank_y_pos, player_x_pos, player_y_pos,bullet_x_pos, bullet_y_pos, pixel_column, pixel_row, size, bullet_size)
@@ -131,16 +135,9 @@ begin
 			end if;
 			
 			-- if exceeds boundary or hits the upper tank then bullet disappears
-			--if bullet_y_pos >= conv_std_logic_vector(480,11) - bullet_size then
 			if bullet_y_pos <= bullet_size then
 				bullet_fired <= '0';
 			end if;
-			
-			-- collision with the tank
---			if ('0' & tank_x_pos <= bullet_x_pos + size) and
---			(tank_x_pos + size >= '0' & bullet_x_pos) and
---			('0' & tank_y_pos <= bullet_y_pos + size) and
---			(tank_y_pos + size >= '0' & bullet_y_pos ) then
 			
 			
 			if ('0' & bullet_y_pos <= tank_y_pos + size) and 
@@ -152,6 +149,12 @@ begin
 				('0' & bullet_x_pos >= tank_x_pos - size) then
 				
 				bullet_fired <= '0';
+				score_ones <= score_ones + '1';
+				--score_ones <= "0001";
+--					if (score_ones > "1001") then
+--						score_tens <= score_tens + '1';
+--						score_ones <= "0000";
+--					end if;
 				-- bullet reappears off screen until left click is triggered again
 				bullet_x_pos <= conv_std_logic_vector(500,11);
 				bullet_y_pos <= conv_std_logic_vector(700,11);
@@ -230,6 +233,7 @@ begin
 --				bullet_y_pos <= conv_std_logic_vector(700,11);
 --			end if;	
 --		end if;
-			
+		score <= score_ones;	
 end process move_tank;
+
 end behavior;

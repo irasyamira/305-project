@@ -107,6 +107,13 @@ applicable agreement for further details.
 		(text "bullet_on" (rect 161 59 195 71)(font "Arial" ))
 		(line (pt 216 64)(pt 200 64)(line_width 1))
 	)
+	(port
+		(pt 216 80)
+		(output)
+		(text "score[3..0]" (rect 0 0 42 12)(font "Arial" ))
+		(text "score[3..0]" (rect 153 75 195 87)(font "Arial" ))
+		(line (pt 216 80)(pt 200 80)(line_width 3))
+	)
 	(drawing
 		(rectangle (rect 16 16 200 192)(line_width 1))
 	)

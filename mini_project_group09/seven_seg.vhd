@@ -5,14 +5,14 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity seven_seg is
   port (clk : in std_logic;
-        bcd : in std_logic_vector(0 to 2);
-        segment7 : out std_logic_vector(0 to 6));
+        bcd : in std_logic_vector(3 downto 0);
+        segment7 : out std_logic_vector(6 downto 0));
 end seven_seg;
 
 architecture bhv of seven_seg is
-	signal bcd_sig: std_logic_vector (0 to 3) := "0000";
+	signal bcd_sig: std_logic_vector (3 downto 0);
 begin
-	bcd_sig <= '0' & bcd;
+	bcd_sig <= bcd;
   process(clk,bcd)
   begin
     if(rising_edge(clk)) then
