@@ -43,9 +43,13 @@ if rising_edge(clk) then
 			s_red <= "0111";
 			s_green <= "1000";
 			s_blue <= "0000";
-	ELSIF (player_on = '1' OR tank_on= '1') and (s_game_mode /= "000") THEN -- rendering player and tank
+	ELSIF (player_on = '1') and (s_game_mode /= "000") THEN -- rendering player and tank
 			s_red <= "0000";
 			s_green <= "1100";
+			s_blue <= "0000";
+	ELSIF (tank_on= '1') and (s_game_mode /= "000") THEN -- rendering player and tank
+			s_red <= "1000";
+			s_green <= "0000";
 			s_blue <= "0000";
 	ELSE -- when rendering back ground
 			s_red <= "0000";

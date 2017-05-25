@@ -1,5 +1,5 @@
 Analysis & Synthesis report for mini_project_group09
-Thu May 25 10:55:33 2017
+Thu May 25 18:03:30 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -51,15 +51,15 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May 25 10:55:33 2017       ;
+; Analysis & Synthesis Status        ; Successful - Thu May 25 18:03:30 2017       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; mini_project_group09                        ;
 ; Top-level Entity Name              ; mini_project_group09                        ;
 ; Family                             ; Cyclone III                                 ;
-; Total logic elements               ; 821                                         ;
-;     Total combinational functions  ; 755                                         ;
-;     Dedicated logic registers      ; 242                                         ;
-; Total registers                    ; 242                                         ;
+; Total logic elements               ; 816                                         ;
+;     Total combinational functions  ; 751                                         ;
+;     Dedicated logic registers      ; 249                                         ;
+; Total registers                    ; 249                                         ;
 ; Total pins                         ; 29                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 4,096                                       ;
@@ -164,12 +164,11 @@ applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 2           ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ; < 0.1%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -207,20 +206,20 @@ applicable agreement for further details.
 +---------------------------------------------+-------------------------------+
 ; Resource                                    ; Usage                         ;
 +---------------------------------------------+-------------------------------+
-; Estimated Total logic elements              ; 821                           ;
+; Estimated Total logic elements              ; 816                           ;
 ;                                             ;                               ;
-; Total combinational functions               ; 755                           ;
+; Total combinational functions               ; 751                           ;
 ; Logic element usage by number of LUT inputs ;                               ;
-;     -- 4 input functions                    ; 280                           ;
-;     -- 3 input functions                    ; 250                           ;
-;     -- <=2 input functions                  ; 225                           ;
+;     -- 4 input functions                    ; 260                           ;
+;     -- 3 input functions                    ; 234                           ;
+;     -- <=2 input functions                  ; 257                           ;
 ;                                             ;                               ;
 ; Logic elements by mode                      ;                               ;
-;     -- normal mode                          ; 478                           ;
-;     -- arithmetic mode                      ; 277                           ;
+;     -- normal mode                          ; 446                           ;
+;     -- arithmetic mode                      ; 305                           ;
 ;                                             ;                               ;
-; Total registers                             ; 242                           ;
-;     -- Dedicated logic registers            ; 242                           ;
+; Total registers                             ; 249                           ;
+;     -- Dedicated logic registers            ; 249                           ;
 ;     -- I/O registers                        ; 0                             ;
 ;                                             ;                               ;
 ; I/O pins                                    ; 29                            ;
@@ -228,8 +227,8 @@ applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0                             ;
 ; Maximum fan-out node                        ; clk_divider:inst7|clock_25Mhz ;
 ; Maximum fan-out                             ; 102                           ;
-; Total fan-out                               ; 3091                          ;
-; Average fan-out                             ; 2.90                          ;
+; Total fan-out                               ; 3069                          ;
+; Average fan-out                             ; 2.87                          ;
 +---------------------------------------------+-------------------------------+
 
 
@@ -238,17 +237,17 @@ applicable agreement for further details.
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                  ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
-; |mini_project_group09                     ; 755 (1)           ; 242 (0)      ; 4096        ; 0            ; 0       ; 0         ; 29   ; 0            ; |mini_project_group09                                                                                ;              ;
+; |mini_project_group09                     ; 751 (1)           ; 249 (0)      ; 4096        ; 0            ; 0       ; 0         ; 29   ; 0            ; |mini_project_group09                                                                                ;              ;
 ;    |MOUSE:inst1|                          ; 83 (83)           ; 92 (92)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|MOUSE:inst1                                                                    ;              ;
-;    |VGA_SYNC:inst|                        ; 67 (67)           ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|VGA_SYNC:inst                                                                  ;              ;
+;    |VGA_SYNC:inst|                        ; 66 (66)           ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|VGA_SYNC:inst                                                                  ;              ;
 ;    |char_rom:inst12|                      ; 5 (5)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|char_rom:inst12                                                                ;              ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|char_rom:inst12|altsyncram:altsyncram_component                                ;              ;
 ;          |altsyncram_kt91:auto_generated| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated ;              ;
 ;    |clk_divider:inst7|                    ; 44 (44)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|clk_divider:inst7                                                              ;              ;
-;    |game_control:inst15|                  ; 15 (15)           ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|game_control:inst15                                                            ;              ;
+;    |game_control:inst15|                  ; 16 (16)           ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|game_control:inst15                                                            ;              ;
 ;    |screen_text:inst14|                   ; 218 (218)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|screen_text:inst14                                                             ;              ;
 ;    |seven_seg:inst99|                     ; 1 (1)             ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|seven_seg:inst99                                                               ;              ;
-;    |tank:inst11|                          ; 321 (321)         ; 50 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|tank:inst11                                                                    ;              ;
+;    |tank:inst11|                          ; 317 (317)         ; 57 (57)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|tank:inst11                                                                    ;              ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -311,20 +310,15 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MOUSE:inst1|SHIFTOUT[10]               ; Stuck at VCC due to stuck port data_in      ;
 ; tank:inst11|bullet_y_motion[1,3..9]    ; Merged with tank:inst11|bullet_y_motion[10] ;
 ; tank:inst11|bullet_y_motion[2]         ; Merged with tank:inst11|bullet_y_motion[0]  ;
-; tank:inst11|tank_y_pos[1,8..10]        ; Merged with tank:inst11|tank_y_pos[0]       ;
 ; tank:inst11|tank_x_motion[2..9]        ; Merged with tank:inst11|tank_x_motion[10]   ;
-; tank:inst11|tank_y_pos[0]              ; Stuck at GND due to stuck port data_in      ;
 ; game_control:inst15|s_game_mode[2]     ; Stuck at GND due to stuck port data_in      ;
 ; seven_seg:inst99|segment7[1]           ; Stuck at GND due to stuck port data_in      ;
 ; tank:inst11|bullet_y_motion[0]         ; Stuck at GND due to stuck port data_in      ;
 ; tank:inst11|bullet_y_pos[0]            ; Stuck at GND due to stuck port data_in      ;
-; tank:inst11|tank_x_motion[1]           ; Stuck at VCC due to stuck port data_in      ;
-; tank:inst11|tank_x_motion[0]           ; Stuck at GND due to stuck port data_in      ;
 ; tank:inst11|bullet_y_motion[10]        ; Stuck at VCC due to stuck port data_in      ;
-; tank:inst11|tank_x_pos[0]              ; Stuck at GND due to stuck port data_in      ;
 ; VGA_SYNC:inst|pixel_column[10]         ; Stuck at GND due to stuck port data_in      ;
 ; VGA_SYNC:inst|pixel_row[9,10]          ; Stuck at GND due to stuck port data_in      ;
-; Total Number of Removed Registers = 42 ;                                             ;
+; Total Number of Removed Registers = 34 ;                                             ;
 +----------------------------------------+---------------------------------------------+
 
 
@@ -333,10 +327,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +------------------------------------+---------------------------+---------------------------------------------------------------+
 ; Register name                      ; Reason for Removal        ; Registers Removed due to This Register                        ;
 +------------------------------------+---------------------------+---------------------------------------------------------------+
-; tank:inst11|tank_y_pos[0]          ; Stuck at GND              ; tank:inst11|bullet_y_pos[0], tank:inst11|tank_x_motion[1],    ;
-;                                    ; due to stuck port data_in ; tank:inst11|tank_x_motion[0]                                  ;
 ; game_control:inst15|s_game_mode[2] ; Stuck at GND              ; seven_seg:inst99|segment7[1], tank:inst11|bullet_y_motion[0], ;
-;                                    ; due to stuck port data_in ; tank:inst11|tank_x_pos[0]                                     ;
+;                                    ; due to stuck port data_in ; tank:inst11|bullet_y_pos[0]                                   ;
 +------------------------------------+---------------------------+---------------------------------------------------------------+
 
 
@@ -345,34 +337,31 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 242   ;
+; Total registers                              ; 249   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 10    ;
+; Number of registers using Synchronous Load   ; 20    ;
 ; Number of registers using Asynchronous Clear ; 16    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 144   ;
+; Number of registers using Clock Enable       ; 159   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------+
-; Inverted Register Statistics                      ;
-+-----------------------------------------+---------+
-; Inverted Register                       ; Fan out ;
-+-----------------------------------------+---------+
-; tank:inst11|player_x_pos[8]             ; 6       ;
-; tank:inst11|player_x_pos[6]             ; 6       ;
-; tank:inst11|tank_y_pos[6]               ; 12      ;
-; tank:inst11|tank_y_pos[5]               ; 11      ;
-; tank:inst11|tank_y_pos[2]               ; 8       ;
-; MOUSE:inst1|send_char                   ; 3       ;
-; MOUSE:inst1|SHIFTOUT[3]                 ; 1       ;
-; MOUSE:inst1|SHIFTOUT[5]                 ; 1       ;
-; MOUSE:inst1|SHIFTOUT[6]                 ; 1       ;
-; MOUSE:inst1|SHIFTOUT[7]                 ; 1       ;
-; MOUSE:inst1|SHIFTOUT[8]                 ; 1       ;
-; Total number of inverted registers = 11 ;         ;
-+-----------------------------------------+---------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; tank:inst11|tank_y_pos[5]              ; 3       ;
+; tank:inst11|tank_y_pos[3]              ; 3       ;
+; MOUSE:inst1|send_char                  ; 3       ;
+; MOUSE:inst1|SHIFTOUT[3]                ; 1       ;
+; MOUSE:inst1|SHIFTOUT[5]                ; 1       ;
+; MOUSE:inst1|SHIFTOUT[6]                ; 1       ;
+; MOUSE:inst1|SHIFTOUT[7]                ; 1       ;
+; MOUSE:inst1|SHIFTOUT[8]                ; 1       ;
+; Total number of inverted registers = 8 ;         ;
++----------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -380,19 +369,18 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|new_cursor_column[9]   ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|VGA_SYNC:inst|v_count[3]           ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|new_cursor_column[6]   ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|VGA_SYNC:inst|v_count[0]           ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |mini_project_group09|game_control:inst15|s_game_mode[0] ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|bullet_x_pos[7]        ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|cursor_column[7]       ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|bullet_y_pos[5]        ;
-; 6:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|player_x_pos[1]        ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |mini_project_group09|tank:inst11|tank_y_pos[3]          ;
-; 11:1               ; 3 bits    ; 21 LEs        ; 12 LEs               ; 9 LEs                  ; Yes        ; |mini_project_group09|tank:inst11|tank_x_motion[10]      ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |mini_project_group09|tank:inst11|player_x_pos[8]        ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |mini_project_group09|tank:inst11|tank_y_pos[2]          ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |mini_project_group09|game_control:inst15|green_data[2]  ;
-; 10:1               ; 6 bits    ; 36 LEs        ; 6 LEs                ; 30 LEs                 ; No         ; |mini_project_group09|screen_text:inst14|font_col[0]     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank_y_pos[1]          ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|bullet_x_pos[6]        ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|cursor_column[9]       ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|bullet_y_pos[8]        ;
+; 6:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|player_x_pos[4]        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 0 LEs                ; 4 LEs                  ; Yes        ; |mini_project_group09|tank:inst11|tank_y_pos[5]          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |mini_project_group09|game_control:inst15|green_data[2]  ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |mini_project_group09|game_control:inst15|blue_data[3]   ;
+; 10:1               ; 6 bits    ; 36 LEs        ; 6 LEs                ; 30 LEs                 ; No         ; |mini_project_group09|screen_text:inst14|font_col[1]     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 
 
@@ -501,7 +489,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Thu May 25 10:55:29 2017
+    Info: Processing started: Thu May 25 18:03:26 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mini_project_group09 -c mini_project_group09
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file mini_project_group09.bdf
@@ -546,8 +534,9 @@ Info (12128): Elaborating entity "game_control" for hierarchy "game_control:inst
 Warning (10492): VHDL Process Statement warning at game_control.vhd(42): signal "bullet_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at game_control.vhd(42): signal "s_game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at game_control.vhd(46): signal "player_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at game_control.vhd(46): signal "tank_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at game_control.vhd(46): signal "s_game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at game_control.vhd(50): signal "tank_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at game_control.vhd(50): signal "s_game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "char_rom" for hierarchy "char_rom:inst12"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "char_rom:inst12|altsyncram:altsyncram_component"
 Info (12130): Elaborated megafunction instantiation "char_rom:inst12|altsyncram:altsyncram_component"
@@ -586,7 +575,7 @@ Info (10041): Inferred latch for "font_row[0]" at screen_text.vhd(18)
 Info (10041): Inferred latch for "font_row[1]" at screen_text.vhd(18)
 Info (10041): Inferred latch for "font_row[2]" at screen_text.vhd(18)
 Info (12128): Elaborating entity "tank" for hierarchy "tank:inst11"
-Warning (10036): Verilog HDL or VHDL warning at tank.vhd(25): object "collision" assigned a value but never read
+Warning (10540): VHDL Signal Declaration warning at tank.vhd(29): used explicit default value for signal "tank_y_motion" because signal was never assigned a value
 Info (12128): Elaborating entity "lfsr" for hierarchy "lfsr:inst3"
 Info (12128): Elaborating entity "seven_seg" for hierarchy "seven_seg:inst99"
 Warning (13012): Latch screen_text:inst14|font_col[1] has unsafe behavior
@@ -620,15 +609,15 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 870 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 865 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 23 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 833 logic cells
+    Info (21061): Implemented 828 logic cells
     Info (21064): Implemented 8 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 40 warnings
-    Info: Peak virtual memory: 511 megabytes
-    Info: Processing ended: Thu May 25 10:55:33 2017
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 41 warnings
+    Info: Peak virtual memory: 503 megabytes
+    Info: Processing ended: Thu May 25 18:03:30 2017
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:03
 
