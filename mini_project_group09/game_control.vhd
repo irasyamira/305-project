@@ -4,7 +4,7 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_signed.all;
 
 entity game_control is
-   port	(clk, rom_mux, bt2, bt1, sw0	: in std_logic;
+   port	(clk, rom_mux, bt_select, bt_menu, sw0	: in std_logic;
 			tank_on, player_on, bullet_on: in std_logic;
 			pixel_row: in std_logic_vector (10 downto 0);
 			game_mode							: out std_logic_vector(2 downto 0);
@@ -22,11 +22,11 @@ begin
 process(rom_mux, clk)
 begin
 if rising_edge(clk) then
-		if bt1 = '0' then
+		if bt_menu = '0' then
 			s_game_mode <= "000"; -- back to menu screen
 		end if;
 
-		if bt2 = '0' then
+		if bt_select = '0' then
 			if sw0 = '0' then
 				s_game_mode <= "001"; -- practice screen
 			else

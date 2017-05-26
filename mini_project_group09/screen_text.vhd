@@ -25,81 +25,81 @@ begin
 	number_processing : process (tanks_left, time_tens, time_ones, score_tens, score_ones, game_view)
 	begin
 		case tanks_left is
-			when "0000" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
-			when "0001" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6); -- 1
-			when "0010" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6); -- 2
-			when "0011" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6); -- 3
-			when "0100" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6); -- 4
-			when "0101" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6); -- 5
-			when "0110" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6); -- 6
-			when "0111" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6); -- 7
-			when "1000" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6); -- 8
-			when "1001" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6); -- 9
-			when others => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
+			when "0000" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
+			when "0001" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6);-- 1
+			when "0010" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6);-- 2
+			when "0011" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6);-- 3
+			when "0100" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6);-- 4
+			when "0101" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6);-- 5
+			when "0110" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6);-- 6
+			when "0111" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6);-- 7
+			when "1000" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6);-- 8
+			when "1001" => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6);-- 9
+			when others => tanks_left_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
 		end case;
 		
 		case time_tens is
-			when "0000" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
-			when "0001" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6); -- 1
-			when "0010" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6); -- 2
-			when "0011" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6); -- 3
-			when "0100" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6); -- 4
-			when "0101" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6); -- 5
-			when "0110" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6); -- 6
-			when "0111" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6); -- 7
-			when "1000" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6); -- 8
-			when "1001" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6); -- 9
-			when others => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
+			when "0000" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
+			when "0001" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6);-- 1
+			when "0010" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6);-- 2
+			when "0011" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6);-- 3
+			when "0100" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6);-- 4
+			when "0101" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6);-- 5
+			when "0110" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6);-- 6
+			when "0111" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6);-- 7
+			when "1000" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6);-- 8
+			when "1001" => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6);-- 9
+			when others => time_tens_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
 		end case;
 		
 		case time_ones is
-			when "0000" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
-			when "0001" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6); -- 1
-			when "0010" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6); -- 2
-			when "0011" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6); -- 3
-			when "0100" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6); -- 4
-			when "0101" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6); -- 5
-			when "0110" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6); -- 6
-			when "0111" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6); -- 7
-			when "1000" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6); -- 8
-			when "1001" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6); -- 9
-			when others => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
+			when "0000" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
+			when "0001" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6);-- 1
+			when "0010" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6);-- 2
+			when "0011" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6);-- 3
+			when "0100" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6);-- 4
+			when "0101" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6);-- 5
+			when "0110" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6);-- 6
+			when "0111" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6);-- 7
+			when "1000" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6);-- 8
+			when "1001" => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6);-- 9
+			when others => time_ones_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
 		end case;
 		
 		case score_tens is
-			when "0000" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
-			when "0001" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6); -- 1
-			when "0010" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6); -- 2
-			when "0011" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6); -- 3
-			when "0100" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6); -- 4
-			when "0101" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6); -- 5
-			when "0110" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6); -- 6
-			when "0111" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6); -- 7
-			when "1000" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6); -- 8
-			when "1001" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6); -- 9
-			when others => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
+			when "0000" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
+			when "0001" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6);-- 1
+			when "0010" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6);-- 2
+			when "0011" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6);-- 3
+			when "0100" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6);-- 4
+			when "0101" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6);-- 5
+			when "0110" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6);-- 6
+			when "0111" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6);-- 7
+			when "1000" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6);-- 8
+			when "1001" => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6);-- 9
+			when others => score_tens_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
 		end case;
 		
 		case score_ones is
-			when "0000" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
-			when "0001" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6); -- 1
-			when "0010" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6); -- 2
-			when "0011" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6); -- 3
-			when "0100" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6); -- 4
-			when "0101" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6); -- 5
-			when "0110" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6); -- 6
-			when "0111" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6); -- 7
-			when "1000" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6); -- 8
-			when "1001" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6); -- 9
-			when others => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6); -- 0
+			when "0000" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
+			when "0001" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(49, 6);-- 1
+			when "0010" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(50, 6);-- 2
+			when "0011" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(51, 6);-- 3
+			when "0100" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(52, 6);-- 4
+			when "0101" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(53, 6);-- 5
+			when "0110" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(54, 6);-- 6
+			when "0111" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(55, 6);-- 7
+			when "1000" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(56, 6);-- 8
+			when "1001" => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(57, 6);-- 9
+			when others => score_ones_char_rom <= CONV_STD_LOGIC_VECTOR(48, 6);-- 0
 		end case;
 		
 		case game_view is
-			when "010" => level <= CONV_STD_LOGIC_VECTOR(49, 6); -- level 1
-			when "011" => level <= CONV_STD_LOGIC_VECTOR(50, 6); -- level 2
-			when "100" => level <= CONV_STD_LOGIC_VECTOR(51, 6); -- level 3
-			when "101" => level <= CONV_STD_LOGIC_VECTOR(52, 6); -- level 4
-			when others => level <= CONV_STD_LOGIC_VECTOR(49, 6); -- level 1
+			when "010" => level <= CONV_STD_LOGIC_VECTOR(49, 6); -- lvl 1
+			when "011" => level <= CONV_STD_LOGIC_VECTOR(50, 6); -- lvl 2
+			when "100" => level <= CONV_STD_LOGIC_VECTOR(51, 6); -- lvl 3
+			when "101" => level <= CONV_STD_LOGIC_VECTOR(52, 6); -- lvl 4
+			when others => level <= CONV_STD_LOGIC_VECTOR(49, 6); -- lvl 1
 		end case;
 	end process;
 	
@@ -704,6 +704,14 @@ begin
 					font_row <= pixel_row(3 downto 1);
 					font_col <= pixel_col(3 downto 1);
 					character_address <= CONV_STD_LOGIC_VECTOR(12, 6);
+				--level--
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(96, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(112, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= level;
 				-- TANKS LEFT
 				--T--
 				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(0, 10)) and
@@ -777,6 +785,15 @@ begin
 					font_row <= pixel_row(3 downto 1);
 					font_col <= pixel_col(3 downto 1);
 					character_address <= CONV_STD_LOGIC_VECTOR(20, 6);
+				--tanks_left--
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(176, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(192, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(32, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(47, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= tanks_left_char_rom;
+				
 				-- TIME LEFT
 				--T--
 				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(144, 10)) and
@@ -842,22 +859,22 @@ begin
 					font_row <= pixel_row(3 downto 1);
 					font_col <= pixel_col(3 downto 1);
 					character_address <= CONV_STD_LOGIC_VECTOR(20, 6);
---				--time_tens--
---				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(304, 10)) and
---					(pixel_col <= CONV_STD_LOGIC_VECTOR(320, 10)) and
---					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
---					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
---					font_row <= pixel_row(3 downto 1);
---					font_col <= pixel_col(3 downto 1);
---					character_address <= time_tens_char_rom;
---				--time_ones--
---				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(320, 10)) and
---					(pixel_col <= CONV_STD_LOGIC_VECTOR(336, 10)) and
---					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
---					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
---					font_row <= pixel_row(3 downto 1);
---					font_col <= pixel_col(3 downto 1);
---					character_address <= time_ones_char_rom;
+				--time_tens--
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(304, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(320, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= time_tens_char_rom;
+				--time_ones--
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(320, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(336, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= time_ones_char_rom;
 				-- SCORE
 				--S--
 				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(368, 10)) and
@@ -899,22 +916,22 @@ begin
 					font_row <= pixel_row(3 downto 1);
 					font_col <= pixel_col(3 downto 1);
 					character_address <= CONV_STD_LOGIC_VECTOR(5, 6);
---				--score_tens--
---				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(480, 10)) and
---					(pixel_col <= CONV_STD_LOGIC_VECTOR(496, 10)) and
---					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
---					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
---					font_row <= pixel_row(3 downto 1);
---					font_col <= pixel_col(3 downto 1);
---					character_address <= score_tens_char_rom;
---				--score_ones--
---				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(496, 10)) and
---					(pixel_col <= CONV_STD_LOGIC_VECTOR(512, 10)) and
---					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
---					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
---					font_row <= pixel_row(3 downto 1);
---					font_col <= pixel_col(3 downto 1);
---					character_address <= score_ones_char_rom;
+				--score_tens--
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(464, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(480, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= score_tens_char_rom;
+				--score_ones--
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(480, 10)) and
+					(pixel_col <= CONV_STD_LOGIC_VECTOR(496, 10)) and
+					(pixel_row >= CONV_STD_LOGIC_VECTOR(0, 10)) and
+					(pixel_row <= CONV_STD_LOGIC_VECTOR(15, 10)) then
+					font_row <= pixel_row(3 downto 1);
+					font_col <= pixel_col(3 downto 1);
+					character_address <= score_ones_char_rom;
 				end if;
 			elsif (game_view = "110")then--Game over screen
 				--GAME OVER

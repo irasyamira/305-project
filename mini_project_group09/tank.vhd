@@ -8,6 +8,7 @@ library work;
 entity tank is
 
    port	(signal left_click, clk 			: in std_logic;
+			signal pause_clk: in std_logic;
 			signal rand: in std_logic_vector(10 downto 0);
 			signal mouse_col : in std_logic_vector (9 downto 0);
 			signal pixel_row, pixel_column				: in std_logic_vector(10 downto 0); 
@@ -88,6 +89,14 @@ begin
 	-- move tank once every vertical sync
 	wait until vert_sync_int'event and vert_sync_int = '1';
 	
+	if (pause_clk = '0' and game_mode /= "000") then
+		tank_x_pos <= tank_x_pos;
+		tank_y_pos <= tank_y_pos;
+		bullet_x_pos <= bullet_x_pos;
+		bullet_y_pos <= bullet_y_pos;
+		player_x_pos <= player_x_pos;
+		player_y_pos <= player_y_pos;
+	else
 	-- GAME MODE
 	--if (game_mode = "010") then
 	
@@ -172,7 +181,7 @@ begin
 							tank_y_pos <= conv_std_logic_vector(80,11);
 						end if;	
 			end if;
-
+	end if;
 	
 		
 --	-- PRACTISE MODE	

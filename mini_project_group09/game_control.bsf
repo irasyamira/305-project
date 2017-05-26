@@ -40,15 +40,15 @@ applicable agreement for further details.
 	(port
 		(pt 0 64)
 		(input)
-		(text "bt2" (rect 0 0 11 12)(font "Arial" ))
-		(text "bt2" (rect 21 59 32 71)(font "Arial" ))
+		(text "bt_select" (rect 0 0 35 12)(font "Arial" ))
+		(text "bt_select" (rect 21 59 56 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 1))
 	)
 	(port
 		(pt 0 80)
 		(input)
-		(text "bt1" (rect 0 0 10 12)(font "Arial" ))
-		(text "bt1" (rect 21 75 31 87)(font "Arial" ))
+		(text "bt_menu" (rect 0 0 35 12)(font "Arial" ))
+		(text "bt_menu" (rect 21 75 56 87)(font "Arial" ))
 		(line (pt 0 80)(pt 16 80)(line_width 1))
 	)
 	(port
