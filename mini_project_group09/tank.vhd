@@ -28,9 +28,9 @@ signal bullet_fired: std_logic;
 signal bullet_speed: std_logic_vector(10 downto 0);
 signal size 								: std_logic_vector(10 downto 0);  
 signal bullet_size 								: std_logic_vector(10 downto 0); 
-signal tank_x_motion, player_x_motion 	 : std_logic_vector(10 downto 0);
-signal tank_y_motion: std_logic_vector(10 downto 0) := conv_std_logic_vector(10,11);
-signal bullet_y_motion						: std_logic_vector(10 downto 0);
+signal tank_x_motion, player_x_motion 	 : std_logic_vector(10 downto 0):= conv_std_logic_vector(0,11);
+signal tank_y_motion: std_logic_vector(10 downto 0) := conv_std_logic_vector(0,11);
+signal bullet_y_motion						: std_logic_vector(10 downto 0):= conv_std_logic_vector(0,11);
 signal tank_x_pos							: std_logic_vector(10 downto 0); 
 signal tank_y_pos				: std_logic_vector(10 downto 0) := conv_std_logic_vector(80,11);
 signal bullet_x_pos : std_logic_vector(10 downto 0);
@@ -92,15 +92,15 @@ begin
 		-- PRACTICE MODE	
 		-- LEVEL 0
 
---		if (pause_clk = '0' and game_mode /= "000") then
---			tank_x_pos <= tank_x_pos;
---			tank_y_pos <= tank_y_pos;
---			bullet_x_pos <= bullet_x_pos;
---			bullet_y_pos <= bullet_y_pos;
---			player_x_pos <= player_x_pos;
---			player_y_pos <= player_y_pos;
---
---		else
+		if (pause_clk = '0' and game_mode /= "000") then
+			tank_x_pos <= tank_x_pos;
+			tank_y_pos <= tank_y_pos;
+			bullet_x_pos <= bullet_x_pos;
+			bullet_y_pos <= bullet_y_pos;
+			player_x_pos <= player_x_pos;
+			player_y_pos <= player_y_pos;
+
+		else
 
 			-- tank moving in horizontal motion
 			if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
@@ -173,21 +173,30 @@ begin
 							tank_y_pos <= conv_std_logic_vector(80,11);
 						end if;	
 			end if;
---		end if;	-- pause
+		end if;	-- pause
 
 	else
 
+		if (pause_clk = '0' and game_mode /= "000") then
+			tank_x_pos <= tank_x_pos;
+			tank_y_pos <= tank_y_pos;
+			bullet_x_pos <= bullet_x_pos;
+			bullet_y_pos <= bullet_y_pos;
+			player_x_pos <= player_x_pos;
+			player_y_pos <= player_y_pos;
+
+		else
 			-- tank moving in zig zag motion
 				if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
 						-- edit tank speed here
 						tank_x_motion <= - conv_std_logic_vector(3,11);
 						-- set new y position
-						tank_y_pos <= tank_y_pos + tank_y_motion;
+						tank_y_pos <= tank_y_pos + conv_std_logic_vector(4,11);
 				elsif tank_x_pos <= size then
 						-- edit tank speed here
 						tank_x_motion <= conv_std_logic_vector(3,11);
 						-- set new y position
-						tank_y_pos <= tank_y_pos + tank_y_motion;
+						tank_y_pos <= tank_y_pos + conv_std_logic_vector(4,11);
 				end if;
 				-- compute next tank x position
 					tank_x_pos <= tank_x_pos + tank_x_motion;
@@ -255,7 +264,7 @@ begin
 							end if;	
 				end if;
 			end if;	
-
+	end if;
 	
 		o_score_ones <= score_ones;
 		o_score_tens <= score_tens;

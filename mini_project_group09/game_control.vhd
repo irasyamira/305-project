@@ -102,12 +102,12 @@ begin
 			s_red <= "0111";
 			s_green <= "1000";
 			s_blue <= "0000";
-	elsif (player_on = '1') and (s_game_mode /= "000") then -- rendering player and tank
+	elsif (player_on = '1') and (s_game_mode /= "000") then -- rendering player (purple)
+			s_red <= "1110";
+			s_green <= "0000";
+			s_blue <= "1110";
+	elsif (tank_on= '1') and (s_game_mode /= "000") then -- rendering player (black)
 			s_red <= "0000";
-			s_green <= "1100";
-			s_blue <= "0000";
-	elsif (tank_on= '1') and (s_game_mode /= "000") then -- rendering player and tank
-			s_red <= "1000";
 			s_green <= "0000";
 			s_blue <= "0000";
 	else -- when rendering back ground
