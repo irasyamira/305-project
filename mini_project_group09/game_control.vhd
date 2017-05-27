@@ -10,7 +10,8 @@ entity game_control is
 			game_mode							: out std_logic_vector(2 downto 0);
 			red_data, green_data, blue_data		: out std_logic_vector(3 downto 0);
 			score_ones: in std_logic_vector(3 downto 0);
-			reset_tank: out std_logic);
+			reset_tank: out std_logic;
+			tank2_on: in std_logic);
 end game_control;
 
 architecture bhv of game_control is
@@ -25,7 +26,6 @@ signal current_s, next_s: state_type;
 begin
 process(clk)
 begin
-
 	if (rising_edge(clk)) then
 		current_s <= next_s;
 	end if;
@@ -37,6 +37,7 @@ begin
 	case current_s is
 		when menu =>
 			s_game_mode <= "000";
+			reset_tank <= '1';
 			if bt_select = '0' then
 				if sw0 = '0' then
 					next_s <= practice; -- practice screen
@@ -57,7 +58,7 @@ begin
 			s_game_mode <= "010";
 			if bt_menu = '0' then
 				next_s <= menu;
-			elsif score_ones > "0011" then
+			elsif score_ones > "0010" then
 				next_s <= lvl2;
 			else 
 				next_s <= lvl1;
@@ -66,7 +67,7 @@ begin
 			s_game_mode <= "011";
 			if bt_menu = '0' then
 				next_s <= menu;
-			elsif score_ones > "0110" then
+			elsif score_ones > "0100" then
 				next_s <= lvl3;
 			else
 				next_s <= lvl2;
@@ -75,7 +76,7 @@ begin
 			s_game_mode <= "100";
 			if bt_menu = '0' then
 				next_s <= menu;
-			elsif score_ones > "0111" then
+			elsif score_ones > "0110" then
 				next_s <= lvl4;
 			else
 				next_s <= lvl3;
@@ -102,12 +103,16 @@ begin
 			s_red <= "0111";
 			s_green <= "1000";
 			s_blue <= "0000";
-	elsif (player_on = '1') and (s_game_mode /= "000") then -- rendering player (purple)
-			s_red <= "1110";
-			s_green <= "0000";
-			s_blue <= "1110";
-	elsif (tank_on= '1') and (s_game_mode /= "000") then -- rendering player (black)
+	elsif (player_on = '1') and (s_game_mode /= "000") then -- rendering player
 			s_red <= "0000";
+			s_green <= "1100";
+			s_blue <= "1110";
+	elsif (tank_on= '1') and (s_game_mode /= "000") then -- rendering tank(black)
+			s_red <= "0000";
+			s_green <= "0000";
+			s_blue <= "0000";
+	elsif (tank2_on= '1') and (s_game_mode = "101") then -- rendering tank 2
+			s_red <= "1000";
 			s_green <= "0000";
 			s_blue <= "0000";
 	else -- when rendering back ground

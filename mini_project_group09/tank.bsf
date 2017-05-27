@@ -135,6 +135,13 @@ applicable agreement for further details.
 		(text "o_score_tens[3..0]" (rect 160 91 235 103)(font "Arial" ))
 		(line (pt 256 96)(pt 240 96)(line_width 3))
 	)
+	(port
+		(pt 256 112)
+		(output)
+		(text "tank2_on" (rect 0 0 36 12)(font "Arial" ))
+		(text "tank2_on" (rect 199 107 235 119)(font "Arial" ))
+		(line (pt 256 112)(pt 240 112)(line_width 1))
+	)
 	(drawing
 		(rectangle (rect 16 16 240 224)(line_width 1))
 	)
