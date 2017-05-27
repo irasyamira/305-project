@@ -8,60 +8,117 @@ entity game_control is
 			tank_on, player_on, bullet_on: in std_logic;
 			pixel_row: in std_logic_vector (10 downto 0);
 			game_mode							: out std_logic_vector(2 downto 0);
-			red_data, green_data, blue_data		: out std_logic_vector(3 downto 0));
+			red_data, green_data, blue_data		: out std_logic_vector(3 downto 0);
+			score_ones: in std_logic_vector(3 downto 0);
+			reset_tank: out std_logic);
 end game_control;
 
 architecture bhv of game_control is
 
+type state_type is (menu, practice, lvl1, lvl2, lvl3, lvl4);
 signal s_red  		 : std_logic_vector(3 downto 0) := "0000";
 signal s_green		 : std_logic_vector(3 downto 0) := "0000";
 signal s_blue 		 : std_logic_vector(3 downto 0) := "0000";
 signal s_game_mode		 : std_logic_vector(2 downto 0) := "000";
+signal current_s, next_s: state_type;
 
 begin
-process(rom_mux, clk)
+process(clk)
 begin
-if rising_edge(clk) then
-		if bt_menu = '0' then
-			s_game_mode <= "000"; -- back to menu screen
-		end if;
 
-		if bt_select = '0' then
-			if sw0 = '0' then
-				s_game_mode <= "001"; -- practice screen
-			else
-				s_game_mode <= "010"; -- game screen
-			end if;
-		end if;
+	if (rising_edge(clk)) then
+		current_s <= next_s;
 	end if;
+end process;
+
+process (current_s, bt_select, bt_menu, sw0, score_ones)
+begin
+
+	case current_s is
+		when menu =>
+			s_game_mode <= "000";
+			if bt_select = '0' then
+				if sw0 = '0' then
+					next_s <= practice; -- practice screen
+				else
+					next_s <= lvl1; -- game screen
+				end if;
+			else
+				next_s <= menu;
+			end if;
+		when practice =>
+			s_game_mode <= "001";
+			if bt_menu = '0' then
+				next_s <= menu;
+			else
+				next_s <= practice;
+			end if;
+		when lvl1 =>
+			s_game_mode <= "010";
+			if bt_menu = '0' then
+				next_s <= menu;
+			elsif score_ones > "0011" then
+				next_s <= lvl2;
+			else 
+				next_s <= lvl1;
+			end if;
+		when lvl2 =>
+			s_game_mode <= "011";
+			if bt_menu = '0' then
+				next_s <= menu;
+			elsif score_ones > "0110" then
+				next_s <= lvl3;
+			else
+				next_s <= lvl2;
+			end if;
+		when lvl3 =>
+			s_game_mode <= "100";
+			if bt_menu = '0' then
+				next_s <= menu;
+			elsif score_ones > "0111" then
+				next_s <= lvl4;
+			else
+				next_s <= lvl3;
+			end if;
+		when lvl4 =>
+			s_game_mode <= "101";
+			if bt_menu = '0' then
+				next_s <= menu;
+			else
+				next_s <= lvl4;
+			end if;
+	end case;
 	
-	IF rom_mux = '1' THEN -- rendering text
+end process;
+game_mode <= s_game_mode;
+
+process(bullet_on, s_game_mode, player_on, tank_on, rom_mux, pixel_row)
+begin
+	if rom_mux = '1' then -- rendering text
 			s_red <= "1111";
 			s_green <= "1111";
 			s_blue <= "1111";
-	elsif (bullet_on = '1') and s_game_mode /= "000" THEN -- rendering bullet
+	elsif (bullet_on = '1') and s_game_mode /= "000" then -- rendering bullet
 			s_red <= "0111";
 			s_green <= "1000";
 			s_blue <= "0000";
-	ELSIF (player_on = '1') and (s_game_mode /= "000") THEN -- rendering player and tank
+	elsif (player_on = '1') and (s_game_mode /= "000") then -- rendering player and tank
 			s_red <= "0000";
 			s_green <= "1100";
 			s_blue <= "0000";
-	ELSIF (tank_on= '1') and (s_game_mode /= "000") THEN -- rendering player and tank
+	elsif (tank_on= '1') and (s_game_mode /= "000") then -- rendering player and tank
 			s_red <= "1000";
 			s_green <= "0000";
 			s_blue <= "0000";
-	ELSE -- when rendering back ground
+	else -- when rendering back ground
 			s_red <= "0000";
 			s_green <= "0000";
-			s_blue <= "1100";
+			s_blue <= "1000";
 	end if;
 	
 end process;
-
 red_data <= s_red;
 green_data <= s_green;
 blue_data <= s_blue;
-game_mode <= s_game_mode;
 
 end bhv;
