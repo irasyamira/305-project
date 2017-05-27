@@ -303,9 +303,9 @@ begin
 	
 				-- tank moving in horizontal motion
 				if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
-					tank_x_motion <= - conv_std_logic_vector(4,11);
+					tank_x_motion <= - conv_std_logic_vector(8,11);
 				elsif tank_x_pos <= size then
-					tank_x_motion <= conv_std_logic_vector(4,11);
+					tank_x_motion <= conv_std_logic_vector(8,11);
 				end if;
 				-- compute next tank x position
 					tank_x_pos <= tank_x_pos + tank_x_motion;
@@ -382,14 +382,14 @@ begin
 							end if;	
 				end if;
 				
-				-- COLLISION WITH TANK 2
+				-- COLLISION WITH TANK 2 (it is faster, hitting it will give 2 points)
 				if ('0' & bullet_y_pos <= tank2_y_pos + size) and 
 					(('0' & bullet_y_pos) >= tank2_y_pos - size) and
 					('0' & bullet_x_pos  <= tank2_x_pos + size) and
 					('0' & bullet_x_pos >= tank2_x_pos - size) then
 					
 					bullet_fired <= '0';
-					score_ones <= score_ones + '1';
+					score_ones <= score_ones + "0010";
 						if (score_ones = "1001") then
 							score_tens <= score_tens + '1';
 							score_ones <= "0000";
@@ -430,13 +430,30 @@ begin
 				-- tank moving in zig zag motion
 					if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
 							tank_x_motion <= - conv_std_logic_vector(5,11);
-							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);
+							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);							
+							
 					elsif tank_x_pos <= size then
 							tank_x_motion <= conv_std_logic_vector(5,11);
 							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);
+								
 					end if;
 					-- compute next tank x position
 					tank_x_pos <= tank_x_pos + tank_x_motion;
+					
+					if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
+					-- re spawn tank at a random x position based on rand input
+					-- spawn region is between 50 and 589
+						tank_y_pos <= conv_std_logic_vector(80,11);
+						if (s_rand >= conv_std_logic_vector(589,11) - size) then
+							tank_x_pos <= conv_std_logic_vector(589,11) - size;
+						elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+							tank_x_pos <= conv_std_logic_vector(50,11) + size;
+						else
+							tank_x_pos <= s_rand;
+						end if;	
+					end if;
+					
+					
 	
 						
 					-- add boundary for the player 
