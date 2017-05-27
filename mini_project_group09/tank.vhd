@@ -88,9 +88,9 @@ begin
 	wait until vert_sync_int'event and vert_sync_int = '1';
 
 
-	if game_mode = "001" then
-		-- PRACTICE MODE	
-		-- LEVEL 0
+	if game_mode = "001" or game_mode = "010" then
+		-- PRACTICE MODE	OR GAME MODE
+		-- LEVEL 0 or LEVEL 1
 
 		if (pause_clk = '0' and game_mode /= "000") then
 			tank_x_pos <= tank_x_pos;
@@ -175,8 +175,102 @@ begin
 			end if;
 		end if;	-- pause
 
-	else
+	elsif game_mode = "011" then
 
+		if (pause_clk = '0' and game_mode /= "000") then
+			tank_x_pos <= tank_x_pos;
+			tank_y_pos <= tank_y_pos;
+			bullet_x_pos <= bullet_x_pos;
+			bullet_y_pos <= bullet_y_pos;
+			player_x_pos <= player_x_pos;
+			player_y_pos <= player_y_pos;
+
+		else
+				-- tank moving in vertical motion
+				
+				tank_y_motion <= conv_std_logic_vector(3,11);
+				-- compute next tank y position
+				tank_y_pos <= tank_y_pos + tank_y_motion;
+				
+				if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
+				-- re spawn tank at a random x position based on rand input
+				-- spawn region is between 50 and 589
+					tank_y_pos <= conv_std_logic_vector(80,11);
+					if (s_rand >= conv_std_logic_vector(589,11) - size) then
+						tank_x_pos <= conv_std_logic_vector(589,11) - size;
+					elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+						tank_x_pos <= conv_std_logic_vector(50,11) + size;
+					else
+						tank_x_pos <= s_rand;
+					end if;	
+				end if;
+				
+								
+				-- add boundary for the player 
+				if ('0' & mouse_col) >= "0111000000" then
+					if ('0' & player_x_pos) >= conv_std_logic_vector(640,11) - size then
+						player_x_pos <= player_x_pos + conv_std_logic_vector(0,11);
+					else
+						player_x_pos <= player_x_pos + conv_std_logic_vector(3,11);
+					end if;
+				elsif mouse_col <= "0100000000" then
+					if player_x_pos <= size then
+						player_x_pos <= player_x_pos - conv_std_logic_vector(0,11);
+					else 
+						player_x_pos <= player_x_pos - conv_std_logic_vector(3,11);
+					end if;
+				else
+					player_x_pos <= player_x_pos;
+				end if;
+				
+				if (left_click = '1') and (bullet_fired = '0') then
+					bullet_fired <= '1';
+					bullet_x_pos <= player_x_pos;
+					bullet_y_pos <= player_y_pos;
+					bullet_y_motion <= - bullet_speed;
+				end if;
+				
+				if bullet_fired = '1' then
+					bullet_y_pos <= bullet_y_pos + bullet_y_motion;
+				end if;
+				
+				-- if exceeds boundary or hits the upper tank then bullet disappears
+				if bullet_y_pos <= bullet_size then
+					bullet_fired <= '0';
+				end if;
+				
+				
+				if ('0' & bullet_y_pos <= tank_y_pos + size) and 
+					(('0' & bullet_y_pos) >= tank_y_pos - size) and
+					('0' & bullet_x_pos  <= tank_x_pos + size) and
+					('0' & bullet_x_pos >= tank_x_pos - size) then
+					
+					bullet_fired <= '0';
+					score_ones <= score_ones + '1';
+						if (score_ones = "1001") then
+							score_tens <= score_tens + '1';
+							score_ones <= "0000";
+						end if;
+					-- bullet reappears off screen until left click is triggered again
+					bullet_x_pos <= conv_std_logic_vector(500,11);
+					bullet_y_pos <= conv_std_logic_vector(700,11);
+						
+						-- re spawn tank at a random x position based on rand input
+						-- spawn region is between 50 and 589
+							if (s_rand >= conv_std_logic_vector(589,11) - size) then
+								tank_x_pos <= conv_std_logic_vector(589,11) - size;
+								tank_y_pos <= conv_std_logic_vector(80,11);
+							elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+								tank_x_pos <= conv_std_logic_vector(50,11) + size;
+								tank_y_pos <= conv_std_logic_vector(80,11);
+							else
+								tank_x_pos <= s_rand;
+								tank_y_pos <= conv_std_logic_vector(80,11);
+							end if;	
+				end if;	
+		end if;
+	else
+		
 		if (pause_clk = '0' and game_mode /= "000") then
 			tank_x_pos <= tank_x_pos;
 			tank_y_pos <= tank_y_pos;
@@ -252,22 +346,21 @@ begin
 						
 						-- re spawn tank at a random x position based on rand input
 						-- spawn region is between 50 and 589
-							if (s_rand >= conv_std_logic_vector(589,11) - size) then
-								tank_x_pos <= conv_std_logic_vector(589,11) - size;
-								tank_y_pos <= conv_std_logic_vector(80,11);
-							elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
-								tank_x_pos <= conv_std_logic_vector(50,11) + size;
-								tank_y_pos <= conv_std_logic_vector(80,11);
-							else
-								tank_x_pos <= s_rand;
-								tank_y_pos <= conv_std_logic_vector(80,11);
-							end if;	
+						if (s_rand >= conv_std_logic_vector(589,11) - size) then
+							tank_x_pos <= conv_std_logic_vector(589,11) - size;
+							tank_y_pos <= conv_std_logic_vector(80,11);
+						elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+							tank_x_pos <= conv_std_logic_vector(50,11) + size;
+							tank_y_pos <= conv_std_logic_vector(80,11);
+						else
+							tank_x_pos <= s_rand;
+							tank_y_pos <= conv_std_logic_vector(80,11);
+						end if;	
 				end if;
 			end if;	
-	end if;
-	
-		o_score_ones <= score_ones;
-		o_score_tens <= score_tens;
+		end if;
+	o_score_ones <= score_ones;
+	o_score_tens <= score_tens;
 end process move_tank;
 
 end behavior;
