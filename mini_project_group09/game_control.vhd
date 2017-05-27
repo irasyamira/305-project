@@ -11,7 +11,9 @@ entity game_control is
 			red_data, green_data, blue_data		: out std_logic_vector(3 downto 0);
 			score_ones: in std_logic_vector(3 downto 0);
 			reset_tank: out std_logic;
-			tank2_on: in std_logic);
+			tank2_on: in std_logic;
+			reset_timer: out std_logic;
+			enable_timer: out std_logic);
 end game_control;
 
 architecture bhv of game_control is
@@ -37,11 +39,12 @@ begin
 	case current_s is
 		when menu =>
 			s_game_mode <= "000";
-			reset_tank <= '1';
+			enable_timer <= '0';
 			if bt_select = '0' then
 				if sw0 = '0' then
 					next_s <= practice; -- practice screen
 				else
+					reset_timer <= '1';
 					next_s <= lvl1; -- game screen
 				end if;
 			else
@@ -55,37 +58,49 @@ begin
 				next_s <= practice;
 			end if;
 		when lvl1 =>
+			enable_timer <= '1';
+			reset_timer <= '0';
 			s_game_mode <= "010";
 			if bt_menu = '0' then
 				next_s <= menu;
 			elsif score_ones > "0010" then
+				reset_timer <= '1';
 				next_s <= lvl2;
 			else 
 				next_s <= lvl1;
 			end if;
 		when lvl2 =>
+			enable_timer <= '1';
+			reset_timer <= '0';
 			s_game_mode <= "011";
 			if bt_menu = '0' then
 				next_s <= menu;
 			elsif score_ones > "0100" then
+				reset_timer <= '1';
 				next_s <= lvl3;
 			else
 				next_s <= lvl2;
 			end if;
 		when lvl3 =>
+			enable_timer <= '1';
+			reset_timer <= '0';
 			s_game_mode <= "100";
 			if bt_menu = '0' then
 				next_s <= menu;
 			elsif score_ones > "0110" then
+				reset_timer <= '1';
 				next_s <= lvl4;
 			else
 				next_s <= lvl3;
 			end if;
 		when lvl4 =>
+			enable_timer <= '1';
+			reset_timer <= '0';		
 			s_game_mode <= "101";
 			if bt_menu = '0' then
 				next_s <= menu;
 			else
+				reset_timer <= '1';
 				next_s <= lvl4;
 			end if;
 	end case;
@@ -93,7 +108,7 @@ begin
 end process;
 game_mode <= s_game_mode;
 
-process(bullet_on, s_game_mode, player_on, tank_on, rom_mux, pixel_row)
+process(bullet_on, s_game_mode, player_on, tank_on, tank2_on, rom_mux, pixel_row)
 begin
 	if rom_mux = '1' then -- rendering text
 			s_red <= "1111";

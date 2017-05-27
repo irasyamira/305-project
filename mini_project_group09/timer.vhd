@@ -4,52 +4,72 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 entity timer is
-port (clk1 : in std_logic;
-      seconds : out std_logic_vector(5 downto 0);
-      minutes : out std_logic_vector(5 downto 0);
-      hours : out std_logic_vector(4 downto 0)
-     );
+	port (clk25 : in std_logic;
+		  sec_ones : out std_logic_vector(3 downto 0);
+		  sec_tens : out std_logic_vector(3 downto 0);
+		  reset, enable : in std_logic);
 end timer;
 
-architecture Behavioral of timer is
-signal sec,min,hour : integer range 0 to 60 :=0;
-signal count : integer :=1;
-signal clk : std_logic :='0';
-begin
-seconds <= conv_std_logic_vector(sec,6);
-minutes <= conv_std_logic_vector(min,6);
-hours <= conv_std_logic_vector(hour,5);
+architecture bhv of timer is
 
- --clk generation.For 100 MHz clock this generates 1 Hz clock.
-process(clk1)
+signal s_sec_ones: std_logic_vector(3 downto 0) := "1001";
+signal s_sec_tens: std_logic_vector(3 downto 0) := "1001";
+signal count : integer := 1;
+signal clk : std_logic := '0';
+
 begin
-if(clk1'event and clk1='1') then
-count <=count+1;
-if(count = 50000000) then
-clk <= not clk;
-count <=1;
-end if;
-end if;
+
+
+--clk generation (for 50 MHz clock this generates 1 Hz clock)
+process(clk25)
+begin
+	if (clk25'event and clk25 = '1') then
+		count <= count + 1;
+		if (count = 25000000) then
+			clk <= not clk;
+			count <= 1;
+		end if;
+	end if;
 end process;
 
-process(clk)   --period of clk is 1 second.
+--period of clk is 1 second.
+process(reset, clk, s_sec_ones, s_sec_tens)   
 begin
 
-if(clk'event and clk='1') then
-sec <= sec+ 1;
-if(sec = 59) then
-sec<=0;
-min <= min + 1;
-if(min = 59) then
-hour <= hour + 1;
-min <= 0;
-if(hour = 23) then
-hour <= 0;
+if reset = '1' then
+	s_sec_ones <= "1001";
+	s_sec_tens <= "1001";
+else 
+	if (clk'event and clk='1') then
+		if enable = '1' then
+			if reset = '1' then
+				s_sec_ones <= "1001";
+				s_sec_tens <= "1001";
+				s_sec_ones <= s_sec_ones - 1;
+				if (s_sec_ones = "0000") then
+					s_sec_ones <= "1001";
+					s_sec_tens <= s_sec_tens - 1;
+					if (s_sec_tens = "0000") then
+						s_sec_tens <= "1001";
+					end if;	
+				end if;	
+			elsif reset = '0' then
+				s_sec_ones <= s_sec_ones - 1;
+				if (s_sec_ones = "0000") then
+					s_sec_ones <= "1001";
+					s_sec_tens <= s_sec_tens - 1;
+					if (s_sec_tens = "0000") then
+						s_sec_tens <= "1001";
+					end if;
+				end if;
+			end if;
+		else
+			s_sec_ones <= s_sec_ones;
+			s_sec_tens <= s_sec_tens;
+		end if;
+	end if;
 end if;
-end if;
-end if;
-end if;
-
+sec_ones <= s_sec_ones;
+sec_tens <= s_sec_tens;
 end process;
-
-end Behavioral;
+end bhv;

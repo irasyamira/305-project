@@ -135,6 +135,20 @@ applicable agreement for further details.
 		(text "reset_tank" (rect 177 91 219 103)(font "Arial" ))
 		(line (pt 240 96)(pt 224 96)(line_width 1))
 	)
+	(port
+		(pt 240 112)
+		(output)
+		(text "reset_timer" (rect 0 0 46 12)(font "Arial" ))
+		(text "reset_timer" (rect 173 107 219 119)(font "Arial" ))
+		(line (pt 240 112)(pt 224 112)(line_width 1))
+	)
+	(port
+		(pt 240 128)
+		(output)
+		(text "enable_timer" (rect 0 0 50 12)(font "Arial" ))
+		(text "enable_timer" (rect 169 123 219 135)(font "Arial" ))
+		(line (pt 240 128)(pt 224 128)(line_width 1))
+	)
 	(drawing
 		(rectangle (rect 16 16 224 224)(line_width 1))
 	)
