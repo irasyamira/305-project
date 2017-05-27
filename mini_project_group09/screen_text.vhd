@@ -423,7 +423,7 @@ begin
 					font_col <= pixel_col(3 downto 1);
 					character_address <= CONV_STD_LOGIC_VECTOR(1, 6);									
 				end if;	
-				
+			--end if;	
 			elsif(game_view = "001")then --Practice mode
 				--P
 				if (pixel_col >= CONV_STD_LOGIC_VECTOR(272, 10)) and
@@ -628,7 +628,7 @@ begin
 					font_col <= pixel_col(3 downto 1);
 					character_address <= score_ones_char_rom;
 				end if;	
-			
+			--end if;
 			elsif((game_view = "010")or(game_view = "011")or(game_view = "100")or(game_view = "101"))then --Game mode level 1,2,3,4
 				--GAME	
 				--G
@@ -933,6 +933,7 @@ begin
 					font_col <= pixel_col(3 downto 1);
 					character_address <= score_ones_char_rom;
 				end if;
+			--end if;
 			elsif (game_view = "110")then--Game over screen
 				--GAME OVER
 				
@@ -1058,7 +1059,8 @@ begin
 					font_col <= pixel_col(3 downto 1);
 					character_address <= score_ones_char_rom;
 				end if;
-			elsif (game_view = "110")then--Game won screen
+			--end if;
+			elsif (game_view = "111")then--Game won screen
 				--GAME WON
 				
 				--G

@@ -3,11 +3,11 @@ use ieee.std_logic_1164.all;
 
 entity lfsr is
   port (clk : in std_logic;
-			    cout   : out std_logic_vector (10 downto 0));
+			    output   : out std_logic_vector (10 downto 0));
 end entity;
 
 architecture behaviour of lfsr is
-	signal ran_num : std_logic_vector (10 downto 0) := "00100101010";
+	signal ran_num : std_logic_vector (10 downto 0) := "00101010101";
 begin
 	process (clk) 
 	begin
@@ -18,5 +18,8 @@ begin
     end if;
     end process;
 	
-    cout <= ran_num;
+    output <= ran_num;
 end behaviour;
+
+
+

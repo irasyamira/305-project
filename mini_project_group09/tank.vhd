@@ -15,7 +15,7 @@ entity tank is
 			signal horiz_sync_out,vert_sync_out		: in std_logic;
 			signal tank_on, player_on, bullet_on: out std_logic;
 			signal game_mode: in std_logic_vector(2 downto 0);
-			signal score: out std_logic_vector(3 downto 0)); 
+			signal o_score_ones, o_score_tens: out std_logic_vector(3 downto 0)); 
 			
 end tank;
 
@@ -159,11 +159,10 @@ begin
 				
 				bullet_fired <= '0';
 				score_ones <= score_ones + '1';
-				--score_ones <= "0001";
---					if (score_ones > "1001") then
---						score_tens <= score_tens + '1';
---						score_ones <= "0000";
---					end if;
+					if (score_ones = "1001") then
+						score_tens <= score_tens + '1';
+						score_ones <= "0000";
+					end if;
 				-- bullet reappears off screen until left click is triggered again
 				bullet_x_pos <= conv_std_logic_vector(500,11);
 				bullet_y_pos <= conv_std_logic_vector(700,11);
@@ -242,7 +241,8 @@ begin
 --				bullet_y_pos <= conv_std_logic_vector(700,11);
 --			end if;	
 --		end if;
-		score <= score_ones;	
+		o_score_ones <= score_ones;
+		o_score_tens <= score_tens;
 end process move_tank;
 
 end behavior;
