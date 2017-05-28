@@ -1,12 +1,14 @@
 
 State Machine - |mini_project_group09|game_control:inst15|current_s
-Name current_s.lvl4 current_s.lvl3 current_s.lvl2 current_s.lvl1 current_s.practice current_s.menu 
-current_s.menu 0 0 0 0 0 0 
-current_s.practice 0 0 0 0 1 1 
-current_s.lvl1 0 0 0 1 0 1 
-current_s.lvl2 0 0 1 0 0 1 
-current_s.lvl3 0 1 0 0 0 1 
-current_s.lvl4 1 0 0 0 0 1 
+Name current_s.game_over current_s.game_won current_s.lvl4 current_s.lvl3 current_s.lvl2 current_s.lvl1 current_s.practice current_s.menu 
+current_s.menu 0 0 0 0 0 0 0 0 
+current_s.practice 0 0 0 0 0 0 1 1 
+current_s.lvl1 0 0 0 0 0 1 0 1 
+current_s.lvl2 0 0 0 0 1 0 0 1 
+current_s.lvl3 0 0 0 1 0 0 0 1 
+current_s.lvl4 0 0 1 0 0 0 0 1 
+current_s.game_won 0 1 0 0 0 0 0 1 
+current_s.game_over 1 0 0 0 0 0 0 1 
 
 State Machine - |mini_project_group09|MOUSE:inst1|mouse_state
 Name mouse_state.INPUT_PACKETS mouse_state.WAIT_CMD_ACK mouse_state.WAIT_OUTPUT_READY mouse_state.LOAD_COMMAND2 mouse_state.LOAD_COMMAND mouse_state.INHIBIT_TRANS 

@@ -54,7 +54,7 @@ player_y_pos <= conv_std_logic_vector(380,11);
 vert_sync_int <= vert_sync_out; -- need internal copy of vert_sync to read
 s_rand <= rand;
 
-
+-- SPEED
 rgb_display: process (tank_x_pos, tank_y_pos, player_x_pos, player_y_pos,bullet_x_pos, bullet_y_pos, pixel_column, pixel_row, size, bullet_size, tank2_x_pos, tank2_y_pos)
 begin
 	-- set tank_on ='1' to display tank
@@ -191,23 +191,34 @@ begin
 				end if;
 			end if;	-- pause
 	
-		elsif game_mode = "011" then
+		elsif game_mode = "101" then
 		-- GAME MODE
-		-- LEVEL 2
+		-- LEVEL 4
+		
 			if (pause_clk = '0' and game_mode /= "000") then
 				tank_x_pos <= tank_x_pos;
 				tank_y_pos <= tank_y_pos;
+				tank2_x_pos <= tank_x_pos;
+				tank2_y_pos <= tank_y_pos;
 				bullet_x_pos <= bullet_x_pos;
 				bullet_y_pos <= bullet_y_pos;
 				player_x_pos <= player_x_pos;
 				player_y_pos <= player_y_pos;
 	
 			else
-					-- tank moving in vertical motion
-					
-					tank_y_motion <= conv_std_logic_vector(3,11);
-					-- compute next tank y position
-					tank_y_pos <= tank_y_pos + tank_y_motion;
+	
+					-- tank 1 moving in zig zag motion
+					if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
+							tank_x_motion <= - conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 4
+							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);							
+							
+					elsif tank_x_pos <= size then
+							tank_x_motion <= conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 4
+							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);
+								
+					end if;
+					-- compute next tank x position
+					tank_x_pos <= tank_x_pos + tank_x_motion;
 					
 					if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
 					-- re spawn tank at a random x position based on rand input
@@ -222,6 +233,44 @@ begin
 						end if;	
 					end if;
 					
+					-- tank 2 moving in zig zag motion
+					if ('0' & tank2_x_pos) >= conv_std_logic_vector(640,11) - size then
+							tank2_x_motion <= - conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 4
+							tank2_y_pos <= tank2_y_pos + conv_std_logic_vector(10,11);							
+							
+					elsif tank2_x_pos <= size then
+							tank2_x_motion <= conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 4
+							tank2_y_pos <= tank2_y_pos + conv_std_logic_vector(10,11);
+								
+					end if;
+					-- compute next tank 2 x position
+					tank2_x_pos <= tank2_x_pos + tank2_x_motion;
+					
+					if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
+					-- re spawn tank at a random x position based on rand input
+					-- spawn region is between 50 and 589
+						tank_y_pos <= conv_std_logic_vector(80,11);
+						if (s_rand >= conv_std_logic_vector(589,11) - size) then
+							tank_x_pos <= conv_std_logic_vector(589,11) - size;
+						elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+							tank_x_pos <= conv_std_logic_vector(50,11) + size;
+						else
+							tank_x_pos <= s_rand;
+						end if;	
+					end if;
+					
+					if ('0' & tank2_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
+					-- re spawn tank 2 at a random x position based on rand input
+					-- spawn region is between 50 and 589
+						tank2_y_pos <= conv_std_logic_vector(80,11);
+						if (s_rand >= conv_std_logic_vector(589,11) - size) then
+							tank2_x_pos <= conv_std_logic_vector(589,11) - size;
+						elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+							tank2_x_pos <= conv_std_logic_vector(50,11) + size;
+						else
+							tank2_x_pos <= s_rand;
+						end if;	
+					end if;
 									
 					-- add boundary for the player 
 					if ('0' & mouse_col) >= "0111000000" then
@@ -256,7 +305,7 @@ begin
 						bullet_fired <= '0';
 					end if;
 					
-					
+					-- collision with tank 1
 					if ('0' & bullet_y_pos <= tank_y_pos + size) and 
 						(('0' & bullet_y_pos) >= tank_y_pos - size) and
 						('0' & bullet_x_pos  <= tank_x_pos + size) and
@@ -285,15 +334,49 @@ begin
 									tank_y_pos <= conv_std_logic_vector(80,11);
 								end if;	
 					end if;	
+					
+					-- collision with tank 2
+					if ('0' & bullet_y_pos <= tank2_y_pos + size) and 
+						(('0' & bullet_y_pos) >= tank2_y_pos - size) and
+						('0' & bullet_x_pos  <= tank2_x_pos + size) and
+						('0' & bullet_x_pos >= tank2_x_pos - size) then
+						
+						bullet_fired <= '0';
+						score_ones <= score_ones + '1';
+							if (score_ones = "1001") then
+								score_tens <= score_tens + '1';
+								score_ones <= "0000";
+							end if;
+						-- bullet reappears off screen until left click is triggered again
+						bullet_x_pos <= conv_std_logic_vector(500,11);
+						bullet_y_pos <= conv_std_logic_vector(700,11);
+							
+							-- re spawn tank at a random x position based on rand input
+							-- spawn region is between 50 and 589
+								if (s_rand >= conv_std_logic_vector(589,11) - size) then
+									tank2_x_pos <= conv_std_logic_vector(589,11) - size;
+									tank2_y_pos <= conv_std_logic_vector(80,11);
+								elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+									tank2_x_pos <= conv_std_logic_vector(50,11) + size;
+									tank2_y_pos <= conv_std_logic_vector(80,11);
+								else
+									tank2_x_pos <= s_rand;
+									tank2_y_pos <= conv_std_logic_vector(80,11);
+								end if;	
+					end if;	
+					
+					
 			end if;
 		
-		elsif game_mode = "101" then
+		elsif game_mode = "011" then
 			-- GAME MODE
-			-- LEVEL 4
+			-- LEVEL 2
 	
 			if (pause_clk = '0' and game_mode /= "000") then
 				tank_x_pos <= tank_x_pos;
 				tank_y_pos <= tank_y_pos;
+				tank2_x_pos <= tank_x_pos;
+				tank2_y_pos <= tank_y_pos;				
 				bullet_x_pos <= bullet_x_pos;
 				bullet_y_pos <= bullet_y_pos;
 				player_x_pos <= player_x_pos;
@@ -303,18 +386,18 @@ begin
 	
 				-- tank moving in horizontal motion
 				if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
-					tank_x_motion <= - conv_std_logic_vector(8,11);
+					tank_x_motion <= - conv_std_logic_vector(3,11); -- SPEED  FOR LEVEL 2
 				elsif tank_x_pos <= size then
-					tank_x_motion <= conv_std_logic_vector(8,11);
+					tank_x_motion <= conv_std_logic_vector(3,11); -- SPEED  FOR LEVEL 2
 				end if;
 				-- compute next tank x position
 					tank_x_pos <= tank_x_pos + tank_x_motion;
 					
 				-- tank moving in horizontal motion
 				if ('0' & tank2_x_pos) >= conv_std_logic_vector(640,11) - size then
-					tank2_x_motion <= - conv_std_logic_vector(3,11);
+					tank2_x_motion <= - conv_std_logic_vector(3,11); -- SPEED  FOR LEVEL 2
 				elsif tank2_x_pos <= size then
-					tank2_x_motion <= conv_std_logic_vector(3,11);
+					tank2_x_motion <= conv_std_logic_vector(3,11); -- SPEED  FOR LEVEL 2
 				end if;
 				-- compute next tank x position
 					tank2_x_pos <= tank2_x_pos + tank2_x_motion;
@@ -359,7 +442,7 @@ begin
 					('0' & bullet_x_pos >= tank_x_pos - size) then
 					
 					bullet_fired <= '0';
-					score_ones <= score_ones + '1';
+					score_ones <= score_ones + "0001";
 						if (score_ones = "1001") then
 							score_tens <= score_tens + '1';
 							score_ones <= "0000";
@@ -382,14 +465,14 @@ begin
 							end if;	
 				end if;
 				
-				-- COLLISION WITH TANK 2 (it is faster, hitting it will give 2 points)
+				-- COLLISION WITH TANK 2 
 				if ('0' & bullet_y_pos <= tank2_y_pos + size) and 
 					(('0' & bullet_y_pos) >= tank2_y_pos - size) and
 					('0' & bullet_x_pos  <= tank2_x_pos + size) and
 					('0' & bullet_x_pos >= tank2_x_pos - size) then
 					
 					bullet_fired <= '0';
-					score_ones <= score_ones + "0010";
+					score_ones <= score_ones + "0001";
 						if (score_ones = "1001") then
 							score_tens <= score_tens + '1';
 							score_ones <= "0000";
@@ -429,11 +512,11 @@ begin
 			else
 				-- tank moving in zig zag motion
 					if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
-							tank_x_motion <= - conv_std_logic_vector(5,11);
+							tank_x_motion <= - conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 3
 							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);							
 							
 					elsif tank_x_pos <= size then
-							tank_x_motion <= conv_std_logic_vector(5,11);
+							tank_x_motion <= conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 3
 							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);
 								
 					end if;

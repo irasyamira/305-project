@@ -20,7 +20,10 @@ architecture behaviour of screen_text is
 		signal character_address	    :  std_logic_vector(5 downto 0) := "000000";
 		signal font_row, font_col	    : std_logic_vector(2 downto 0) := "000";	 
 		signal tanks_left_char_rom, level, time_tens_char_rom, time_ones_char_rom, score_tens_char_rom, score_ones_char_rom : std_logic_vector(5 downto 0);	
+		signal s_paused :std_logic := '1';
 begin	
+	
+	s_paused <= paused;
 	
 	number_processing : process (tanks_left, time_tens, time_ones, score_tens, score_ones, game_view)
 	begin
@@ -425,8 +428,60 @@ begin
 				end if;	
 			--end if;	
 			elsif(game_view = "001")then --Practice mode
+				if (s_paused = '0')then
+					--P
+					if (pixel_col >= CONV_STD_LOGIC_VECTOR(192, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(224, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(16, 6);
+					--A
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(224, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(256, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(1, 6);
+					--U
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(256, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(288, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(21, 6);
+					--S
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(288, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(320, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(19, 6);
+					--E
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(320, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(352, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(5, 6);
+					--D
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(352, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(384, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(4, 6);
+					end if;	
+				
+				
 				--P
-				if (pixel_col >= CONV_STD_LOGIC_VECTOR(272, 10)) and
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(272, 10)) and
 					(pixel_col <= CONV_STD_LOGIC_VECTOR(288, 10)) and
 					(pixel_row >= CONV_STD_LOGIC_VECTOR(464, 10)) and
 					(pixel_row <= CONV_STD_LOGIC_VECTOR(479, 10)) then
@@ -630,9 +685,60 @@ begin
 				end if;	
 			--end if;
 			elsif((game_view = "010")or(game_view = "011")or(game_view = "100")or(game_view = "101"))then --Game mode level 1,2,3,4
+				if (s_paused = '0')then
+					--P
+					if (pixel_col >= CONV_STD_LOGIC_VECTOR(192, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(224, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(16, 6);
+					--A
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(224, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(256, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(1, 6);
+					--U
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(256, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(288, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(21, 6);
+					--S
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(288, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(320, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(19, 6);
+					--E
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(320, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(352, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(5, 6);
+					--D
+					elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(352, 10)) and
+						(pixel_col <= CONV_STD_LOGIC_VECTOR(384, 10)) and
+						(pixel_row >= CONV_STD_LOGIC_VECTOR(127, 10)) and
+						(pixel_row <= CONV_STD_LOGIC_VECTOR(158, 10)) then
+						font_row <= pixel_row(4 downto 2);
+						font_col <= pixel_col(4 downto 2);
+						character_address <= CONV_STD_LOGIC_VECTOR(4, 6);
+					end if;	
+				
 				--GAME	
 				--G
-				if (pixel_col >= CONV_STD_LOGIC_VECTOR(272, 10)) and
+				elsif (pixel_col >= CONV_STD_LOGIC_VECTOR(272, 10)) and
 					(pixel_col <= CONV_STD_LOGIC_VECTOR(288, 10)) and
 					(pixel_row >= CONV_STD_LOGIC_VECTOR(464, 10)) and
 					(pixel_row <= CONV_STD_LOGIC_VECTOR(479, 10)) then

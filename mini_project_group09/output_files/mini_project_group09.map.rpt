@@ -1,5 +1,5 @@
 Analysis & Synthesis report for mini_project_group09
-Sun May 28 10:22:34 2017
+Sun May 28 17:02:21 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -18,14 +18,15 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
  10. State Machine - |mini_project_group09|MOUSE:inst1|mouse_state
  11. User-Specified and Inferred Latches
  12. Registers Removed During Synthesis
- 13. General Register Statistics
- 14. Inverted Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Source assignments for char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated
- 17. Parameter Settings for User Entity Instance: char_rom:inst12|altsyncram:altsyncram_component
- 18. altsyncram Parameter Settings by Entity Instance
- 19. Elapsed Time Per Partition
- 20. Analysis & Synthesis Messages
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated
+ 18. Parameter Settings for User Entity Instance: char_rom:inst12|altsyncram:altsyncram_component
+ 19. altsyncram Parameter Settings by Entity Instance
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -51,15 +52,15 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun May 28 10:22:34 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sun May 28 17:02:21 2017       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; mini_project_group09                        ;
 ; Top-level Entity Name              ; mini_project_group09                        ;
 ; Family                             ; Cyclone III                                 ;
-; Total logic elements               ; 1,479                                       ;
-;     Total combinational functions  ; 1,408                                       ;
-;     Dedicated logic registers      ; 347                                         ;
-; Total registers                    ; 347                                         ;
+; Total logic elements               ; 1,542                                       ;
+;     Total combinational functions  ; 1,472                                       ;
+;     Dedicated logic registers      ; 351                                         ;
+; Total registers                    ; 351                                         ;
 ; Total pins                         ; 37                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 4,096                                       ;
@@ -207,29 +208,29 @@ applicable agreement for further details.
 +---------------------------------------------+-------------------------------+
 ; Resource                                    ; Usage                         ;
 +---------------------------------------------+-------------------------------+
-; Estimated Total logic elements              ; 1,479                         ;
+; Estimated Total logic elements              ; 1,542                         ;
 ;                                             ;                               ;
-; Total combinational functions               ; 1408                          ;
+; Total combinational functions               ; 1472                          ;
 ; Logic element usage by number of LUT inputs ;                               ;
-;     -- 4 input functions                    ; 665                           ;
-;     -- 3 input functions                    ; 391                           ;
-;     -- <=2 input functions                  ; 352                           ;
+;     -- 4 input functions                    ; 630                           ;
+;     -- 3 input functions                    ; 460                           ;
+;     -- <=2 input functions                  ; 382                           ;
 ;                                             ;                               ;
 ; Logic elements by mode                      ;                               ;
-;     -- normal mode                          ; 968                           ;
-;     -- arithmetic mode                      ; 440                           ;
+;     -- normal mode                          ; 994                           ;
+;     -- arithmetic mode                      ; 478                           ;
 ;                                             ;                               ;
-; Total registers                             ; 347                           ;
-;     -- Dedicated logic registers            ; 347                           ;
+; Total registers                             ; 351                           ;
+;     -- Dedicated logic registers            ; 351                           ;
 ;     -- I/O registers                        ; 0                             ;
 ;                                             ;                               ;
 ; I/O pins                                    ; 37                            ;
 ; Total memory bits                           ; 4096                          ;
 ; Embedded Multiplier 9-bit elements          ; 0                             ;
 ; Maximum fan-out node                        ; clk_divider:inst7|clock_25Mhz ;
-; Maximum fan-out                             ; 156                           ;
-; Total fan-out                               ; 5616                          ;
-; Average fan-out                             ; 3.05                          ;
+; Maximum fan-out                             ; 153                           ;
+; Total fan-out                               ; 5749                          ;
+; Average fan-out                             ; 3.01                          ;
 +---------------------------------------------+-------------------------------+
 
 
@@ -238,20 +239,20 @@ applicable agreement for further details.
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                  ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
-; |mini_project_group09                     ; 1408 (1)          ; 347 (0)      ; 4096        ; 0            ; 0       ; 0         ; 37   ; 0            ; |mini_project_group09                                                                                ;              ;
+; |mini_project_group09                     ; 1472 (1)          ; 351 (0)      ; 4096        ; 0            ; 0       ; 0         ; 37   ; 0            ; |mini_project_group09                                                                                ;              ;
 ;    |MOUSE:inst1|                          ; 83 (83)           ; 92 (92)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|MOUSE:inst1                                                                    ;              ;
 ;    |VGA_SYNC:inst|                        ; 68 (68)           ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|VGA_SYNC:inst                                                                  ;              ;
 ;    |char_rom:inst12|                      ; 5 (5)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|char_rom:inst12                                                                ;              ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|char_rom:inst12|altsyncram:altsyncram_component                                ;              ;
 ;          |altsyncram_kt91:auto_generated| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated ;              ;
 ;    |clk_divider:inst7|                    ; 44 (44)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|clk_divider:inst7                                                              ;              ;
-;    |game_control:inst15|                  ; 42 (42)           ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|game_control:inst15                                                            ;              ;
+;    |game_control:inst15|                  ; 45 (45)           ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|game_control:inst15                                                            ;              ;
 ;    |lfsr:inst3|                           ; 10 (10)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|lfsr:inst3                                                                     ;              ;
-;    |screen_text:inst14|                   ; 497 (497)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|screen_text:inst14                                                             ;              ;
+;    |screen_text:inst14|                   ; 521 (521)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|screen_text:inst14                                                             ;              ;
 ;    |seven_seg:inst100|                    ; 7 (7)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|seven_seg:inst100                                                              ;              ;
 ;    |seven_seg:inst99|                     ; 7 (7)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|seven_seg:inst99                                                               ;              ;
-;    |tank:inst11|                          ; 579 (579)         ; 93 (93)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|tank:inst11                                                                    ;              ;
-;    |timer:inst4|                          ; 65 (65)           ; 40 (40)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|timer:inst4                                                                    ;              ;
+;    |tank:inst11|                          ; 606 (606)         ; 100 (100)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|tank:inst11                                                                    ;              ;
+;    |timer:inst4|                          ; 75 (75)           ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mini_project_group09|timer:inst4                                                                    ;              ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -266,18 +267,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |mini_project_group09|game_control:inst15|current_s                                                          ;
-+--------------------+----------------+----------------+----------------+----------------+--------------------+----------------+
-; Name               ; current_s.lvl4 ; current_s.lvl3 ; current_s.lvl2 ; current_s.lvl1 ; current_s.practice ; current_s.menu ;
-+--------------------+----------------+----------------+----------------+----------------+--------------------+----------------+
-; current_s.menu     ; 0              ; 0              ; 0              ; 0              ; 0                  ; 0              ;
-; current_s.practice ; 0              ; 0              ; 0              ; 0              ; 1                  ; 1              ;
-; current_s.lvl1     ; 0              ; 0              ; 0              ; 1              ; 0                  ; 1              ;
-; current_s.lvl2     ; 0              ; 0              ; 1              ; 0              ; 0                  ; 1              ;
-; current_s.lvl3     ; 0              ; 1              ; 0              ; 0              ; 0                  ; 1              ;
-; current_s.lvl4     ; 1              ; 0              ; 0              ; 0              ; 0                  ; 1              ;
-+--------------------+----------------+----------------+----------------+----------------+--------------------+----------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mini_project_group09|game_control:inst15|current_s                                                                                                      ;
++---------------------+---------------------+--------------------+----------------+----------------+----------------+----------------+--------------------+----------------+
+; Name                ; current_s.game_over ; current_s.game_won ; current_s.lvl4 ; current_s.lvl3 ; current_s.lvl2 ; current_s.lvl1 ; current_s.practice ; current_s.menu ;
++---------------------+---------------------+--------------------+----------------+----------------+----------------+----------------+--------------------+----------------+
+; current_s.menu      ; 0                   ; 0                  ; 0              ; 0              ; 0              ; 0              ; 0                  ; 0              ;
+; current_s.practice  ; 0                   ; 0                  ; 0              ; 0              ; 0              ; 0              ; 1                  ; 1              ;
+; current_s.lvl1      ; 0                   ; 0                  ; 0              ; 0              ; 0              ; 1              ; 0                  ; 1              ;
+; current_s.lvl2      ; 0                   ; 0                  ; 0              ; 0              ; 1              ; 0              ; 0                  ; 1              ;
+; current_s.lvl3      ; 0                   ; 0                  ; 0              ; 1              ; 0              ; 0              ; 0                  ; 1              ;
+; current_s.lvl4      ; 0                   ; 0                  ; 1              ; 0              ; 0              ; 0              ; 0                  ; 1              ;
+; current_s.game_won  ; 0                   ; 1                  ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1              ;
+; current_s.game_over ; 1                   ; 0                  ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1              ;
++---------------------+---------------------+--------------------+----------------+----------------+----------------+----------------+--------------------+----------------+
 
 
 Encoding Type:  One-Hot
@@ -312,39 +315,53 @@ Encoding Type:  One-Hot
 ; screen_text:inst14|character_address[3]             ; screen_text:inst14|character_address[5] ; yes                    ;
 ; screen_text:inst14|character_address[4]             ; screen_text:inst14|character_address[5] ; yes                    ;
 ; screen_text:inst14|character_address[5]             ; screen_text:inst14|character_address[5] ; yes                    ;
-; game_control:inst15|reset_timer                     ; game_control:inst15|Selector2           ; yes                    ;
-; game_control:inst15|enable_timer                    ; game_control:inst15|current_s.practice  ; yes                    ;
-; Number of user-specified and inferred latches = 14  ;                                         ;                        ;
+; game_control:inst15|s_reset_timer                   ; game_control:inst15|Selector7           ; yes                    ;
+; Number of user-specified and inferred latches = 13  ;                                         ;                        ;
 +-----------------------------------------------------+-----------------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+--------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                   ;
-+----------------------------------------+---------------------------------------------+
-; Register name                          ; Reason for Removal                          ;
-+----------------------------------------+---------------------------------------------+
-; lfsr:inst3|ran_num[10]                 ; Stuck at GND due to stuck port data_in      ;
-; tank:inst11|tank2_y_pos[7..9]          ; Stuck at GND due to stuck port data_in      ;
-; tank:inst11|tank2_y_pos[3..6]          ; Stuck at VCC due to stuck port data_in      ;
-; tank:inst11|tank2_y_pos[0..2,10]       ; Stuck at GND due to stuck port data_in      ;
-; tank:inst11|tank_y_motion[2..10]       ; Stuck at GND due to stuck port data_in      ;
-; MOUSE:inst1|CHAROUT[4..7]              ; Stuck at VCC due to stuck port data_in      ;
-; MOUSE:inst1|CHAROUT[3]                 ; Stuck at GND due to stuck port data_in      ;
-; MOUSE:inst1|CHAROUT[2]                 ; Stuck at VCC due to stuck port data_in      ;
-; MOUSE:inst1|CHAROUT[0,1]               ; Stuck at GND due to stuck port data_in      ;
-; MOUSE:inst1|SHIFTOUT[10]               ; Stuck at VCC due to stuck port data_in      ;
-; tank:inst11|tank2_x_motion[2..9]       ; Merged with tank:inst11|tank2_x_motion[10]  ;
-; tank:inst11|tank_y_motion[1]           ; Merged with tank:inst11|tank_y_motion[0]    ;
-; tank:inst11|bullet_y_motion[2]         ; Merged with tank:inst11|bullet_y_motion[0]  ;
-; tank:inst11|bullet_y_motion[1,3..9]    ; Merged with tank:inst11|bullet_y_motion[10] ;
-; tank:inst11|tank_x_motion[4..9]        ; Merged with tank:inst11|tank_x_motion[10]   ;
-; tank:inst11|bullet_y_motion[0]         ; Stuck at GND due to stuck port data_in      ;
-; VGA_SYNC:inst|pixel_column[10]         ; Stuck at GND due to stuck port data_in      ;
-; VGA_SYNC:inst|pixel_row[9,10]          ; Stuck at GND due to stuck port data_in      ;
-; timer:inst4|count[0]                   ; Merged with VGA_SYNC:inst|h_count[0]        ;
-; Total Number of Removed Registers = 59 ;                                             ;
-+----------------------------------------+---------------------------------------------+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++-----------------------------------------+---------------------------------------------+
+; Register name                           ; Reason for Removal                          ;
++-----------------------------------------+---------------------------------------------+
+; lfsr:inst3|ran_num[10]                  ; Stuck at GND due to stuck port data_in      ;
+; MOUSE:inst1|CHAROUT[4..7]               ; Stuck at VCC due to stuck port data_in      ;
+; MOUSE:inst1|CHAROUT[3]                  ; Stuck at GND due to stuck port data_in      ;
+; MOUSE:inst1|CHAROUT[2]                  ; Stuck at VCC due to stuck port data_in      ;
+; MOUSE:inst1|CHAROUT[0,1]                ; Stuck at GND due to stuck port data_in      ;
+; MOUSE:inst1|SHIFTOUT[10]                ; Stuck at VCC due to stuck port data_in      ;
+; tank:inst11|tank2_x_motion[3..9]        ; Merged with tank:inst11|tank2_x_motion[10]  ;
+; tank:inst11|bullet_y_motion[2]          ; Merged with tank:inst11|bullet_y_motion[0]  ;
+; tank:inst11|bullet_y_motion[1,3..9]     ; Merged with tank:inst11|bullet_y_motion[10] ;
+; tank:inst11|tank_x_motion[3..9]         ; Merged with tank:inst11|tank_x_motion[10]   ;
+; tank:inst11|bullet_y_motion[0]          ; Stuck at GND due to stuck port data_in      ;
+; VGA_SYNC:inst|pixel_column[10]          ; Stuck at GND due to stuck port data_in      ;
+; VGA_SYNC:inst|pixel_row[9,10]           ; Stuck at GND due to stuck port data_in      ;
+; tank:inst11|bullet_y_pos[0]             ; Stuck at GND due to stuck port data_in      ;
+; game_control:inst15|current_s.game_over ; Stuck at GND due to stuck port data_in      ;
+; timer:inst4|count[0]                    ; Merged with VGA_SYNC:inst|h_count[0]        ;
+; timer:inst4|count[1]                    ; Merged with VGA_SYNC:inst|h_count[1]        ;
+; timer:inst4|count[2]                    ; Merged with VGA_SYNC:inst|h_count[2]        ;
+; timer:inst4|count[3]                    ; Merged with VGA_SYNC:inst|h_count[3]        ;
+; timer:inst4|count[4]                    ; Merged with VGA_SYNC:inst|h_count[4]        ;
+; tank:inst11|tank_y_pos[0]               ; Stuck at GND due to stuck port data_in      ;
+; tank:inst11|tank2_y_pos[0]              ; Stuck at GND due to stuck port data_in      ;
+; Total Number of Removed Registers = 46  ;                                             ;
++-----------------------------------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                  ;
++-----------------------------------------+---------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal        ; Registers Removed due to This Register ;
++-----------------------------------------+---------------------------+----------------------------------------+
+; tank:inst11|bullet_y_pos[0]             ; Stuck at GND              ; tank:inst11|tank2_y_pos[0]             ;
+;                                         ; due to stuck port data_in ;                                        ;
+; game_control:inst15|current_s.game_over ; Stuck at GND              ; tank:inst11|tank_y_pos[0]              ;
+;                                         ; due to stuck port data_in ;                                        ;
++-----------------------------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -352,12 +369,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 347   ;
+; Total registers                              ; 351   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 31    ;
+; Number of registers using Synchronous Load   ; 27    ;
 ; Number of registers using Asynchronous Clear ; 24    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 191   ;
+; Number of registers using Clock Enable       ; 192   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -369,6 +386,10 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------------------------+---------+
 ; tank:inst11|tank_y_pos[6]               ; 6       ;
 ; tank:inst11|tank_y_pos[4]               ; 6       ;
+; tank:inst11|tank2_y_pos[6]              ; 5       ;
+; tank:inst11|tank2_y_pos[5]              ; 5       ;
+; tank:inst11|tank2_y_pos[4]              ; 5       ;
+; tank:inst11|tank2_y_pos[3]              ; 5       ;
 ; VGA_SYNC:inst|h_count[0]                ; 7       ;
 ; lfsr:inst3|ran_num[8]                   ; 5       ;
 ; lfsr:inst3|ran_num[6]                   ; 4       ;
@@ -376,16 +397,13 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; lfsr:inst3|ran_num[4]                   ; 4       ;
 ; lfsr:inst3|ran_num[0]                   ; 2       ;
 ; MOUSE:inst1|send_char                   ; 3       ;
-; timer:inst4|s_sec_ones[0]               ; 6       ;
-; timer:inst4|s_sec_ones[3]               ; 10      ;
-; timer:inst4|s_sec_tens[0]               ; 5       ;
-; timer:inst4|s_sec_tens[3]               ; 8       ;
+; timer:inst4|s_sec_tens[2]               ; 6       ;
 ; MOUSE:inst1|SHIFTOUT[3]                 ; 1       ;
 ; MOUSE:inst1|SHIFTOUT[5]                 ; 1       ;
 ; MOUSE:inst1|SHIFTOUT[6]                 ; 1       ;
 ; MOUSE:inst1|SHIFTOUT[7]                 ; 1       ;
 ; MOUSE:inst1|SHIFTOUT[8]                 ; 1       ;
-; Total number of inverted registers = 18 ;         ;
+; Total number of inverted registers = 19 ;         ;
 +-----------------------------------------+---------+
 
 
@@ -394,22 +412,25 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|new_cursor_column[6]  ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|VGA_SYNC:inst|v_count[7]          ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |mini_project_group09|tank:inst11|tank2_x_motion[1]     ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|cursor_column[8]      ;
-; 7:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|player_x_pos[4]       ;
-; 9:1                ; 11 bits   ; 66 LEs        ; 11 LEs               ; 55 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|bullet_x_pos[5]       ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 20 LEs               ; 40 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|bullet_y_pos[10]      ;
-; 13:1               ; 4 bits    ; 32 LEs        ; 4 LEs                ; 28 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|score_tens[3]         ;
-; 14:1               ; 3 bits    ; 27 LEs        ; 6 LEs                ; 21 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|score_ones[2]         ;
-; 12:1               ; 10 bits   ; 80 LEs        ; 10 LEs               ; 70 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank_x_pos[4]         ;
-; 14:1               ; 8 bits    ; 72 LEs        ; 16 LEs               ; 56 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank_y_pos[10]        ;
-; 14:1               ; 2 bits    ; 18 LEs        ; 4 LEs                ; 14 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank_y_pos[6]         ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|new_cursor_column[1]  ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |mini_project_group09|VGA_SYNC:inst|v_count[2]          ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |mini_project_group09|MOUSE:inst1|cursor_column[0]      ;
+; 7:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|player_x_pos[1]       ;
+; 8:1                ; 10 bits   ; 50 LEs        ; 20 LEs               ; 30 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank2_x_pos[9]        ;
+; 9:1                ; 11 bits   ; 66 LEs        ; 11 LEs               ; 55 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|bullet_x_pos[1]       ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 4 LEs                ; 16 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|score_ones[1]         ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank2_x_motion[0]     ;
+; 10:1               ; 6 bits    ; 36 LEs        ; 12 LEs               ; 24 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank2_y_pos[8]        ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|score_tens[0]         ;
+; 8:1                ; 10 bits   ; 50 LEs        ; 10 LEs               ; 40 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank_x_pos[9]         ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 20 LEs               ; 40 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|bullet_y_pos[2]       ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 8 LEs                ; 40 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank_y_pos[1]         ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank2_y_pos[4]        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 2 LEs                ; 10 LEs                 ; Yes        ; |mini_project_group09|tank:inst11|tank_y_pos[4]         ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |mini_project_group09|game_control:inst15|green_data[3] ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |mini_project_group09|tank:inst11|tank2_x_pos           ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |mini_project_group09|game_control:inst15|blue_data[3]  ;
-; 22:1               ; 6 bits    ; 84 LEs        ; 6 LEs                ; 78 LEs                 ; No         ; |mini_project_group09|screen_text:inst14|font_row[0]    ;
+; 19:1               ; 6 bits    ; 72 LEs        ; 6 LEs                ; 66 LEs                 ; No         ; |mini_project_group09|screen_text:inst14|font_col[1]    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 
 
@@ -518,7 +539,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Full Version
-    Info: Processing started: Sun May 28 10:22:28 2017
+    Info: Processing started: Sun May 28 17:02:15 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mini_project_group09 -c mini_project_group09
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file mini_project_group09.bdf
@@ -564,10 +585,13 @@ Info (12128): Elaborating entity "clk_divider" for hierarchy "clk_divider:inst7"
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst"
 Info (12128): Elaborating entity "game_control" for hierarchy "game_control:inst15"
 Warning (10541): VHDL Signal Declaration warning at game_control.vhd(13): used implicit default value for signal "reset_tank" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10631): VHDL Process Statement warning at game_control.vhd(36): inferring latch(es) for signal or variable "enable_timer", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at game_control.vhd(36): inferring latch(es) for signal or variable "reset_timer", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "reset_timer" at game_control.vhd(36)
-Info (10041): Inferred latch for "enable_timer" at game_control.vhd(36)
+Warning (10540): VHDL Signal Declaration warning at game_control.vhd(29): used explicit default value for signal "s_enable_timer" because signal was never assigned a value
+Warning (10492): VHDL Process Statement warning at game_control.vhd(71): signal "s_score_ones" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at game_control.vhd(83): signal "s_score_ones" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at game_control.vhd(95): signal "s_score_ones" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at game_control.vhd(106): signal "s_score_tens" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at game_control.vhd(41): inferring latch(es) for signal or variable "s_reset_timer", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "s_reset_timer" at game_control.vhd(41)
 Info (12128): Elaborating entity "char_rom" for hierarchy "char_rom:inst12"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "char_rom:inst12|altsyncram:altsyncram_component"
 Info (12130): Elaborated megafunction instantiation "char_rom:inst12|altsyncram:altsyncram_component"
@@ -590,82 +614,105 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
     Info (12023): Found entity 1: altsyncram_kt91
 Info (12128): Elaborating entity "altsyncram_kt91" for hierarchy "char_rom:inst12|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated"
 Info (12128): Elaborating entity "screen_text" for hierarchy "screen_text:inst14"
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(564): signal "time_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(572): signal "time_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(621): signal "score_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(629): signal "score_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(714): signal "level" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(795): signal "tanks_left_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(869): signal "time_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(877): signal "time_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(926): signal "score_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(934): signal "score_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(1052): signal "score_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(1060): signal "score_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(1170): signal "score_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(1178): signal "score_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(1525): signal "character_address" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(1526): signal "font_row" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at screen_text.vhd(1527): signal "font_col" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at screen_text.vhd(107): inferring latch(es) for signal or variable "font_row", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at screen_text.vhd(107): inferring latch(es) for signal or variable "font_col", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at screen_text.vhd(107): inferring latch(es) for signal or variable "character_address", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "character_address[0]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "character_address[1]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "character_address[2]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "character_address[3]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "character_address[4]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "character_address[5]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "font_col[0]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "font_col[1]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "font_col[2]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "font_row[0]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "font_row[1]" at screen_text.vhd(107)
-Info (10041): Inferred latch for "font_row[2]" at screen_text.vhd(107)
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(431): signal "s_paused" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(619): signal "time_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(627): signal "time_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(676): signal "score_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(684): signal "score_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(688): signal "s_paused" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(820): signal "level" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(901): signal "tanks_left_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(975): signal "time_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(983): signal "time_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(1032): signal "score_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(1040): signal "score_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(1158): signal "score_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(1166): signal "score_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(1276): signal "score_tens_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(1284): signal "score_ones_char_rom" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(1631): signal "character_address" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(1632): signal "font_row" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at screen_text.vhd(1633): signal "font_col" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at screen_text.vhd(110): inferring latch(es) for signal or variable "font_row", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at screen_text.vhd(110): inferring latch(es) for signal or variable "font_col", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at screen_text.vhd(110): inferring latch(es) for signal or variable "character_address", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "character_address[0]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "character_address[1]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "character_address[2]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "character_address[3]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "character_address[4]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "character_address[5]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "font_col[0]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "font_col[1]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "font_col[2]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "font_row[0]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "font_row[1]" at screen_text.vhd(110)
+Info (10041): Inferred latch for "font_row[2]" at screen_text.vhd(110)
 Info (12128): Elaborating entity "tank" for hierarchy "tank:inst11"
 Info (12128): Elaborating entity "lfsr" for hierarchy "lfsr:inst3"
 Info (12128): Elaborating entity "timer" for hierarchy "timer:inst4"
+Warning (10036): Verilog HDL or VHDL warning at timer.vhd(20): object "s_enable" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at timer.vhd(57): signal "game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at timer.vhd(60): signal "game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at timer.vhd(63): signal "game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at timer.vhd(66): signal "game_mode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "seven_seg" for hierarchy "seven_seg:inst99"
 Warning (13012): Latch screen_text:inst14|font_col[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_column[8]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|WideOr2
 Warning (13012): Latch screen_text:inst14|font_col[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_column[8]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|WideOr2
 Warning (13012): Latch screen_text:inst14|font_col[2] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_column[4]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|WideOr2
 Warning (13012): Latch screen_text:inst14|font_row[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_column[8]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_row[1]
 Warning (13012): Latch screen_text:inst14|font_row[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_column[8]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_row[2]
 Warning (13012): Latch screen_text:inst14|font_row[2] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_row[4]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal VGA_SYNC:inst|pixel_row[3]
 Warning (13012): Latch screen_text:inst14|character_address[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|game_mode[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|WideOr0
 Warning (13012): Latch screen_text:inst14|character_address[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|game_mode[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|WideOr0
 Warning (13012): Latch screen_text:inst14|character_address[2] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|game_mode[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|WideOr0
 Warning (13012): Latch screen_text:inst14|character_address[3] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|game_mode[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|WideOr0
 Warning (13012): Latch screen_text:inst14|character_address[4] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|game_mode[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|WideOr0
 Warning (13012): Latch screen_text:inst14|character_address[5] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|game_mode[2]
-Warning (13012): Latch game_control:inst15|reset_timer has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|WideOr0
+Warning (13012): Latch game_control:inst15|s_reset_timer has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal game_control:inst15|current_s.menu
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "timer:inst4|s_sec_tens[0]" is converted into an equivalent circuit using register "timer:inst4|s_sec_tens[0]~_emulated" and latch "timer:inst4|s_sec_tens[0]~1"
+    Warning (13310): Register "timer:inst4|s_sec_tens[1]" is converted into an equivalent circuit using register "timer:inst4|s_sec_tens[1]~_emulated" and latch "timer:inst4|s_sec_tens[1]~5"
+    Warning (13310): Register "timer:inst4|s_sec_ones[0]" is converted into an equivalent circuit using register "timer:inst4|s_sec_ones[0]~_emulated" and latch "timer:inst4|s_sec_ones[0]~1"
+    Warning (13310): Register "timer:inst4|s_sec_ones[2]" is converted into an equivalent circuit using register "timer:inst4|s_sec_ones[2]~_emulated" and latch "timer:inst4|s_sec_ones[0]~1"
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register timer:inst4|s_sec_ones[3] will power up to Low
+    Critical Warning (18010): Register timer:inst4|s_sec_tens[2] will power up to High
+    Critical Warning (18010): Register timer:inst4|s_sec_tens[3] will power up to Low
 Info (286030): Timing-Driven Synthesis is running
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "tank:inst11|Add26~14"
+    Info (17048): Logic cell "tank:inst11|Add26~16"
+    Info (17048): Logic cell "tank:inst11|Add26~18"
+    Info (17048): Logic cell "tank:inst11|Add16~14"
+    Info (17048): Logic cell "tank:inst11|Add16~16"
+    Info (17048): Logic cell "tank:inst11|Add16~18"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1541 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1610 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 30 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 1496 logic cells
+    Info (21061): Implemented 1565 logic cells
     Info (21064): Implemented 8 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 54 warnings
-    Info: Peak virtual memory: 520 megabytes
-    Info: Processing ended: Sun May 28 10:22:34 2017
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 74 warnings
+    Info: Peak virtual memory: 505 megabytes
+    Info: Processing ended: Sun May 28 17:02:21 2017
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:06
 

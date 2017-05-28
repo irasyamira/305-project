@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Sun May 28 10:22:34 2017
+Analysis & Synthesis Status : Successful - Sun May 28 17:02:21 2017
 Quartus II 64-Bit Version : 13.0.0 Build 156 04/24/2013 SJ Full Version
 Revision Name : mini_project_group09
 Top-level Entity Name : mini_project_group09
 Family : Cyclone III
-Total logic elements : 1,479
-    Total combinational functions : 1,408
-    Dedicated logic registers : 347
-Total registers : 347
+Total logic elements : 1,542
+    Total combinational functions : 1,472
+    Dedicated logic registers : 351
+Total registers : 351
 Total pins : 37
 Total virtual pins : 0
 Total memory bits : 4,096
