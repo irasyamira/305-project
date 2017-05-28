@@ -8,7 +8,8 @@ entity timer is
 		  sec_ones : out std_logic_vector(3 downto 0);
 		  sec_tens : out std_logic_vector(3 downto 0);
 		  reset, enable : in std_logic;
-		  game_mode: in std_logic_vector(2 downto 0));
+		  game_mode: in std_logic_vector(2 downto 0);
+		  pause: in std_logic);
 end timer;
 
 architecture bhv of timer is
@@ -18,10 +19,12 @@ signal s_sec_tens: std_logic_vector(3 downto 0) := "1001";
 signal count : integer := 1;
 signal clk : std_logic := '0';
 signal s_reset, s_enable: std_logic:= '0';
+signal s_pause: std_logic:= '0';
 
 begin
 s_reset <= reset;
 s_enable <= enable;
+s_pause <= pause;
 
 --clk generation (for 50 MHz clock this generates 1 Hz clock)
 process(clk25)
@@ -36,7 +39,7 @@ begin
 end process;
 
 --period of clk is 1 second.
-process(s_reset, clk, s_sec_ones, s_sec_tens)   
+process(s_reset, clk, s_sec_ones, s_sec_tens, game_mode, s_pause)   
 begin
 
 	if s_reset = '1' then
@@ -72,6 +75,12 @@ begin
 			end if;
 	else
 		if (clk'event and clk='1') then
+		
+			if s_pause = '0' then
+				s_sec_ones <= s_sec_ones;
+				s_sec_tens <= s_sec_tens;
+			else
+			
 			s_sec_ones <= s_sec_ones - 1;
 				if (s_sec_ones = "0000") then
 					s_sec_ones <= "1001";
@@ -80,6 +89,7 @@ begin
 						s_sec_tens <= "1001";
 					end if;
 				end if;
+			end if;
 		end if;
 	end if;
 sec_ones <= s_sec_ones;

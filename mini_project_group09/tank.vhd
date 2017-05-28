@@ -17,7 +17,9 @@ entity tank is
 			signal game_mode: in std_logic_vector(2 downto 0);
 			signal o_score_ones, o_score_tens: out std_logic_vector(3 downto 0);
 			signal reset: in std_logic;
-			signal tank2_on: out std_logic);
+			signal tank2_on: out std_logic;
+			signal collision: out std_logic;
+			signal game_over: out std_logic);
 			
 end tank;
 
@@ -44,6 +46,8 @@ signal player_y_pos,player_x_pos 	: std_logic_vector(10 downto 0);
 signal s_rand: std_logic_vector(10 downto 0);
 signal score_ones: std_logic_vector(3 downto 0) := "0000";
 signal score_tens: std_logic_vector(3 downto 0) := "0000";
+signal s_collision: std_logic:= '0';
+signal s_game_over: std_logic:= '0';
 
 begin           
 
@@ -54,7 +58,6 @@ player_y_pos <= conv_std_logic_vector(380,11);
 vert_sync_int <= vert_sync_out; -- need internal copy of vert_sync to read
 s_rand <= rand;
 
--- SPEED
 rgb_display: process (tank_x_pos, tank_y_pos, player_x_pos, player_y_pos,bullet_x_pos, bullet_y_pos, pixel_column, pixel_row, size, bullet_size, tank2_x_pos, tank2_y_pos)
 begin
 	-- set tank_on ='1' to display tank
@@ -98,16 +101,18 @@ end process rgb_display;
 
 move_tank: process
 begin
+	s_game_over <= '0';
 	-- move tank once every vertical sync	
 	wait until vert_sync_int'event and vert_sync_int = '1';
 		if game_mode = "0000" then
 				score_ones <= "0000";
 				score_tens <= "0000";
-	
+		
 		elsif game_mode = "001" or game_mode = "010" then
 			-- PRACTICE MODE	OR GAME MODE
 			-- LEVEL 0 or LEVEL 1
-	
+			-- Describe levels here
+
 			if (pause_clk = '0' and game_mode /= "000") then
 				tank_x_pos <= tank_x_pos;
 				tank_y_pos <= tank_y_pos;
@@ -165,9 +170,11 @@ begin
 					(('0' & bullet_y_pos) >= tank_y_pos - size) and
 					('0' & bullet_x_pos  <= tank_x_pos + size) and
 					('0' & bullet_x_pos >= tank_x_pos - size) then
-					
+					--s_collision <= '1';
+					--s_collision <= NOT s_collision;
 					bullet_fired <= '0';
 					score_ones <= score_ones + '1';
+
 						if (score_ones = "1001") then
 							score_tens <= score_tens + '1';
 							score_ones <= "0000";
@@ -188,6 +195,7 @@ begin
 								tank_x_pos <= s_rand;
 								tank_y_pos <= conv_std_logic_vector(80,11);
 							end if;	
+							--s_collision <= '0';
 				end if;
 			end if;	-- pause
 	
@@ -221,6 +229,7 @@ begin
 					tank_x_pos <= tank_x_pos + tank_x_motion;
 					
 					if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
+
 					-- re spawn tank at a random x position based on rand input
 					-- spawn region is between 50 and 589
 						tank_y_pos <= conv_std_logic_vector(80,11);
@@ -231,6 +240,7 @@ begin
 						else
 							tank_x_pos <= s_rand;
 						end if;	
+						s_game_over <= '1';
 					end if;
 					
 					-- tank 2 moving in zig zag motion
@@ -246,22 +256,25 @@ begin
 					-- compute next tank 2 x position
 					tank2_x_pos <= tank2_x_pos + tank2_x_motion;
 					
-					if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
-					-- re spawn tank at a random x position based on rand input
-					-- spawn region is between 50 and 589
-						tank_y_pos <= conv_std_logic_vector(80,11);
-						if (s_rand >= conv_std_logic_vector(589,11) - size) then
-							tank_x_pos <= conv_std_logic_vector(589,11) - size;
-						elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
-							tank_x_pos <= conv_std_logic_vector(50,11) + size;
-						else
-							tank_x_pos <= s_rand;
-						end if;	
-					end if;
+					-- DUPLICATE FOR TANK 1
+--					if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
+--						game_over <= '1';					
+----					-- re spawn tank at a random x position based on rand input
+----					-- spawn region is between 50 and 589
+----						tank_y_pos <= conv_std_logic_vector(80,11);
+----						if (s_rand >= conv_std_logic_vector(589,11) - size) then
+----							tank_x_pos <= conv_std_logic_vector(589,11) - size;
+----						elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+----							tank_x_pos <= conv_std_logic_vector(50,11) + size;
+----						else
+----							tank_x_pos <= s_rand;
+----						end if;	
+--					end if;
 					
 					if ('0' & tank2_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
-					-- re spawn tank 2 at a random x position based on rand input
-					-- spawn region is between 50 and 589
+
+--					-- re spawn tank 2 at a random x position based on rand input
+--					-- spawn region is between 50 and 589
 						tank2_y_pos <= conv_std_logic_vector(80,11);
 						if (s_rand >= conv_std_logic_vector(589,11) - size) then
 							tank2_x_pos <= conv_std_logic_vector(589,11) - size;
@@ -270,6 +283,7 @@ begin
 						else
 							tank2_x_pos <= s_rand;
 						end if;	
+						s_game_over <= '1';
 					end if;
 									
 					-- add boundary for the player 
@@ -524,8 +538,8 @@ begin
 					tank_x_pos <= tank_x_pos + tank_x_motion;
 					
 					if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
-					-- re spawn tank at a random x position based on rand input
-					-- spawn region is between 50 and 589
+--					-- re spawn tank at a random x position based on rand input
+--					-- spawn region is between 50 and 589
 						tank_y_pos <= conv_std_logic_vector(80,11);
 						if (s_rand >= conv_std_logic_vector(589,11) - size) then
 							tank_x_pos <= conv_std_logic_vector(589,11) - size;
@@ -534,6 +548,7 @@ begin
 						else
 							tank_x_pos <= s_rand;
 						end if;	
+						s_game_over <= '1';
 					end if;
 					
 					
@@ -603,8 +618,9 @@ begin
 					end if;
 			end if;	
 		end if;
+	game_over <= s_game_over;
 	o_score_ones <= score_ones;
 	o_score_tens <= score_tens;
 end process move_tank;
-
+--collision <= s_collision;
 end behavior;

@@ -142,6 +142,20 @@ applicable agreement for further details.
 		(text "tank2_on" (rect 199 107 235 119)(font "Arial" ))
 		(line (pt 256 112)(pt 240 112)(line_width 1))
 	)
+	(port
+		(pt 256 128)
+		(output)
+		(text "collision" (rect 0 0 28 12)(font "Arial" ))
+		(text "collision" (rect 207 123 235 135)(font "Arial" ))
+		(line (pt 256 128)(pt 240 128)(line_width 1))
+	)
+	(port
+		(pt 256 144)
+		(output)
+		(text "game_over" (rect 0 0 47 12)(font "Arial" ))
+		(text "game_over" (rect 188 139 235 151)(font "Arial" ))
+		(line (pt 256 144)(pt 240 144)(line_width 1))
+	)
 	(drawing
 		(rectangle (rect 16 16 240 224)(line_width 1))
 	)

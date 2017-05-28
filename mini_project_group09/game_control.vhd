@@ -15,7 +15,8 @@ entity game_control is
 			tank2_on: in std_logic;
 			enable_timer: out std_logic;
 			sec_ones, sec_tens: in std_logic_vector(3 downto 0);
-			score_tens: in std_logic_vector(3 downto 0));
+			score_tens: in std_logic_vector(3 downto 0);
+			o_game_over: in std_logic);
 end game_control;
 
 architecture bhv of game_control is
@@ -28,9 +29,11 @@ signal s_game_mode		 : std_logic_vector(2 downto 0) := "000";
 signal current_s, next_s: state_type;
 signal s_enable_timer, s_reset_tank, s_reset_timer: std_logic := '0';
 signal s_score_ones, s_score_tens : std_logic_vector(3 downto 0):= "0000";
+signal s_game_over: std_logic:= '0';
 begin
 s_score_ones <= score_ones;
 s_score_tens <= score_tens;
+s_game_over <= o_game_over;
 process(clk)
 begin
 	if (rising_edge(clk)) then
@@ -38,7 +41,7 @@ begin
 	end if;
 end process;
 
-process (current_s, bt_select, bt_menu, sw0, score_ones)
+process (current_s, bt_select, bt_menu, sw0, score_ones, s_game_over)
 begin
 
 	case current_s is
@@ -60,6 +63,8 @@ begin
 			s_reset_timer <= '0';
 			if bt_menu = '0' then
 				next_s <= menu;
+			elsif (sec_ones = "0000" and sec_tens = "0000") then
+				next_s <= game_over;
 			else
 				next_s <= practice;
 			end if;
@@ -92,6 +97,8 @@ begin
 			s_reset_timer <= '0';
 			if bt_menu = '0' then
 				next_s <= menu;
+			elsif s_game_over = '1' then
+				next_s <= game_over;
 			elsif s_score_ones > "0110" then
 				s_reset_timer <= '1';
 				next_s <= lvl4;
@@ -103,6 +110,8 @@ begin
 			s_reset_timer <= '0';	
 			if bt_menu = '0' then
 				next_s <= menu;
+			elsif s_game_over = '1' then
+				next_s <= game_over;				
 			elsif s_score_tens > "0000" then
 				s_reset_timer <= '1';
 				next_s <= game_won;
