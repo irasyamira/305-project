@@ -73,11 +73,10 @@ begin
 			s_reset_timer <= '0';
 			if bt_menu = '0' then
 				next_s <= menu;
-			elsif s_score_ones > "0010" then
+			elsif s_score_ones >= "0011" then
 				s_reset_timer <= '1';
 				next_s <= lvl2;
 			else
-				--s_reset_timer <= '1';
 				next_s <= lvl1;
 			end if;
 		when lvl2 =>
@@ -85,11 +84,10 @@ begin
 			s_reset_timer <= '0';
 			if bt_menu = '0' then
 				next_s <= menu;
-			elsif s_score_ones > "0100" then
+			elsif s_score_ones >= "0101" then
 				s_reset_timer <= '1';
 				next_s <= lvl3;
 			else
-				--s_reset_timer <= '1';
 				next_s <= lvl2;
 			end if;
 		when lvl3 =>
@@ -99,7 +97,7 @@ begin
 				next_s <= menu;
 			elsif s_game_over = '1' then
 				next_s <= game_over;
-			elsif s_score_ones > "0110" then
+			elsif s_score_ones >= "0010" and score_tens >= "0001" then
 				s_reset_timer <= '1';
 				next_s <= lvl4;
 			else
@@ -112,7 +110,7 @@ begin
 				next_s <= menu;
 			elsif s_game_over = '1' then
 				next_s <= game_over;				
-			elsif s_score_tens > "0000" then
+			elsif s_score_ones >= "1000" and s_score_tens >= "0001" then
 				s_reset_timer <= '1';
 				next_s <= game_won;
 			else
@@ -145,25 +143,25 @@ begin
 			s_green <= "1111";
 			s_blue <= "1111";
 	elsif (bullet_on = '1' and s_game_mode /= "000" and s_game_mode /= "110" and s_game_mode /= "111") then -- rendering bullet
-			s_red <= "0111";
-			s_green <= "1000";
-			s_blue <= "0000";
+			s_red <= "1111";
+			s_green <= "1111";
+			s_blue <= "1111";
 	elsif (player_on = '1' and s_game_mode /= "000"  and s_game_mode /= "110" and s_game_mode /= "111") then -- rendering player
 			s_red <= "0000";
 			s_green <= "1100";
 			s_blue <= "1110";
-	elsif (tank_on= '1' and s_game_mode /= "000"  and s_game_mode /= "110" and s_game_mode /= "111") then -- rendering tank(black)
-			s_red <= "0000";
-			s_green <= "0000";
+	elsif (tank_on= '1' and s_game_mode /= "000"  and s_game_mode /= "110" and s_game_mode /= "111") then -- rendering tank
+			s_red <= "1100";
+			s_green <= "1110";
 			s_blue <= "0000";
 	elsif (tank2_on= '1' and (s_game_mode = "101" or s_game_mode = "011")) then -- rendering tank 2
 			s_red <= "1000";
-			s_green <= "0000";
-			s_blue <= "0000";
+			s_green <= "1110";
+			s_blue <= "1100";
 	else -- when rendering back ground
-			s_red <= "0000";
+			s_red <= '0' & pixel_row(8 downto 6);
 			s_green <= "0000";
-			s_blue <= "1000";
+			s_blue <= '0' & pixel_row(8 downto 6);
 	end if;
 	
 end process;

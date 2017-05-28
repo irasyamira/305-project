@@ -60,7 +60,7 @@ s_rand <= rand;
 
 rgb_display: process (tank_x_pos, tank_y_pos, player_x_pos, player_y_pos,bullet_x_pos, bullet_y_pos, pixel_column, pixel_row, size, bullet_size, tank2_x_pos, tank2_y_pos)
 begin
-	-- set tank_on ='1' to display tank
+
 	if ('0' & tank_x_pos <= pixel_column + size) and
  	(tank_x_pos + size >= '0' & pixel_column) and
  	('0' & tank_y_pos <= pixel_row + size) and
@@ -112,7 +112,6 @@ begin
 			-- PRACTICE MODE	OR GAME MODE
 			-- LEVEL 0 or LEVEL 1
 			-- Describe levels here
-
 			if (pause_clk = '0' and game_mode /= "000") then
 				tank_x_pos <= tank_x_pos;
 				tank_y_pos <= tank_y_pos;
@@ -170,8 +169,7 @@ begin
 					(('0' & bullet_y_pos) >= tank_y_pos - size) and
 					('0' & bullet_x_pos  <= tank_x_pos + size) and
 					('0' & bullet_x_pos >= tank_x_pos - size) then
-					--s_collision <= '1';
-					--s_collision <= NOT s_collision;
+					
 					bullet_fired <= '0';
 					score_ones <= score_ones + '1';
 
@@ -199,7 +197,244 @@ begin
 				end if;
 			end if;	-- pause
 	
-		elsif game_mode = "101" then
+		
+		elsif game_mode = "011" then
+			-- GAME MODE
+			-- LEVEL 2
+	
+			if (pause_clk = '0' and game_mode /= "000") then
+				tank_x_pos <= tank_x_pos;
+				tank_y_pos <= tank_y_pos;
+				tank2_x_pos <= tank_x_pos;
+				tank2_y_pos <= tank_y_pos;				
+				bullet_x_pos <= bullet_x_pos;
+				bullet_y_pos <= bullet_y_pos;
+				player_x_pos <= player_x_pos;
+				player_y_pos <= player_y_pos;
+	
+			else
+	
+				-- tank moving in horizontal motion
+				if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
+					tank_x_motion <= - conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 2
+				elsif tank_x_pos <= size then
+					tank_x_motion <= conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 2
+				end if;
+				-- compute next tank x position
+					tank_x_pos <= tank_x_pos + tank_x_motion;
+					
+				-- tank moving in horizontal motion
+				if ('0' & tank2_x_pos) >= conv_std_logic_vector(640,11) - size then
+					tank2_x_motion <= - conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 2
+				elsif tank2_x_pos <= size then
+					tank2_x_motion <= conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 2
+				end if;
+				-- compute next tank x position
+					tank2_x_pos <= tank2_x_pos + tank2_x_motion;
+						
+				-- add boundary for the player 
+				if ('0' & mouse_col) >= "0111000000" then
+					if ('0' & player_x_pos) >= conv_std_logic_vector(640,11) - size then
+						player_x_pos <= player_x_pos + conv_std_logic_vector(0,11);
+					else
+						player_x_pos <= player_x_pos + conv_std_logic_vector(3,11);
+					end if;
+				elsif mouse_col <= "0100000000" then
+					if player_x_pos <= size then
+						player_x_pos <= player_x_pos - conv_std_logic_vector(0,11);
+					else 
+						player_x_pos <= player_x_pos - conv_std_logic_vector(3,11);
+					end if;
+				else
+					player_x_pos <= player_x_pos;
+				end if;
+				
+				if (left_click = '1') and (bullet_fired = '0') then
+					bullet_fired <= '1';
+					bullet_x_pos <= player_x_pos;
+					bullet_y_pos <= player_y_pos;
+					bullet_y_motion <= - bullet_speed;
+				end if;
+				
+				if bullet_fired = '1' then
+					bullet_y_pos <= bullet_y_pos + bullet_y_motion;
+				end if;
+				
+				-- if exceeds boundary or hits the upper tank then bullet disappears
+				if bullet_y_pos <= bullet_size then
+					bullet_fired <= '0';
+				end if;
+				
+				-- COLLISION WITH TANK 1
+				if ('0' & bullet_y_pos <= tank_y_pos + size) and 
+					(('0' & bullet_y_pos) >= tank_y_pos - size) and
+					('0' & bullet_x_pos  <= tank_x_pos + size) and
+					('0' & bullet_x_pos >= tank_x_pos - size) then
+					
+					bullet_fired <= '0';
+					score_ones <= score_ones + "0001";
+						if (score_ones = "1001") then
+							score_tens <= score_tens + '1';
+							score_ones <= "0000";
+						end if;
+					-- bullet reappears off screen until left click is triggered again
+					bullet_x_pos <= conv_std_logic_vector(500,11);
+					bullet_y_pos <= conv_std_logic_vector(700,11);
+						
+						-- re spawn tank at a random x position based on rand input
+						-- spawn region is between 50 and 589
+							if (s_rand >= conv_std_logic_vector(589,11) - size) then
+								tank_x_pos <= conv_std_logic_vector(589,11) - size;
+								tank_y_pos <= conv_std_logic_vector(80,11);
+							elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+								tank_x_pos <= conv_std_logic_vector(50,11) + size;
+								tank_y_pos <= conv_std_logic_vector(80,11);
+							else
+								tank_x_pos <= s_rand;
+								tank_y_pos <= conv_std_logic_vector(80,11);
+							end if;	
+				end if;
+				
+				-- COLLISION WITH TANK 2 
+				if ('0' & bullet_y_pos <= tank2_y_pos + size) and 
+					(('0' & bullet_y_pos) >= tank2_y_pos - size) and
+					('0' & bullet_x_pos  <= tank2_x_pos + size) and
+					('0' & bullet_x_pos >= tank2_x_pos - size) then
+					
+					bullet_fired <= '0';
+					score_ones <= score_ones + "0001";
+						if (score_ones = "1001") then
+							score_tens <= score_tens + '1';
+							score_ones <= "0000";
+						end if;
+					-- bullet reappears off screen until left click is triggered again
+					bullet_x_pos <= conv_std_logic_vector(500,11);
+					bullet_y_pos <= conv_std_logic_vector(700,11);
+						
+						-- re spawn tank at a random x position based on rand input
+						-- spawn region is between 50 and 589
+							if (s_rand >= conv_std_logic_vector(589,11) - size) then
+								tank2_x_pos <= conv_std_logic_vector(589,11) - size;
+								tank2_y_pos <= conv_std_logic_vector(120,11);
+							elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+								tank2_x_pos <= conv_std_logic_vector(50,11) + size;
+								tank2_y_pos <= conv_std_logic_vector(120,11);
+							else
+								tank2_x_pos <= s_rand;
+								tank2_y_pos <= conv_std_logic_vector(120,11);
+							end if;	
+				end if;
+				
+			end if;	-- pause
+	
+		elsif game_mode = "100" then
+		-- GAME MODE 
+		-- LEVEL 3
+			
+			if (pause_clk = '0' and game_mode /= "000") then
+				tank_x_pos <= tank_x_pos;
+				tank_y_pos <= tank_y_pos;
+				bullet_x_pos <= bullet_x_pos;
+				bullet_y_pos <= bullet_y_pos;
+				player_x_pos <= player_x_pos;
+				player_y_pos <= player_y_pos;
+	
+			else
+				-- tank moving in zig zag motion
+					if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
+							tank_x_motion <= - conv_std_logic_vector(5,11); -- SPEED  FOR LEVEL 3
+							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);							
+							
+					elsif tank_x_pos <= size then
+							tank_x_motion <= conv_std_logic_vector(5,11); -- SPEED  FOR LEVEL 3
+							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);
+								
+					end if;
+					-- compute next tank x position
+					tank_x_pos <= tank_x_pos + tank_x_motion;
+					
+					if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
+--					-- re spawn tank at a random x position based on rand input
+--					-- spawn region is between 50 and 589
+						tank_y_pos <= conv_std_logic_vector(80,11);
+						if (s_rand >= conv_std_logic_vector(589,11) - size) then
+							tank_x_pos <= conv_std_logic_vector(589,11) - size;
+						elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+							tank_x_pos <= conv_std_logic_vector(50,11) + size;
+						else
+							tank_x_pos <= s_rand;
+						end if;	
+						s_game_over <= '1';
+					end if;
+					
+					
+	
+						
+					-- add boundary for the player 
+					if ('0' & mouse_col) >= "0111000000" then
+						if ('0' & player_x_pos) >= conv_std_logic_vector(640,11) - size then
+							player_x_pos <= player_x_pos + conv_std_logic_vector(0,11);
+						else
+							player_x_pos <= player_x_pos + conv_std_logic_vector(3,11);
+						end if;
+					elsif mouse_col <= "0100000000" then
+						if player_x_pos <= size then
+							player_x_pos <= player_x_pos - conv_std_logic_vector(0,11);
+						else 
+							player_x_pos <= player_x_pos - conv_std_logic_vector(3,11);
+						end if;
+					else
+						player_x_pos <= player_x_pos;
+					end if;
+					
+					if (left_click = '1') and (bullet_fired = '0') then
+						bullet_fired <= '1';
+						bullet_x_pos <= player_x_pos;
+						bullet_y_pos <= player_y_pos;
+						bullet_y_motion <= - bullet_speed;
+					end if;
+					
+					if bullet_fired = '1' then
+						bullet_y_pos <= bullet_y_pos + bullet_y_motion;
+					end if;
+					
+					-- if exceeds boundary or hits the upper tank then bullet disappears
+					if bullet_y_pos <= bullet_size then
+						bullet_fired <= '0';
+					end if;
+					
+					
+					if ('0' & bullet_y_pos <= tank_y_pos + size) and 
+						(('0' & bullet_y_pos) >= tank_y_pos - size) and
+						('0' & bullet_x_pos  <= tank_x_pos + size) and
+						('0' & bullet_x_pos >= tank_x_pos - size) then
+						
+						bullet_fired <= '0';
+						score_ones <= score_ones + '1';
+							if (score_ones = "1001") then
+								score_tens <= score_tens + '1';
+								score_ones <= "0000";
+							end if;
+						-- bullet reappears off screen until left click is triggered again
+						bullet_x_pos <= conv_std_logic_vector(500,11);
+						bullet_y_pos <= conv_std_logic_vector(700,11);
+							
+							-- re spawn tank at a random x position based on rand input
+							-- spawn region is between 50 and 589
+							if (s_rand >= conv_std_logic_vector(589,11) - size) then
+								tank_x_pos <= conv_std_logic_vector(589,11) - size;
+								tank_y_pos <= conv_std_logic_vector(80,11);
+							elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
+								tank_x_pos <= conv_std_logic_vector(50,11) + size;
+								tank_y_pos <= conv_std_logic_vector(80,11);
+							else
+								tank_x_pos <= s_rand;
+								tank_y_pos <= conv_std_logic_vector(80,11);
+							end if;	
+					end if;
+			end if;	
+			
+elsif game_mode = "101" then
 		-- GAME MODE
 		-- LEVEL 4
 		
@@ -217,11 +452,11 @@ begin
 	
 					-- tank 1 moving in zig zag motion
 					if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
-							tank_x_motion <= - conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 4
+							tank_x_motion <= - conv_std_logic_vector(6,11); -- SPEED  FOR LEVEL 4
 							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);							
 							
 					elsif tank_x_pos <= size then
-							tank_x_motion <= conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 4
+							tank_x_motion <= conv_std_logic_vector(6,11); -- SPEED  FOR LEVEL 4
 							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);
 								
 					end if;
@@ -245,11 +480,11 @@ begin
 					
 					-- tank 2 moving in zig zag motion
 					if ('0' & tank2_x_pos) >= conv_std_logic_vector(640,11) - size then
-							tank2_x_motion <= - conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 4
+							tank2_x_motion <= - conv_std_logic_vector(6,11); -- SPEED  FOR LEVEL 4
 							tank2_y_pos <= tank2_y_pos + conv_std_logic_vector(10,11);							
 							
 					elsif tank2_x_pos <= size then
-							tank2_x_motion <= conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 4
+							tank2_x_motion <= conv_std_logic_vector(6,11); -- SPEED  FOR LEVEL 4
 							tank2_y_pos <= tank2_y_pos + conv_std_logic_vector(10,11);
 								
 					end if;
@@ -381,242 +616,7 @@ begin
 					
 					
 			end if;
-		
-		elsif game_mode = "011" then
-			-- GAME MODE
-			-- LEVEL 2
-	
-			if (pause_clk = '0' and game_mode /= "000") then
-				tank_x_pos <= tank_x_pos;
-				tank_y_pos <= tank_y_pos;
-				tank2_x_pos <= tank_x_pos;
-				tank2_y_pos <= tank_y_pos;				
-				bullet_x_pos <= bullet_x_pos;
-				bullet_y_pos <= bullet_y_pos;
-				player_x_pos <= player_x_pos;
-				player_y_pos <= player_y_pos;
-	
-			else
-	
-				-- tank moving in horizontal motion
-				if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
-					tank_x_motion <= - conv_std_logic_vector(3,11); -- SPEED  FOR LEVEL 2
-				elsif tank_x_pos <= size then
-					tank_x_motion <= conv_std_logic_vector(3,11); -- SPEED  FOR LEVEL 2
-				end if;
-				-- compute next tank x position
-					tank_x_pos <= tank_x_pos + tank_x_motion;
-					
-				-- tank moving in horizontal motion
-				if ('0' & tank2_x_pos) >= conv_std_logic_vector(640,11) - size then
-					tank2_x_motion <= - conv_std_logic_vector(3,11); -- SPEED  FOR LEVEL 2
-				elsif tank2_x_pos <= size then
-					tank2_x_motion <= conv_std_logic_vector(3,11); -- SPEED  FOR LEVEL 2
-				end if;
-				-- compute next tank x position
-					tank2_x_pos <= tank2_x_pos + tank2_x_motion;
-						
-				-- add boundary for the player 
-				if ('0' & mouse_col) >= "0111000000" then
-					if ('0' & player_x_pos) >= conv_std_logic_vector(640,11) - size then
-						player_x_pos <= player_x_pos + conv_std_logic_vector(0,11);
-					else
-						player_x_pos <= player_x_pos + conv_std_logic_vector(3,11);
-					end if;
-				elsif mouse_col <= "0100000000" then
-					if player_x_pos <= size then
-						player_x_pos <= player_x_pos - conv_std_logic_vector(0,11);
-					else 
-						player_x_pos <= player_x_pos - conv_std_logic_vector(3,11);
-					end if;
-				else
-					player_x_pos <= player_x_pos;
-				end if;
-				
-				if (left_click = '1') and (bullet_fired = '0') then
-					bullet_fired <= '1';
-					bullet_x_pos <= player_x_pos;
-					bullet_y_pos <= player_y_pos;
-					bullet_y_motion <= - bullet_speed;
-				end if;
-				
-				if bullet_fired = '1' then
-					bullet_y_pos <= bullet_y_pos + bullet_y_motion;
-				end if;
-				
-				-- if exceeds boundary or hits the upper tank then bullet disappears
-				if bullet_y_pos <= bullet_size then
-					bullet_fired <= '0';
-				end if;
-				
-				-- COLLISION WITH TANK 1
-				if ('0' & bullet_y_pos <= tank_y_pos + size) and 
-					(('0' & bullet_y_pos) >= tank_y_pos - size) and
-					('0' & bullet_x_pos  <= tank_x_pos + size) and
-					('0' & bullet_x_pos >= tank_x_pos - size) then
-					
-					bullet_fired <= '0';
-					score_ones <= score_ones + "0001";
-						if (score_ones = "1001") then
-							score_tens <= score_tens + '1';
-							score_ones <= "0000";
-						end if;
-					-- bullet reappears off screen until left click is triggered again
-					bullet_x_pos <= conv_std_logic_vector(500,11);
-					bullet_y_pos <= conv_std_logic_vector(700,11);
-						
-						-- re spawn tank at a random x position based on rand input
-						-- spawn region is between 50 and 589
-							if (s_rand >= conv_std_logic_vector(589,11) - size) then
-								tank_x_pos <= conv_std_logic_vector(589,11) - size;
-								tank_y_pos <= conv_std_logic_vector(80,11);
-							elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
-								tank_x_pos <= conv_std_logic_vector(50,11) + size;
-								tank_y_pos <= conv_std_logic_vector(80,11);
-							else
-								tank_x_pos <= s_rand;
-								tank_y_pos <= conv_std_logic_vector(80,11);
-							end if;	
-				end if;
-				
-				-- COLLISION WITH TANK 2 
-				if ('0' & bullet_y_pos <= tank2_y_pos + size) and 
-					(('0' & bullet_y_pos) >= tank2_y_pos - size) and
-					('0' & bullet_x_pos  <= tank2_x_pos + size) and
-					('0' & bullet_x_pos >= tank2_x_pos - size) then
-					
-					bullet_fired <= '0';
-					score_ones <= score_ones + "0001";
-						if (score_ones = "1001") then
-							score_tens <= score_tens + '1';
-							score_ones <= "0000";
-						end if;
-					-- bullet reappears off screen until left click is triggered again
-					bullet_x_pos <= conv_std_logic_vector(500,11);
-					bullet_y_pos <= conv_std_logic_vector(700,11);
-						
-						-- re spawn tank at a random x position based on rand input
-						-- spawn region is between 50 and 589
-							if (s_rand >= conv_std_logic_vector(589,11) - size) then
-								tank2_x_pos <= conv_std_logic_vector(589,11) - size;
-								tank2_y_pos <= conv_std_logic_vector(120,11);
-							elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
-								tank2_x_pos <= conv_std_logic_vector(50,11) + size;
-								tank2_y_pos <= conv_std_logic_vector(120,11);
-							else
-								tank2_x_pos <= s_rand;
-								tank2_y_pos <= conv_std_logic_vector(120,11);
-							end if;	
-				end if;
-				
-			end if;	-- pause
-	
-		elsif game_mode = "100" then
-		-- GAME MODE 
-		-- LEVEL 3
 			
-			if (pause_clk = '0' and game_mode /= "000") then
-				tank_x_pos <= tank_x_pos;
-				tank_y_pos <= tank_y_pos;
-				bullet_x_pos <= bullet_x_pos;
-				bullet_y_pos <= bullet_y_pos;
-				player_x_pos <= player_x_pos;
-				player_y_pos <= player_y_pos;
-	
-			else
-				-- tank moving in zig zag motion
-					if ('0' & tank_x_pos) >= conv_std_logic_vector(640,11) - size then
-							tank_x_motion <= - conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 3
-							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);							
-							
-					elsif tank_x_pos <= size then
-							tank_x_motion <= conv_std_logic_vector(4,11); -- SPEED  FOR LEVEL 3
-							tank_y_pos <= tank_y_pos + conv_std_logic_vector(10,11);
-								
-					end if;
-					-- compute next tank x position
-					tank_x_pos <= tank_x_pos + tank_x_motion;
-					
-					if ('0' & tank_y_pos >= conv_std_logic_vector(480,11) - size) then -- exceeds the lower vertical boundary
---					-- re spawn tank at a random x position based on rand input
---					-- spawn region is between 50 and 589
-						tank_y_pos <= conv_std_logic_vector(80,11);
-						if (s_rand >= conv_std_logic_vector(589,11) - size) then
-							tank_x_pos <= conv_std_logic_vector(589,11) - size;
-						elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
-							tank_x_pos <= conv_std_logic_vector(50,11) + size;
-						else
-							tank_x_pos <= s_rand;
-						end if;	
-						s_game_over <= '1';
-					end if;
-					
-					
-	
-						
-					-- add boundary for the player 
-					if ('0' & mouse_col) >= "0111000000" then
-						if ('0' & player_x_pos) >= conv_std_logic_vector(640,11) - size then
-							player_x_pos <= player_x_pos + conv_std_logic_vector(0,11);
-						else
-							player_x_pos <= player_x_pos + conv_std_logic_vector(3,11);
-						end if;
-					elsif mouse_col <= "0100000000" then
-						if player_x_pos <= size then
-							player_x_pos <= player_x_pos - conv_std_logic_vector(0,11);
-						else 
-							player_x_pos <= player_x_pos - conv_std_logic_vector(3,11);
-						end if;
-					else
-						player_x_pos <= player_x_pos;
-					end if;
-					
-					if (left_click = '1') and (bullet_fired = '0') then
-						bullet_fired <= '1';
-						bullet_x_pos <= player_x_pos;
-						bullet_y_pos <= player_y_pos;
-						bullet_y_motion <= - bullet_speed;
-					end if;
-					
-					if bullet_fired = '1' then
-						bullet_y_pos <= bullet_y_pos + bullet_y_motion;
-					end if;
-					
-					-- if exceeds boundary or hits the upper tank then bullet disappears
-					if bullet_y_pos <= bullet_size then
-						bullet_fired <= '0';
-					end if;
-					
-					
-					if ('0' & bullet_y_pos <= tank_y_pos + size) and 
-						(('0' & bullet_y_pos) >= tank_y_pos - size) and
-						('0' & bullet_x_pos  <= tank_x_pos + size) and
-						('0' & bullet_x_pos >= tank_x_pos - size) then
-						
-						bullet_fired <= '0';
-						score_ones <= score_ones + '1';
-							if (score_ones = "1001") then
-								score_tens <= score_tens + '1';
-								score_ones <= "0000";
-							end if;
-						-- bullet reappears off screen until left click is triggered again
-						bullet_x_pos <= conv_std_logic_vector(500,11);
-						bullet_y_pos <= conv_std_logic_vector(700,11);
-							
-							-- re spawn tank at a random x position based on rand input
-							-- spawn region is between 50 and 589
-							if (s_rand >= conv_std_logic_vector(589,11) - size) then
-								tank_x_pos <= conv_std_logic_vector(589,11) - size;
-								tank_y_pos <= conv_std_logic_vector(80,11);
-							elsif (s_rand <= conv_std_logic_vector(50,11) + size) then
-								tank_x_pos <= conv_std_logic_vector(50,11) + size;
-								tank_y_pos <= conv_std_logic_vector(80,11);
-							else
-								tank_x_pos <= s_rand;
-								tank_y_pos <= conv_std_logic_vector(80,11);
-							end if;	
-					end if;
-			end if;	
 		end if;
 	game_over <= s_game_over;
 	o_score_ones <= score_ones;
