@@ -1,7 +1,7 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
 
 entity seven_seg is
   port (clk : in std_logic;
@@ -16,7 +16,7 @@ begin
   process(clk,bcd)
   begin
     if(rising_edge(clk)) then
-		case bcd_sig is --depending on the bcd input, outputs the appropriate signal value to the 7 seg (7 seg is active low)
+		case bcd_sig is -- Depending on the bcd input, outputs the appropriate signal value to the 7 seg (7 seg is active low)
         when "0000"=> segment7 <="0000001";
         when "0001"=> segment7 <="1001111";
         when "0010"=> segment7 <="0010010";
