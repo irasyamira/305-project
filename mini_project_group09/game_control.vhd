@@ -158,10 +158,14 @@ begin
 			s_red <= "0000";
 			s_green <= "1100";
 			s_blue <= "1110";
-	elsif (tank_on= '1' and s_game_mode /= "000"  and s_game_mode /= "110" and s_game_mode /= "111") then -- rendering tank
+	elsif (tank_on= '1' and s_game_mode /= "000"  and s_game_mode /= "110" and s_game_mode /= "111" and s_game_mode /= "100") then -- rendering tank
 			s_red <= "1100";
 			s_green <= "1110";
 			s_blue <= "0000";
+	elsif (tank_on= '1' and s_game_mode /= "000"  and s_game_mode /= "110" and s_game_mode /= "111" and s_game_mode /= "101") then -- rendering tank
+			s_red <= "1100";
+			s_green <= "0000";
+			s_blue <= "1000";
 	elsif (tank2_on= '1' and (s_game_mode = "101" or s_game_mode = "011")) then -- rendering tank 2
 			s_red <= "1000";
 			s_green <= "1110";
@@ -171,39 +175,6 @@ begin
 			s_green <= "0000";
 			s_blue <= '0' & pixel_row(8 downto 6);
 	end if;
---	if rom_mux = '1' then -- rendering text
---			s_red <= "1111";
---			s_green <= "1111";
---			s_blue <= "1111";
---	elsif (bullet_on = '1' and s_game_mode /= "000" and s_game_mode /= "110" and s_game_mode /= "111") then -- rendering bullet
---			s_red <= "1111";
---			s_green <= "1111";
---			s_blue <= "1111";
---	elsif (player_on = '1' and s_game_mode /= "000"  and s_game_mode /= "110" and s_game_mode /= "111") then -- rendering player
---			s_red <= "0000";
---			s_green <= "1100";
---			s_blue <= "1110";
---	elsif tank_on = '1' and (s_game_mode = "011"  or s_game_mode = "101") then -- rendering tank
---			s_red <= "1100";
---			s_green <= "1110";
---			s_blue <= "0000";
---	elsif (tank2_on = '1' and (s_game_mode = "101" or s_game_mode = "011")) then -- rendering tank 2
---			s_red <= "1000";
---			s_green <= "1110";
---			s_blue <= "1100";
---	elsif (tank4_on = '1' and s_game_mode = "100") then -- rendering tank 3
---			s_red <= "1100";
---			s_green <= "1110";
---			s_blue <= "1100";
---	elsif tank4_on = '1' and (s_game_mode = "001" or s_game_mode = "010") then -- rendering tank 4
---			s_red <= "1110";
---			s_green <= "1000";
---			s_blue <= "1000";	
---	else -- when rendering back ground
---			s_red <= '0' & pixel_row(8 downto 6);
---			s_green <= "0000";
---			s_blue <= '0' & pixel_row(8 downto 6);
---	end if;
 	
 end process;
 red_data <= s_red;

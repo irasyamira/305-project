@@ -12,9 +12,8 @@ begin
 	process (clk) 
 	begin
 		if rising_edge(clk) then
-						 ran_num <= '0' & ran_num(8) & (not(ran_num(7) xor ran_num(3)) & not(ran_num(5) xor ran_num(1)) & ran_num(5)
-							  & not(ran_num(3) xor ran_num(8)) & ran_num(3) & ran_num(2) & (ran_num(4) xor ran_num(6))
-							  & ran_num(0) & ran_num(9));
+			ran_num <= ran_num(10) & ran_num(4) & ((ran_num(5) xor ran_num(1)) & (ran_num(5) xor ran_num(1)) 
+			& ran_num(5) & (ran_num(3) xor ran_num(8)) & ran_num(3) & ran_num(2) & not(ran_num(3) xor ran_num(6)) & not(ran_num(0)) & ran_num(7));
 		 end if;
     end process;
 	
