@@ -111,6 +111,9 @@ begin
 			-- PRACTICE MODE	OR GAME MODE
 			-- LEVEL 0 or LEVEL 1
 			-- Describe levels here
+			
+			tank_y_pos <= conv_std_logic_vector(80,11);
+			
 			if (pause_clk = '0' and game_mode /= "000") then
 				tank_x_pos <= tank_x_pos;
 				tank_y_pos <= tank_y_pos;
@@ -200,12 +203,14 @@ begin
 		elsif game_mode = "011" then
 			-- GAME MODE
 			-- LEVEL 2
+			tank_y_pos <= conv_std_logic_vector(80,11);
+			tank2_y_pos <= conv_std_logic_vector(120,11);
 	
 			if (pause_clk = '0' and game_mode /= "000") then
 				tank_x_pos <= tank_x_pos;
 				tank_y_pos <= tank_y_pos;
-				tank2_x_pos <= tank_x_pos;
-				tank2_y_pos <= tank_y_pos;				
+				tank2_x_pos <= tank2_x_pos;
+				tank2_y_pos <= tank2_y_pos;				
 				bullet_x_pos <= bullet_x_pos;
 				bullet_y_pos <= bullet_y_pos;
 				player_x_pos <= player_x_pos;
@@ -440,8 +445,8 @@ elsif game_mode = "101" then
 			if (pause_clk = '0' and game_mode /= "000") then
 				tank_x_pos <= tank_x_pos;
 				tank_y_pos <= tank_y_pos;
-				tank2_x_pos <= tank_x_pos;
-				tank2_y_pos <= tank_y_pos;
+				tank2_x_pos <= tank2_x_pos;
+				tank2_y_pos <= tank2_y_pos;
 				bullet_x_pos <= bullet_x_pos;
 				bullet_y_pos <= bullet_y_pos;
 				player_x_pos <= player_x_pos;
