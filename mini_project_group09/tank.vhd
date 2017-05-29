@@ -7,59 +7,53 @@ library work;
 
 entity tank is
 
-   port	(signal left_click, clk 			: in std_logic;
+   port	(signal left_click, clk: in std_logic;
 			signal pause_clk: in std_logic;
 			signal rand: in std_logic_vector(10 downto 0);
 			signal mouse_col : in std_logic_vector (9 downto 0);
-			signal pixel_row, pixel_column				: in std_logic_vector(10 downto 0); 
-			signal horiz_sync_out,vert_sync_out		: in std_logic;
+			signal pixel_row, pixel_column: in std_logic_vector(10 downto 0); 		
+			signal horiz_sync_out,vert_sync_out: in std_logic;
+			signal game_mode: in std_logic_vector(2 downto 0);			
 			signal tank_on, player_on, bullet_on: out std_logic;
-			signal game_mode: in std_logic_vector(2 downto 0);
 			signal o_score_ones, o_score_tens: out std_logic_vector(3 downto 0);
-			signal reset: in std_logic;
 			signal tank2_on: out std_logic;
-			signal collision: out std_logic;
 			signal game_over: out std_logic);
 			
 end tank;
 
 architecture behavior of tank is
-  
-signal red_data, green_data, blue_data	: std_logic;
+
 signal vert_sync_int	: std_logic; -- A signal copy for the input vert_sync
 signal bullet_fired: std_logic; -- A signal to indicate the presence of bullet within screen
 signal bullet_speed: std_logic_vector(10 downto 0);
-signal size 								: std_logic_vector(10 downto 0);  
-signal bullet_size 								: std_logic_vector(10 downto 0); 
-signal tank_x_motion, player_x_motion 	 : std_logic_vector(10 downto 0):= conv_std_logic_vector(0,11);
+signal size: std_logic_vector(10 downto 0);  
+signal tank_x_motion, player_x_motion: std_logic_vector(10 downto 0):= conv_std_logic_vector(0,11);
 signal tank_y_motion: std_logic_vector(10 downto 0) := conv_std_logic_vector(0,11);
-signal tank2_x_motion 	 : std_logic_vector(10 downto 0):= conv_std_logic_vector(0,11);
+signal tank2_x_motion: std_logic_vector(10 downto 0):= conv_std_logic_vector(0,11);
 signal tank2_y_motion: std_logic_vector(10 downto 0) := conv_std_logic_vector(0,11);
-signal bullet_y_motion						: std_logic_vector(10 downto 0):= conv_std_logic_vector(0,11);
-signal tank_x_pos							: std_logic_vector(10 downto 0); 
-signal tank_y_pos				: std_logic_vector(10 downto 0) := conv_std_logic_vector(80,11);
-signal tank2_x_pos							: std_logic_vector(10 downto 0); 
-signal tank2_y_pos				: std_logic_vector(10 downto 0) := conv_std_logic_vector(120,11);
-signal bullet_x_pos : std_logic_vector(10 downto 0);
-signal bullet_y_pos	: std_logic_vector(10 downto 0);
-signal player_y_pos,player_x_pos 	: std_logic_vector(10 downto 0);
+signal bullet_y_motion: std_logic_vector(10 downto 0):= conv_std_logic_vector(0,11);
+signal tank_x_pos: std_logic_vector(10 downto 0); 
+signal tank_y_pos: std_logic_vector(10 downto 0) := conv_std_logic_vector(80,11);
+signal tank2_x_pos: std_logic_vector(10 downto 0); 
+signal tank2_y_pos: std_logic_vector(10 downto 0) := conv_std_logic_vector(120,11);
+signal bullet_x_pos: std_logic_vector(10 downto 0);
+signal bullet_y_pos: std_logic_vector(10 downto 0);
+signal player_y_pos, player_x_pos: std_logic_vector(10 downto 0);
 signal s_rand: std_logic_vector(10 downto 0);
 signal score_ones: std_logic_vector(3 downto 0) := "0000";
 signal score_tens: std_logic_vector(3 downto 0) := "0000";
-signal s_collision: std_logic:= '0';
 signal s_game_over: std_logic:= '0'; -- A signal to indicate the end of a game while it is still running
 
 begin           
 
 size <= conv_std_logic_vector(15,11); -- Initialises the size of the tanks and player
-bullet_size <= conv_std_logic_vector(4,11);
 bullet_speed <= conv_std_logic_vector(6,11); -- Initialises the speed of the bullet
 player_y_pos <= conv_std_logic_vector(380,11); -- Fixes the Y position of the player
 vert_sync_int <= vert_sync_out; -- A copy of the input signal vert_sync
 s_rand <= rand; -- A copy of the input signal rand from the lfsr
 
 -- This process outputs '1' if the current pixel corresponds to any of the objects that needs to be rendered on the screen
-rgb_display: process (tank_x_pos, tank_y_pos, player_x_pos, player_y_pos,bullet_x_pos, bullet_y_pos, pixel_column, pixel_row, size, bullet_size, tank2_x_pos, tank2_y_pos)
+rgb_display: process (tank_x_pos, tank_y_pos, player_x_pos, player_y_pos,bullet_x_pos, bullet_y_pos, pixel_column, pixel_row, size, tank2_x_pos, tank2_y_pos)
 begin
 
 	-- Checks if current pixel row and pixel column are within the boundaries of tank1

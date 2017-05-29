@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.0.0 Build 156 04/24/2013 SJ Full Version"
 
--- DATE "05/29/2017 23:13:20"
+-- DATE "05/29/2017 23:37:18"
 
 -- 
 -- Device: Altera EP3C16F484C6 Package FBGA484
@@ -8735,11 +8735,11 @@ PORT MAP (
 -- Location: LCCOMB_X20_Y17_N28
 \inst5|s_tank_left[1]~4\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \inst5|s_tank_left[1]~4_combout\ = (\inst11|o_score_tens\(0) & ((\inst11|o_score_ones\(0)) # ((!\inst11|o_score_ones\(1) & \inst11|o_score_ones\(2))))) # (!\inst11|o_score_tens\(0) & (((\inst11|o_score_ones\(1)))))
+-- \inst5|s_tank_left[1]~4_combout\ = (\inst11|o_score_tens\(0) & (\inst11|o_score_ones\(0) $ (((!\inst11|o_score_ones\(1) & \inst11|o_score_ones\(2)))))) # (!\inst11|o_score_tens\(0) & (((\inst11|o_score_ones\(1)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1011110010101100",
+	lut_mask => "1001110010101100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -29867,11 +29867,12 @@ PORT MAP (
 -- Location: LCCOMB_X12_Y13_N22
 \inst5|s_tank_left[2]~7\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \inst5|s_tank_left[2]~7_combout\ = (\inst11|o_score_tens\(0) & ((\inst11|o_score_ones\(1) $ (\inst11|o_score_ones\(2))))) # (!\inst11|o_score_tens\(0) & (\inst11|o_score_ones\(0) & (\inst11|o_score_ones\(1))))
+-- \inst5|s_tank_left[2]~7_combout\ = (\inst11|o_score_tens\(0) & ((\inst11|o_score_ones\(1) & ((!\inst11|o_score_ones\(2)))) # (!\inst11|o_score_ones\(1) & (!\inst11|o_score_ones\(0) & \inst11|o_score_ones\(2))))) # (!\inst11|o_score_tens\(0) & 
+-- (\inst11|o_score_ones\(0) & (\inst11|o_score_ones\(1))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100101011100000",
+	lut_mask => "0100001011100000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (

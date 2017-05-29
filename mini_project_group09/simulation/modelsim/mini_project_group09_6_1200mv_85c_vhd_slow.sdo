@@ -29,7 +29,7 @@
 (DELAYFILE
   (SDFVERSION "2.1")
   (DESIGN "mini_project_group09")
-  (DATE "05/29/2017 23:13:20")
+  (DATE "05/29/2017 23:37:19")
   (VENDOR "Altera")
   (PROGRAM "Quartus II 64-Bit")
   (VERSION "Version 13.0.0 Build 156 04/24/2013 SJ Full Version")
@@ -24359,7 +24359,7 @@
         (PORT datac (2308:2308:2308) (2548:2548:2548))
         (PORT datad (1358:1358:1358) (1433:1433:1433))
         (IOPATH dataa combout (341:341:341) (328:328:328))
-        (IOPATH datab combout (342:342:342) (318:318:318))
+        (IOPATH datab combout (342:342:342) (325:325:325))
         (IOPATH datac combout (243:243:243) (242:242:242))
         (IOPATH datad combout (130:130:130) (120:120:120))
       )

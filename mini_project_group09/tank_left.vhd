@@ -73,7 +73,7 @@ begin
 		s_tank_left <= "0100"; --4
 	--15
 	elsif s_score_ones = "0101" and s_score_tens = "0001" then
-		s_tank_left <= "0101"; --3
+		s_tank_left <= "0011"; --3
 	--16
 	elsif s_score_ones = "0110" and s_score_tens = "0001" then
 		s_tank_left <= "0010"; --2

@@ -7,7 +7,7 @@ entity timer is
 	port (clk25 : in std_logic;
 		  sec_ones : out std_logic_vector(3 downto 0);
 		  sec_tens : out std_logic_vector(3 downto 0);
-		  reset, enable : in std_logic;
+		  reset:in std_logic;
 		  game_mode: in std_logic_vector(2 downto 0);
 		  pause: in std_logic);
 end timer;
@@ -18,12 +18,11 @@ signal s_sec_ones: std_logic_vector(3 downto 0) := "1001";
 signal s_sec_tens: std_logic_vector(3 downto 0) := "1001";
 signal count : integer := 1;
 signal clk : std_logic := '0';
-signal s_reset, s_enable: std_logic:= '0';
+signal s_reset:std_logic:= '0';
 signal s_pause: std_logic:= '0';
 
 begin
 s_reset <= reset;
-s_enable <= enable;
 s_pause <= pause;
 
 -- Clk generation (for 25 MHz clock this generates 1 Hz clock)
