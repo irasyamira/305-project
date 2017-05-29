@@ -20,9 +20,9 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 256 352)
+	(rect 16 16 256 320)
 	(text "game_control" (rect 5 0 59 12)(font "Arial" ))
-	(text "inst" (rect 8 320 20 332)(font "Arial" ))
+	(text "inst" (rect 8 288 20 300)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -89,29 +89,29 @@ applicable agreement for further details.
 	(port
 		(pt 0 176)
 		(input)
-		(text "score_ones[3..0]" (rect 0 0 67 12)(font "Arial" ))
-		(text "score_ones[3..0]" (rect 21 171 88 183)(font "Arial" ))
-		(line (pt 0 176)(pt 16 176)(line_width 3))
+		(text "tank2_on" (rect 0 0 36 12)(font "Arial" ))
+		(text "tank2_on" (rect 21 171 57 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 1))
 	)
 	(port
 		(pt 0 192)
 		(input)
-		(text "tank2_on" (rect 0 0 36 12)(font "Arial" ))
-		(text "tank2_on" (rect 21 187 57 199)(font "Arial" ))
-		(line (pt 0 192)(pt 16 192)(line_width 1))
+		(text "sec_ones[3..0]" (rect 0 0 59 12)(font "Arial" ))
+		(text "sec_ones[3..0]" (rect 21 187 80 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 3))
 	)
 	(port
 		(pt 0 208)
 		(input)
-		(text "sec_ones[3..0]" (rect 0 0 59 12)(font "Arial" ))
-		(text "sec_ones[3..0]" (rect 21 203 80 215)(font "Arial" ))
+		(text "sec_tens[3..0]" (rect 0 0 56 12)(font "Arial" ))
+		(text "sec_tens[3..0]" (rect 21 203 77 215)(font "Arial" ))
 		(line (pt 0 208)(pt 16 208)(line_width 3))
 	)
 	(port
 		(pt 0 224)
 		(input)
-		(text "sec_tens[3..0]" (rect 0 0 56 12)(font "Arial" ))
-		(text "sec_tens[3..0]" (rect 21 219 77 231)(font "Arial" ))
+		(text "score_ones[3..0]" (rect 0 0 67 12)(font "Arial" ))
+		(text "score_ones[3..0]" (rect 21 219 88 231)(font "Arial" ))
 		(line (pt 0 224)(pt 16 224)(line_width 3))
 	)
 	(port
@@ -127,20 +127,6 @@ applicable agreement for further details.
 		(text "o_game_over" (rect 0 0 57 12)(font "Arial" ))
 		(text "o_game_over" (rect 21 251 78 263)(font "Arial" ))
 		(line (pt 0 256)(pt 16 256)(line_width 1))
-	)
-	(port
-		(pt 0 272)
-		(input)
-		(text "tank3_on" (rect 0 0 36 12)(font "Arial" ))
-		(text "tank3_on" (rect 21 267 57 279)(font "Arial" ))
-		(line (pt 0 272)(pt 16 272)(line_width 1))
-	)
-	(port
-		(pt 0 288)
-		(input)
-		(text "tank4_on" (rect 0 0 37 12)(font "Arial" ))
-		(text "tank4_on" (rect 21 283 58 295)(font "Arial" ))
-		(line (pt 0 288)(pt 16 288)(line_width 1))
 	)
 	(port
 		(pt 240 32)
@@ -178,6 +164,6 @@ applicable agreement for further details.
 		(line (pt 240 96)(pt 224 96)(line_width 1))
 	)
 	(drawing
-		(rectangle (rect 16 16 224 320)(line_width 1))
+		(rectangle (rect 16 16 224 288)(line_width 1))
 	)
 )

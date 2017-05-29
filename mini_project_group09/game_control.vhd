@@ -8,16 +8,14 @@ entity game_control is
    port	(clk, rom_mux, bt_select, bt_menu, sw0	: in std_logic;
 			tank_on, player_on, bullet_on: in std_logic;
 			pixel_row: in std_logic_vector (10 downto 0);
+			tank2_on: in std_logic;	
+			sec_ones, sec_tens: in std_logic_vector(3 downto 0);
+			score_ones, score_tens: in std_logic_vector(3 downto 0);
+			o_game_over: in std_logic;
 			game_mode: out std_logic_vector(2 downto 0);
 			red_data, green_data, blue_data: out std_logic_vector(3 downto 0);
-			score_ones: in std_logic_vector(3 downto 0);
-			reset_timer: out std_logic;
-			tank2_on: in std_logic;
-			sec_ones, sec_tens: in std_logic_vector(3 downto 0);
-			score_tens: in std_logic_vector(3 downto 0);
-			o_game_over: in std_logic;
-			tank3_on: in std_logic;
-			tank4_on: in std_logic);
+			reset_timer: out std_logic);
+
 end game_control;
 
 architecture bhv of game_control is
@@ -151,7 +149,7 @@ game_mode <= s_game_mode;
 reset_timer <= s_reset_timer;
 
 -- Renders all the objects and text on the screen by assigning them to their respective rgb values
-process(bullet_on, s_game_mode, player_on, tank_on, tank2_on, tank3_on, rom_mux, pixel_row, tank4_on)
+process(bullet_on, s_game_mode, player_on, tank_on, tank2_on, rom_mux, pixel_row)
 begin
 
 	-- Renders the text displayed (white)
