@@ -88,11 +88,10 @@ begin
  		player_on <= '0';
 	end if;
 	
-	if ('0' & bullet_x_pos <= pixel_column + bullet_size) and
- 	(bullet_x_pos + bullet_size >= '0' & pixel_column) and
- 	('0' & bullet_y_pos <= pixel_row + bullet_size) and
- 	(bullet_y_pos + bullet_size >= '0' & pixel_row ) then
- 		bullet_on <= '1';
+	-- Checks if current pixel row and pixel column are within the boundaries of bullet
+	-- Outputs 1 if curent pixel is within boundaries
+	if  ((pixel_row - bullet_y_pos) * (pixel_row - bullet_y_pos)) + ((pixel_column - bullet_x_pos) * (pixel_column - bullet_x_pos)) <= 36 then
+		bullet_on <= '1';
  	else
  		bullet_on <= '0';
 	end if;
@@ -160,7 +159,7 @@ begin
 				end if;
 				
 				-- if exceeds boundary or hits the upper tank then bullet disappears
-				if bullet_y_pos <= bullet_size then
+				if bullet_y_pos < 1 then
 					bullet_fired <= '0';
 				end if;
 				
@@ -261,7 +260,7 @@ begin
 				end if;
 				
 				-- if exceeds boundary or hits the upper tank then bullet disappears
-				if bullet_y_pos <= bullet_size then
+				if bullet_y_pos < 1 then
 					bullet_fired <= '0';
 				end if;
 				
@@ -399,7 +398,7 @@ begin
 					end if;
 					
 					-- if exceeds boundary or hits the upper tank then bullet disappears
-					if bullet_y_pos <= bullet_size then
+					if bullet_y_pos < 1 then
 						bullet_fired <= '0';
 					end if;
 					
@@ -550,7 +549,7 @@ elsif game_mode = "101" then
 					end if;
 					
 					-- if exceeds boundary or hits the upper tank then bullet disappears
-					if bullet_y_pos <= bullet_size then
+					if bullet_y_pos < 1 then
 						bullet_fired <= '0';
 					end if;
 					

@@ -1,23 +1,25 @@
-library IEEE;
-use  IEEE.STD_LOGIC_1164.all;
-use  IEEE.STD_LOGIC_ARITH.all;
-use  IEEE.STD_LOGIC_UNSIGNED.all;
+library ieee;
+use  ieee.std_logic_1164.all;
+use  ieee.std_logic_arith.all;
+use  ieee.std_logic_unsigned.all;
 
-ENTITY clk_divider IS
-	PORT(	clock: IN	STD_LOGIC;
-			clock_25Mhz	: OUT	STD_LOGIC);
-END clk_divider;
-ARCHITECTURE bhv OF clk_divider IS
-BEGIN
+entity clk_divider is
+	port(	clock: in	std_logic; --takes the clk input of 50Mhz
+			clock_25mhz	: out	std_logic);
+end clk_divider;
+
+architecture bhv of clk_divider is
+begin
 process(clock)
 variable i : integer := 0;
-BEGIN
-	if(rising_edge(clock)) then
-		if(i = 1) then
-			clock_25Mhz <= '1';
+begin
+	if (rising_edge(clock)) then
+	-- halves the clock input alternating the flagging of variable in every 2 ticks
+		if (i = 1) then
+			clock_25mhz <= '1';
 			i := 0;
 		else
-			clock_25Mhz <= '0';
+			clock_25mhz <= '0';
 			i := i + 1;
 		end if;
 	end if;

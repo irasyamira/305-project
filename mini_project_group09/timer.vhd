@@ -26,12 +26,12 @@ s_reset <= reset;
 s_enable <= enable;
 s_pause <= pause;
 
---clk generation (for 50 MHz clock this generates 1 Hz clock)
+--clk generation (for 25 MHz clock this generates 1 Hz clock)
 process(clk25)
 begin
 	if (clk25'event and clk25 = '1') then
 		count <= count + 1;
-		if (count = 25000000) then
+		if (count = 12500000) then
 			clk <= not clk;
 			count <= 1;
 		end if;

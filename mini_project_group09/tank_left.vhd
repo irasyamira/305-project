@@ -28,7 +28,7 @@ begin
 	
 	--00
 	if s_score_ones = "0000" and s_score_tens = "0000" then
-		s_tank_left <= "0011"; --3
+		s_tank_left <= "0011"; --3 (lvl1)
 	--01
 	elsif s_score_ones = "0001" and s_score_tens = "0000" then
 		s_tank_left <= "0010"; --2
@@ -37,7 +37,7 @@ begin
 		s_tank_left <= "0001"; --1
 	--03
 	elsif s_score_ones = "0011" and s_score_tens = "0000" then
-		s_tank_left <= "0100"; --4
+		s_tank_left <= "0100"; --4 (lvl2)
 	--04
 	elsif s_score_ones = "0100" and s_score_tens = "0000" then
 		s_tank_left <= "0011"; --3
@@ -49,42 +49,41 @@ begin
 		s_tank_left <= "0001"; --1
 	--07
 	elsif s_score_ones = "0111" and s_score_tens = "0000" then
-		s_tank_left <= "0101"; --5
-	--08
+		s_tank_left <= "0101"; --5 (lvl3)
+	--08 
 	elsif s_score_ones = "1000" and s_score_tens = "0000" then
 		s_tank_left <= "0100"; --4
 	--09
 	elsif s_score_ones = "1001" and s_score_tens = "0000" then
-		s_tank_left <= "0101"; --3
+		s_tank_left <= "0011"; --3
 	--10
-	elsif s_score_ones = "0000" and s_score_tens = "1000" then
+	elsif s_score_ones = "0000" and s_score_tens = "0001" then
 		s_tank_left <= "0010"; --2
 	--11
-	elsif s_score_ones = "0001" and s_score_tens = "1000" then
+	elsif s_score_ones = "0001" and s_score_tens = "0001" then
 		s_tank_left <= "0001"; --1
 	--12
-	elsif s_score_ones = "0010" and s_score_tens = "1000" then
-		s_tank_left <= "0110"; --6
+	elsif s_score_ones = "0010" and s_score_tens = "0001" then
+		s_tank_left <= "0110"; --6 (lvl4)
 	--13
-	elsif s_score_ones = "0011" and s_score_tens = "1000" then
+	elsif s_score_ones = "0011" and s_score_tens = "0001" then
 		s_tank_left <= "0101"; --5
 	--14
-	elsif s_score_ones = "0100" and s_score_tens = "1000" then
+	elsif s_score_ones = "0100" and s_score_tens = "0001" then
 		s_tank_left <= "0100"; --4
 	--15
-	elsif s_score_ones = "0101" and s_score_tens = "1000" then
+	elsif s_score_ones = "0101" and s_score_tens = "0001" then
 		s_tank_left <= "0101"; --3
 	--16
-	elsif s_score_ones = "0110" and s_score_tens = "1000" then
+	elsif s_score_ones = "0110" and s_score_tens = "0001" then
 		s_tank_left <= "0010"; --2
 	--17
-	elsif s_score_ones = "0111" and s_score_tens = "1000" then
+	elsif s_score_ones = "0111" and s_score_tens = "0001" then
 		s_tank_left <= "0001"; --1
 	--18
-	elsif s_score_ones = "1000" and s_score_tens = "1000" then
+	elsif s_score_ones = "1000" and s_score_tens = "0001" then
 		s_tank_left <= "0000"; --0
 	end if;
-
 
 	o_tank_left <= s_tank_left;
 end process;

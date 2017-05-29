@@ -20,9 +20,9 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 256 320)
+	(rect 16 16 256 352)
 	(text "game_control" (rect 5 0 59 12)(font "Arial" ))
-	(text "inst" (rect 8 288 20 300)(font "Arial" ))
+	(text "inst" (rect 8 320 20 332)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -129,6 +129,20 @@ applicable agreement for further details.
 		(line (pt 0 256)(pt 16 256)(line_width 1))
 	)
 	(port
+		(pt 0 272)
+		(input)
+		(text "tank3_on" (rect 0 0 36 12)(font "Arial" ))
+		(text "tank3_on" (rect 21 267 57 279)(font "Arial" ))
+		(line (pt 0 272)(pt 16 272)(line_width 1))
+	)
+	(port
+		(pt 0 288)
+		(input)
+		(text "tank4_on" (rect 0 0 37 12)(font "Arial" ))
+		(text "tank4_on" (rect 21 283 58 295)(font "Arial" ))
+		(line (pt 0 288)(pt 16 288)(line_width 1))
+	)
+	(port
 		(pt 240 32)
 		(output)
 		(text "game_mode[2..0]" (rect 0 0 70 12)(font "Arial" ))
@@ -159,25 +173,11 @@ applicable agreement for further details.
 	(port
 		(pt 240 96)
 		(output)
-		(text "reset_tank" (rect 0 0 42 12)(font "Arial" ))
-		(text "reset_tank" (rect 177 91 219 103)(font "Arial" ))
+		(text "reset_timer" (rect 0 0 46 12)(font "Arial" ))
+		(text "reset_timer" (rect 173 91 219 103)(font "Arial" ))
 		(line (pt 240 96)(pt 224 96)(line_width 1))
 	)
-	(port
-		(pt 240 112)
-		(output)
-		(text "reset_timer" (rect 0 0 46 12)(font "Arial" ))
-		(text "reset_timer" (rect 173 107 219 119)(font "Arial" ))
-		(line (pt 240 112)(pt 224 112)(line_width 1))
-	)
-	(port
-		(pt 240 128)
-		(output)
-		(text "enable_timer" (rect 0 0 50 12)(font "Arial" ))
-		(text "enable_timer" (rect 169 123 219 135)(font "Arial" ))
-		(line (pt 240 128)(pt 224 128)(line_width 1))
-	)
 	(drawing
-		(rectangle (rect 16 16 224 288)(line_width 1))
+		(rectangle (rect 16 16 224 320)(line_width 1))
 	)
 )

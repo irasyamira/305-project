@@ -2,5 +2,7 @@
 <LOG_ROOT>
 	<PROJECT NAME="mini_project_group09">
 		<CBX_INST_ENTRY INSTANCE_NAME="|mini_project_group09|char_rom:inst12|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_kt91.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|mini_project_group09|tank:inst11|lpm_mult:Mult0" CBX_FILE_NAME="mult_g4t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|mini_project_group09|tank:inst11|lpm_mult:Mult1" CBX_FILE_NAME="mult_g4t.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
