@@ -4,7 +4,7 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_signed.all;
 library work;
 
-
+-- Outputs the current number of tank left to shoot in order to proceed to the next level or win the game
 entity tank_left is
 	port( signal o_tank_left: out std_logic_vector(3 downto 0);
 			signal score_ones: in std_logic_vector(3 downto 0);

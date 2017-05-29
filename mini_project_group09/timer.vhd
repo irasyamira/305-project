@@ -26,7 +26,7 @@ s_reset <= reset;
 s_enable <= enable;
 s_pause <= pause;
 
---clk generation (for 25 MHz clock this generates 1 Hz clock)
+-- Clk generation (for 25 MHz clock this generates 1 Hz clock)
 process(clk25)
 begin
 	if (clk25'event and clk25 = '1') then
@@ -38,49 +38,48 @@ begin
 	end if;
 end process;
 
---period of clk is 1 second.
+-- Period of clk is 1 second.
 process(s_reset, clk, s_sec_ones, s_sec_tens, game_mode, s_pause)   
 begin
 
 	if s_reset = '1' then
-		--s_sec_ones <= "1000";
-		--s_sec_tens <= "1000";
---		s_sec_ones <= s_sec_ones - 1;
---		if (s_sec_ones = "0000") then
---			s_sec_ones <= "1001";
---			s_sec_tens <= s_sec_tens - 1;
---			if (s_sec_tens = "0000") then
---				s_sec_tens <= "1001";
---			end if;
---		end if;
 
-			--if game_mode = "000" then
-				--s_sec_ones <= "0000"; --60 seconds
-				--s_sec_tens <= "0110";
+			-- Level 1 (55s)
 			if game_mode = "010" then
-				s_sec_ones <= "0101"; --55
+				s_sec_ones <= "0101"; 
 				s_sec_tens <= "0101";
+				
+			-- Level 2 (50s)
 			elsif game_mode = "011" then
-				s_sec_ones <= "0000"; --50
+				s_sec_ones <= "0000"; 
 				s_sec_tens <= "0101";
+			
+			-- Level 3 (45s)
 			elsif game_mode = "100" then
-				s_sec_ones <= "0101"; --45
+				s_sec_ones <= "0101";
 				s_sec_tens <= "0100";
-			elsif game_mode = "101" then --40
+				
+			-- Level 4 (40s)
+			elsif game_mode = "101" then
 				s_sec_ones <= "0000";
 				s_sec_tens <= "0100";
+				
+			-- Resets to 99	
 			else
-				s_sec_ones <= "0000"; --99
+				s_sec_ones <= "0000";
 				s_sec_tens <= "0110";		
 			end if;
 	else
 		if (clk'event and clk='1') then
-		
+			
+			-- Pause will freeze the timer at its current value
 			if s_pause = '0' then
 				s_sec_ones <= s_sec_ones;
 				s_sec_tens <= s_sec_tens;
+				
+			-- Decrement at every clk cycle				
 			else
-			
+		
 			s_sec_ones <= s_sec_ones - 1;
 				if (s_sec_ones = "0000") then
 					s_sec_ones <= "1001";
