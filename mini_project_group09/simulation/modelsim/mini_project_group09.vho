@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.0.0 Build 156 04/24/2013 SJ Full Version"
 
--- DATE "05/29/2017 23:37:18"
+-- DATE "05/30/2017 15:58:50"
 
 -- 
 -- Device: Altera EP3C16F484C6 Package FBGA484
@@ -2163,29 +2163,29 @@ SIGNAL \inst100|Mux3~0_combout\ : std_logic;
 SIGNAL \inst100|Mux4~0_combout\ : std_logic;
 SIGNAL \inst100|Mux5~0_combout\ : std_logic;
 SIGNAL \inst100|Mux6~0_combout\ : std_logic;
-SIGNAL \inst11|tank2_y_pos\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst11|tank_x_motion\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst11|bullet_y_motion\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst4|count\ : std_logic_vector(31 DOWNTO 0);
+SIGNAL \inst4|s_sec_tens\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \inst11|bullet_x_pos\ : std_logic_vector(10 DOWNTO 0);
 SIGNAL \inst5|s_tank_left\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \inst11|tank_y_pos\ : std_logic_vector(10 DOWNTO 0);
-SIGNAL \inst4|s_sec_ones\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \inst3|ran_num\ : std_logic_vector(10 DOWNTO 0);
-SIGNAL \inst11|o_score_tens\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \inst11|bullet_y_pos\ : std_logic_vector(10 DOWNTO 0);
-SIGNAL \inst14|font_row\ : std_logic_vector(2 DOWNTO 0);
-SIGNAL \inst4|count\ : std_logic_vector(31 DOWNTO 0);
-SIGNAL \inst11|tank_x_pos\ : std_logic_vector(10 DOWNTO 0);
 SIGNAL \inst11|player_x_pos\ : std_logic_vector(10 DOWNTO 0);
-SIGNAL \inst11|score_tens\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \inst14|character_address\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \inst14|font_col\ : std_logic_vector(2 DOWNTO 0);
-SIGNAL \inst99|segment7\ : std_logic_vector(6 DOWNTO 0);
-SIGNAL \inst11|tank_x_motion\ : std_logic_vector(10 DOWNTO 0);
-SIGNAL \inst4|s_sec_tens\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \inst11|score_ones\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \inst11|bullet_y_motion\ : std_logic_vector(10 DOWNTO 0);
-SIGNAL \inst11|tank2_x_pos\ : std_logic_vector(10 DOWNTO 0);
-SIGNAL \inst11|tank2_x_motion\ : std_logic_vector(10 DOWNTO 0);
 SIGNAL \inst11|o_score_ones\ : std_logic_vector(3 DOWNTO 0);
+SIGNAL \inst4|s_sec_ones\ : std_logic_vector(3 DOWNTO 0);
+SIGNAL \inst11|tank_y_pos\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst11|score_ones\ : std_logic_vector(3 DOWNTO 0);
+SIGNAL \inst11|tank2_x_motion\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst14|character_address\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \inst99|segment7\ : std_logic_vector(6 DOWNTO 0);
+SIGNAL \inst14|font_col\ : std_logic_vector(2 DOWNTO 0);
+SIGNAL \inst14|font_row\ : std_logic_vector(2 DOWNTO 0);
+SIGNAL \inst11|tank_x_pos\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst11|score_tens\ : std_logic_vector(3 DOWNTO 0);
+SIGNAL \inst11|bullet_y_pos\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst3|ran_num\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst11|tank2_y_pos\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst11|tank2_x_pos\ : std_logic_vector(10 DOWNTO 0);
+SIGNAL \inst11|o_score_tens\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \inst100|segment7\ : std_logic_vector(6 DOWNTO 0);
 SIGNAL \inst1|new_cursor_column\ : std_logic_vector(9 DOWNTO 0);
 SIGNAL \inst1|inhibit_wait_count\ : std_logic_vector(10 DOWNTO 0);

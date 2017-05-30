@@ -1,5 +1,5 @@
 Fitter report for mini_project_group09
-Mon May 29 23:37:08 2017
+Tue May 30 15:58:39 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -74,7 +74,7 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Mon May 29 23:37:08 2017       ;
+; Fitter Status                      ; Successful - Tue May 30 15:58:39 2017       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; mini_project_group09                        ;
 ; Top-level Entity Name              ; mini_project_group09                        ;
@@ -161,13 +161,12 @@ applicable agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 2.58        ;
+; Average used               ; 2.67        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-3         ;  53.8%      ;
-;     Processor 4            ;  50.0%      ;
+;     Processors 2-4         ;  55.6%      ;
 +----------------------------+-------------+
 
 
@@ -260,7 +259,7 @@ applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in D:/305-project/mini_project_group09/output_files/mini_project_group09.pin.
+The pin-out file can be found in D:/305-project-master/mini_project_group09/output_files/mini_project_group09.pin.
 
 
 +-------------------------------------------------------------------------+
@@ -2824,24 +2823,24 @@ Info (188005): Design requires adding a large amount of routing delay for some s
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:18
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 1.97 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.72 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
-Info (144001): Generated suppressed messages file D:/305-project/mini_project_group09/output_files/mini_project_group09.fit.smsg
+Info (144001): Generated suppressed messages file D:/305-project-master/mini_project_group09/output_files/mini_project_group09.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 1164 megabytes
-    Info: Processing ended: Mon May 29 23:37:08 2017
-    Info: Elapsed time: 00:00:27
-    Info: Total CPU time (on all processors): 00:00:49
+    Info: Peak virtual memory: 1165 megabytes
+    Info: Processing ended: Tue May 30 15:58:39 2017
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:50
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in D:/305-project/mini_project_group09/output_files/mini_project_group09.fit.smsg.
+The suppressed messages can be found in D:/305-project-master/mini_project_group09/output_files/mini_project_group09.fit.smsg.
 
 

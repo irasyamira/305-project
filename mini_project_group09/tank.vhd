@@ -198,7 +198,7 @@ begin
 								tank_x_pos <= s_rand;
 								tank_y_pos <= conv_std_logic_vector(80,11);
 							end if;	
-							--s_collision <= '0';
+
 				end if;
 			end if;	-- pause
 	

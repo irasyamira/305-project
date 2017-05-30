@@ -1,5 +1,5 @@
 Flow report for mini_project_group09
-Mon May 29 23:37:19 2017
+Tue May 30 15:58:51 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Full Version
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Mon May 29 23:37:19 2017       ;
+; Flow Status                        ; Successful - Tue May 30 15:58:51 2017       ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Full Version ;
 ; Revision Name                      ; mini_project_group09                        ;
 ; Top-level Entity Name              ; mini_project_group09                        ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+----------------------+
 ; Option            ; Setting              ;
 +-------------------+----------------------+
-; Start date & time ; 05/29/2017 23:36:33  ;
+; Start date & time ; 05/30/2017 15:58:03  ;
 ; Main task         ; Compilation          ;
 ; Revision Name     ; mini_project_group09 ;
 +-------------------+----------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                           ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+---------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 109952947361729.149605779306992 ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 109952947361744.149611668302584 ; --            ; --          ; --         ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)          ; <None>        ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                              ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                               ; --            ; --          ; --         ;
@@ -95,12 +95,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:07     ; 1.0                     ; 510 MB              ; 00:00:07                           ;
-; Fitter                    ; 00:00:27     ; 2.6                     ; 1164 MB             ; 00:00:48                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 420 MB              ; 00:00:01                           ;
-; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 517 MB              ; 00:00:03                           ;
+; Analysis & Synthesis      ; 00:00:07     ; 1.0                     ; 510 MB              ; 00:00:06                           ;
+; Fitter                    ; 00:00:28     ; 2.7                     ; 1165 MB             ; 00:00:50                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 420 MB              ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 510 MB              ; 00:00:04                           ;
 ; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 405 MB              ; 00:00:02                           ;
-; Total                     ; 00:00:41     ; --                      ; --                  ; 00:01:01                           ;
+; Total                     ; 00:00:43     ; --                      ; --                  ; 00:01:03                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -109,11 +109,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; EN-337539        ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; EN-337539        ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; EN-337539        ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; EN-337539        ; Windows 7 ; 6.1        ; x86_64         ;
-; EDA Netlist Writer        ; EN-337539        ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; EN-352808        ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; EN-352808        ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; EN-352808        ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; EN-352808        ; Windows 7 ; 6.1        ; x86_64         ;
+; EDA Netlist Writer        ; EN-352808        ; Windows 7 ; 6.1        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 
